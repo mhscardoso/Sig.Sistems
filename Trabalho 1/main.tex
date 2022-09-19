@@ -2,6 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=0.5in]{geometry}
 \usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\graphicspath{ {./images/} }
 
 \title{Sinais e Sistemas - Trabalho 1 - Grupo 2}
 \author{
@@ -16,14 +19,82 @@
 
 \maketitle
 
-1.) Para o sinal abaixo, contínuo por partes e definido para $t \in [-5\;5]$: \textbf{a} esboçar gráfico, \textbf{b} encotrar uma expressão analítica usando sinais singulares, \textbf{c} escrever um programa que rode em Octave/MatLab para plotar o gráfico. Nos dados a seguir, as expressões entre vírgulas se referem, na ordem de apresentação, aos valores do sinal nos intervalos $I_{1} = [-5\;-3], I_{2} = [-3\;-1], I_{3} = [-1\;1], I_{4} = [1\;3], I_{5} = [3\;5]$.
-\textbf{G2}: $x(t) = 3, 3t + 6, -3t^3, 3t - 6, -t^2 + 5t - 3$
+1.) Para o sinal abaixo, contínuo por partes e definido para $t \in [-5\;5]$: (a) esboçar gráfico, (b) encotrar uma expressão analítica usando sinais singulares, (c) escrever um programa que rode em Octave/MatLab para plotar o gráfico. Nos dados a seguir, as expressões entre vírgulas se referem, na ordem de apresentação, aos valores do sinal nos intervalos $I_{1} = [-5\;-3], I_{2} = [-3\;-1], I_{3} = [-1\;1], I_{4} = [1\;3], I_{5} = [3\;5]$.
+\textbf{G2}: $x(t) = -3, 3t + 6, -3t^3, 3t - 6, -t^2 + 5t - 3$
 
 \vspace{\baselineskip}
 
+(b) Analisando para os intervalos, teremos:
+
+\vspace{\baselineskip}
+
+Para $ -5 \leq t < -3, x(t) = -3 $, ou, $ x(t) = -3 \cdot 1(-t) $ utilizando um degrau refletido.
+
+\vspace{\baselineskip}
+
+Para $ -3 \leq t < -1, x(t) = 3t + 6 $, ou, $ x(t) = 3t \cdot 1(-t) + 6 \cdot 1(-t) $ utilizando degrau e rampa unitários.
+
+\vspace{\baselineskip}
+
+Para $ -1 \leq t < 0, x(t) = -3t^3 $, ou, $ x(t) = -6t \cdot \frac{t^2}{2}1(-t) $ utilizando a parábola unitária.
+
+\vspace{\baselineskip}
+
+Para $ 0 \leq t < 1, x(t) = -3t^3 $, ou, $ x(t) = -6t \cdot \frac{t^2}{2}1(t) $ utilizando a parábola unitária.
+
+\vspace{\baselineskip}
+
+Para $ 1 \leq t < 3, x(t) = 3t - 6 $, ou, $ x(t) = 3t \cdot 1(t) - 6 \cdot 1(t) $ utilizando degrau e rampa unitários.
+
+\vspace{\baselineskip}
+
+Para $ 3 \leq t < 5, x(t) = -t^2 + 5t - 3 $, ou, $ x(t) = -2 \cdot \frac{t^2}{2}1(t) + 5t \cdot 1(t) - 3 \cdot 1(t)$ utilizando parábola, rampa e degrau unitários.
+
+\vspace{\baselineskip}
+
+Dessa forma, teremos $x(t)$ definido como:
+
+\[ x(t) = 
+\begin{cases} 
+    -3 \cdot 1(-t) & -5 \leq t < -3 \\
+
+    3t \cdot 1(-t) + 6 \cdot 1(-t) & -3 \leq t < -1 \\
+
+    -6t \cdot \frac{t^2}{2}1(-t) & -1 \leq t < 0 \\
+
+    -6t \cdot \frac{t^2}{2}1(t) & 0 \leq t < 1 \\
+
+    3t \cdot 1(t) - 6 \cdot 1(t) & 1 \leq t < 3 \\
+
+    -2 \cdot \frac{t^2}{2}1(t) + 5t \cdot 1(t) - 3 \cdot 1(t) & 3 \leq t < 5 
+ \end{cases}
+\]
+
+
+\vspace{\baselineskip}
+
+(c) Executando os códigos escritos no arquivo {\tt questao1.m} (feito no Octave), plotamos o seguite gráfico:
+
+\begin{figure}[h]
+    \includegraphics[scale=0.2]{plotq1c}
+    \centering
+\end{figure}
+
 2.) Plotar o gráfico dos sinais a seguir, com escalas adequadas e usando os valores numéricos desejados para os eventuais parâmetros. Dizer se estes sinais são periódicos e, em caso afirmativo quais os seus períodos fundamentais.
 (a) $x(t) = sen(\pi t) + cos(2 \pi t) / 2 + sen(3 \pi t) / 3 + cos(4 \pi t) / 4$,
-(b) $x(t) = sen(\omega t)cos(50\omega t)$, (c) $x(t) = sen(\omega t^2)$, (d) $x(t) = sen(\omega_{1}sen(\omega_{2}t)t)$
+(b) $x(t) = sen(\omega t)cos(50\omega t)$,
+(c) $x(t) = sen(\omega t^2)$,
+(d) $x(t) = sen(\omega_{1}sen(\omega_{2}t)t)$
+
+\vspace{\baselineskip}
+
+(c) Plotando o gráfico com o Octave para $\omega = 7$, temos:
+\begin{figure}[h]
+    \includegraphics[scale=0.3]{plotq2c}
+    \centering
+\end{figure}
+
+Daqui, já se nota que o sinal não é periódico. Além de ser bem destoante para valores próximos à zero, conforme $t \rightarrow \infty$ ou $t \rightarrow - \infty$, a distância entre as cristas e entre os vales diminui.
 
 \vspace{\baselineskip}
 
