@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1663558128 "c:/Users/mhcar/OneDrive/Documentos/UFRJ - Docs/Sem - 4/Sis. Sis/Trabalhos/Trabalho 1/main.tex" "main.pdf" "main" 1663558130
+["pdflatex"] 1663820427 "c:/Users/mhcar/OneDrive/Documentos/UFRJ - Docs/Sem - 4/Sis. Sis/Trabalhos/Trabalho 1/main.tex" "main.pdf" "main" 1663820429
   "C:/Users/mhcar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1663551361 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/mhcar/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1662429219 10329960 518b4bc0a0ee42e97f1209c4f96b8c90 ""
   "C:/Users/mhcar/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -64,11 +64,14 @@
   "C:/Users/mhcar/AppData/Local/Programs/MiKTeX/tex/latex/grfext/grfext.sty" 1575399474 7133 b94bbacbee6e4fdccdc7f810b2aec370 ""
   "C:/Users/mhcar/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty" 1656236481 22555 6d8e155cfef6d82c3d5c742fea7c992e ""
   "C:/Users/mhcar/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1656697404 31050 293f2cc98a3575c4228b5157bf850b8f ""
-  "c:/Users/mhcar/OneDrive/Documentos/UFRJ - Docs/Sem - 4/Sis. Sis/Trabalhos/Trabalho 1/main.tex" 1663558126 5952 3ff81a4ee5c601753b670ecab9078966 ""
-  "images//plotq1c.jpg" 1663556844 27509 16a6b1df571c8453ba1f50c4f9ad29dd ""
-  "images//plotq2c.jpg" 1663557677 101440 09fa28e7b2d561f21d44bc4463798351 ""
-  "main.aux" 1663558129 135 9ac6b5db29b7b2a773af6f4254bad1a5 "pdflatex"
-  "main.tex" 1663558126 5952 3ff81a4ee5c601753b670ecab9078966 ""
+  "c:/Users/mhcar/OneDrive/Documentos/UFRJ - Docs/Sem - 4/Sis. Sis/Trabalhos/Trabalho 1/main.tex" 1663820426 6723 9e1e4a60bd64dc874148070332475593 ""
+  "images//plot1c.jpg" 1663816818 41512 df4e0e5dae98b11fe87d27a1a85901b6 ""
+  "images//plot2a.jpg" 1663818874 37889 42f8767dbd5dfbb35bd8d0bd4a388aaa ""
+  "images//plot2b.jpg" 1663819368 80157 6afa63edd9069d7d5fb98c0f9d1a4ba9 ""
+  "images//plot2c.jpg" 1663819738 91923 6af712e29432685772bffa8e3bcfe38b ""
+  "images//plot2d.jpg" 1663819907 57738 8c6c2093df1f7f1f24f449ad854db855 ""
+  "main.aux" 1663820429 135 b93ac73591af86d6a087e5e9434fadff "pdflatex"
+  "main.tex" 1663820426 6723 9e1e4a60bd64dc874148070332475593 ""
   (generated)
   "main.aux"
   "main.log"
