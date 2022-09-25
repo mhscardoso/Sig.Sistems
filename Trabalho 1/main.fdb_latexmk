@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1664130426 "c:/Users/Lucas/OneDrive/Documentos/GitHub/Sig.Sistems/Trabalho 1/main.tex" "main.pdf" "main" 1664130427
+["pdflatex"] 1664130918 "c:/Users/Lucas/OneDrive/Documentos/GitHub/Sig.Sistems/Trabalho 1/main.tex" "main.pdf" "main" 1664130919
   "C:/Users/Lucas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1664130425 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Lucas/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1663527945 10329961 d1b2e8d382e0f118d0e00de942ecb91d ""
   "C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -64,14 +64,15 @@
   "C:/Users/Lucas/AppData/Local/Programs/MiKTeX/tex/latex/grfext/grfext.sty" 1575399474 7133 b94bbacbee6e4fdccdc7f810b2aec370 ""
   "C:/Users/Lucas/AppData/Local/Programs/MiKTeX/tex/latex/kvoptions/kvoptions.sty" 1656236481 22555 6d8e155cfef6d82c3d5c742fea7c992e ""
   "C:/Users/Lucas/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1656697404 31050 293f2cc98a3575c4228b5157bf850b8f ""
-  "c:/Users/Lucas/OneDrive/Documentos/GitHub/Sig.Sistems/Trabalho 1/main.tex" 1664124355 6723 9e1e4a60bd64dc874148070332475593 ""
+  "c:/Users/Lucas/OneDrive/Documentos/GitHub/Sig.Sistems/Trabalho 1/main.tex" 1664130917 6872 7d26a1aa2d1613c599f74078c07559cb ""
+  "images//plot1a.jpg" 1664130684 55363 963651b4ae5d9bb670eadc7ddc06ee72 ""
   "images//plot1c.jpg" 1664124355 41512 df4e0e5dae98b11fe87d27a1a85901b6 ""
   "images//plot2a.jpg" 1664124355 37889 42f8767dbd5dfbb35bd8d0bd4a388aaa ""
   "images//plot2b.jpg" 1664124355 80157 6afa63edd9069d7d5fb98c0f9d1a4ba9 ""
   "images//plot2c.jpg" 1664124355 91923 6af712e29432685772bffa8e3bcfe38b ""
   "images//plot2d.jpg" 1664124355 57738 8c6c2093df1f7f1f24f449ad854db855 ""
-  "main.aux" 1664130427 135 b93ac73591af86d6a087e5e9434fadff "pdflatex"
-  "main.tex" 1664124355 6723 9e1e4a60bd64dc874148070332475593 ""
+  "main.aux" 1664130919 135 70e9f4f64d15ccc2335d1baf28eaec5a "pdflatex"
+  "main.tex" 1664130917 6872 7d26a1aa2d1613c599f74078c07559cb ""
   (generated)
   "main.aux"
   "main.log"

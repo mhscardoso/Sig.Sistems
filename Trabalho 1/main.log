@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.18)  25 SEP 2022 15:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.18)  25 SEP 2022 15:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -243,47 +243,62 @@ Package grfext Info: Graphics extension search list:
  (C:\Users\Lucas\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-<./images//plot1c.jpg, id=1, 1657.19125pt x 753.81625pt>
-File: ./images//plot1c.jpg Graphic file (type jpg)
-<use ./images//plot1c.jpg>
-Package pdftex.def Info: ./images//plot1c.jpg  used on input line 79.
-(pdftex.def)             Requested size: 381.14598pt x 173.37408pt.
+<./images//plot1a.jpg, id=1, 1284.8pt x 916.42375pt>
+File: ./images//plot1a.jpg Graphic file (type jpg)
+<use ./images//plot1a.jpg>
+Package pdftex.def Info: ./images//plot1a.jpg  used on input line 30.
+(pdftex.def)             Requested size: 295.49779pt x 210.77303pt.
  [1
 
-{C:/Users/Lucas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./images//plot1c.jpg>]
-<./images//plot2a.jpg, id=17, 1169.36874pt x 563.10374pt>
+{C:/Users/Lucas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./images//plot1a.jpg>]
+<./images//plot1c.jpg, id=15, 1657.19125pt x 753.81625pt>
+File: ./images//plot1c.jpg Graphic file (type jpg)
+<use ./images//plot1c.jpg>
+Package pdftex.def Info: ./images//plot1c.jpg  used on input line 88.
+(pdftex.def)             Requested size: 381.14598pt x 173.37408pt.
+<./images//plot2a.jpg, id=16, 1169.36874pt x 563.10374pt>
 File: ./images//plot2a.jpg Graphic file (type jpg)
 <use ./images//plot2a.jpg>
-Package pdftex.def Info: ./images//plot2a.jpg  used on input line 96.
+Package pdftex.def Info: ./images//plot2a.jpg  used on input line 105.
 (pdftex.def)             Requested size: 350.81332pt x 168.93242pt.
-<./images//plot2b.jpg, id=18, 1474.50874pt x 563.10374pt>
+<./images//plot2b.jpg, id=17, 1474.50874pt x 563.10374pt>
 File: ./images//plot2b.jpg Graphic file (type jpg)
 <use ./images//plot2b.jpg>
-Package pdftex.def Info: ./images//plot2b.jpg  used on input line 107.
+Package pdftex.def Info: ./images//plot2b.jpg  used on input line 116.
 (pdftex.def)             Requested size: 442.35603pt x 168.93242pt.
-<./images//plot2c.jpg, id=19, 1662.21pt x 563.10374pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./images//plot2c.jpg, id=18, 1662.21pt x 563.10374pt>
 File: ./images//plot2c.jpg Graphic file (type jpg)
 <use ./images//plot2c.jpg>
-Package pdftex.def Info: ./images//plot2c.jpg  used on input line 115.
+Package pdftex.def Info: ./images//plot2c.jpg  used on input line 124.
 (pdftex.def)             Requested size: 498.66685pt x 168.93242pt.
-<./images//plot2d.jpg, id=20, 1239.63126pt x 563.10374pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./images//plot2d.jpg, id=19, 1239.63126pt x 563.10374pt>
 File: ./images//plot2d.jpg Graphic file (type jpg)
 <use ./images//plot2d.jpg>
-Package pdftex.def Info: ./images//plot2d.jpg  used on input line 127.
+Package pdftex.def Info: ./images//plot2d.jpg  used on input line 136.
 (pdftex.def)             Requested size: 371.89224pt x 168.93242pt.
- [2 <./images//plot2a.jpg> <./images//plot2b.jpg> <./images//plot2c.jpg>] [3 <./images//plot2d.jpg>] (main.aux) ) 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2 <./images//plot1c.jpg> <./images//plot2a.jpg>] [3 <./images//plot2b.jpg> <./images//plot2c.jpg>] [4 <./images//plot2d.jpg>] (main.aux) ) 
 Here is how much of TeX's memory you used:
- 4233 strings out of 478338
- 72646 string characters out of 2836700
- 396772 words of memory out of 3000000
- 22612 multiletter control sequences out of 15000+600000
+ 4246 strings out of 478338
+ 72911 string characters out of 2836700
+ 394772 words of memory out of 3000000
+ 22625 multiletter control sequences out of 15000+600000
  473898 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,8n,67p,780b,235s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (3 pages, 459909 bytes).
+Output written on main.pdf (4 pages, 516135 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
+ 81 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
