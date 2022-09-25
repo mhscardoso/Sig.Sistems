@@ -1,4 +1,4 @@
-% Programa da segunda questao do trabalho de sinais e sistemas
+% Programa da terceira questao do trabalho de sinais e sistemas
 % 2022.2
 
 % Intervalos
