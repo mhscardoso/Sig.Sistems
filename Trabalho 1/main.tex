@@ -166,6 +166,111 @@ Sinal a ser estudado: {\textbf G3}: $x(t) = -t - 5, -2, -t^3 + 3t, 2, -t + 5$ pa
 
 \vspace{\baselineskip}
 
+(a) Traçando o gráfico do sinal periódico:
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.4]{plot4a}
+    \centering
+\end{figure}
+
+\vspace{\baselineskip}
+
+(b) Encontrando a potência total $P$ com a aproximação da fórmula $P_{[-5\;5]} = \frac{1}{5 - (-5)} \int_{-5}^{5} |x(t)|^2 dt $:
+
+\vspace{\baselineskip}
+
+Potência total $(P)$ = 2.5219
+
+\vspace{\baselineskip}
+
+(c) Calculando os $X_{k}$ para $k \in [-10\;10]$:
+
+\vspace{\baselineskip}
+$X_{-10} =  3.6250e-17 - 4.8377e-03i;$
+$X_{-9} =  1.3859e-18 - 1.2007e-02i;$
+$X_{-8} =  1.5344e-17 - 5.4810e-05i;$
+$X_{-7} = -1.1824e-18 + 7.3857e-03i;$
+$X_{-6} = -3.0899e-17 + 1.2438e-03i;$
+$X_{-5} =  1.6911e-17 + 3.8702e-02i;$
+$X_{-4} =  3.1526e-17 + 1.0894e-01i;$
+$X_{-3} = -6.7537e-18 + 1.1269e-01i;$
+$X_{-2} =  1.4539e-17 + 1.9635e-01i;$
+$X_{1} =  1.4886e-17 + 1.0936e+00i;$
+$X_{o} = 6.3307e-17;$
+$X_{1} =  1.4886e-17 - 1.0936e+00i;$
+$X_{2} =  1.4539e-17 - 1.9635e-01i;$
+$X_{3} = -6.7537e-18 - 1.1269e-01i;$
+$X_{4} =  3.1526e-17 - 1.0894e-01i;$
+$X_{5} =  1.6911e-17 - 3.8702e-02i;$
+$X_{6} = -3.0899e-17 - 1.2438e-03i;$
+$X_{7} = -1.1824e-18 - 7.3857e-03i;$
+$X_{8} =  1.5344e-17 + 5.4810e-05i;$
+$X_{9} =  1.3859e-18 + 1.2007e-02i;$
+$X_{10} =  3.6250e-17 + 4.8377e-03i.$
+
+\vspace{\baselineskip}
+
+(d) Traçando os espectros de magnitude, fase e potência:
+
+\vspace{\baselineskip}
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.3]{plot4dm}
+    \centering
+\end{figure}
+
+\vspace{\baselineskip}
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.3]{plot4df}
+    \centering
+\end{figure}
+
+\vspace{\baselineskip}
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.43]{plot4dp}
+    \centering
+\end{figure}
+
+\vspace{\baselineskip}
+
+$a_{0} = 6.3307e-17;$
+$a_{1} = 2.9772e-17;$
+$a2 = 2.9078e-17;$
+$a3 = -1.3507e-17;$
+$a4 = 6.3052e-17;$
+$a5 = 3.3822e-17;$
+$a6 = -6.1798e-17;$
+$a7 = -2.3649e-18;$
+$a8 = 3.0689e-17;$
+$a9 = 2.7717e-18;$
+$a10 = 7.2500e-17.$
+
+\vspace{\baselineskip}
+
+$b0 = 0;$
+$b1 = 2.1873;$
+$b2 = 0.3927;$
+$b3 = 0.2254;$
+$b4 = 0.2179;$
+$b5 = 0.077404;$
+$b6 = 2.4876e-03;$
+$b7 = 0.014771;$
+$b8 = -1.0962e-04;$
+$b9 = -0.024014;$
+$b10 = -9.6755e-03.$
+
+\vspace{\baselineskip}
+
+(e) Estimando quantos harmônicos são necessários para reter $90.00\%$ da potência:
+
+\vspace{\baselineskip}
+
+Até o primeiro harmônico que consegue reter $94,85\% $
+
+\vspace{\baselineskip}
+
 5.) Na escala de tempo {\tt t=0:1/2000:5}, considere um sinal de áudio simples $x_{b}(t) = sen(2 \pi f_{0}t)$ ou $x_{b}(t) = cos(2 \pi f_{0}t)$ com frequência \textbf{G2:} $f_{0} = 132Hz$. Ouça este som usando o comando {\tt sound(xb)} no Octave; o resultado é, provavelmente, desagradável pois se trata de uma frequência pura e a sensação é seca, metálica. Para melhorar o \textbf{timbre} do som é preciso colocar mais harmônicos. Crie, na mesma escala de tempo, com a mesma frequência fundamental $f_{0}$, com parâmetros a seu critério e usando até o harmônico $k = 6\;(6f_{0}Hz)$ os sinais a seguir. Ouça cada um deles e compare a qualidade do timbre.\\
 (a) Uma onda quadrada $x_{q}(t)$;
 (b) uma onda triangular $x_{t}(t)$;

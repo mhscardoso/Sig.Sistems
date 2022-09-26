@@ -15,14 +15,14 @@ t5=3:dt:5-dt; x5=-t5+5;
 
 % Concatenando e plotando
 t=[t1 t2 t3 t4 t5]; x=[x1 x2 x3 x4 x5];
-subplot(2,2,1)
-plot(t, x, "r", "linewidth", 3)
-title("Grafico de x(t) por t", "fontsize", 20)
-xlabel("t", "fontsize", 18)
-ylabel("x(t)", "fontsize", 18)
+%plot(t, x, "-", "linewidth", 3)
+%title("Grafico de x(t) por t", "fontsize", 20)
+%xlabel("t", "fontsize", 18)
+%ylabel("x(t)", "fontsize", 18)
+%print plot4a.jpg
 
 % Encontrando a potencia total P
-Ptotal = sum(abs(x).^2*dt)/T0
+Ptotal = sum(abs(x).^2*dt)/T0;
 
 % Encontrando os Xk para k pertence a [-10 10]
 xk0 = sum(x.*exp(-i*0*w0.*t)*dt)/T0;
@@ -40,17 +40,19 @@ xk10 = sum(x.*exp(-i*10*w0.*t)*dt)/T0;
 k = [-10:10];
 magnitude = [abs(xk10) abs(xk9) abs(xk8) abs(xk7) abs(xk6) abs(xk5) abs(xk4) abs(xk3) abs(xk2) abs(xk1) abs(xk0) abs(xk1) abs(xk2) abs(xk3) abs(xk4) abs(xk5) abs(xk6) abs(xk7) abs(xk8) abs(xk9) abs(xk10)];
 fase = [arg(xk10) arg(xk9) arg(xk8) arg(xk7) arg(xk6) arg(xk5) arg(xk4) arg(xk3) arg(xk2) arg(xk1) arg(xk0) arg(xk1) arg(xk2) arg(xk3) arg(xk4) arg(xk5) arg(xk6) arg(xk7) arg(xk8) arg(xk9) arg(xk10)];
-subplot(2,2,2)
-plot(k, magnitude, "*", "linewidth", 3)
-title("Grafico de magnitude", "fontsize", 20)
-xlabel("k", "fontsize", 18)
-ylabel("M", "fontsize", 18)
+%subplot(2,2,2)
+%plot(k, magnitude, "*", "linewidth", 3)
+%title("Grafico de magnitude", "fontsize", 20)
+%xlabel("k", "fontsize", 18)
+%ylabel("M", "fontsize", 18)
+%print plot4dm.jpg
 
-subplot(2,2,3)
-plot(k, fase, "*", "linewidth", 3)
-title("Grafico de fase", "fontsize", 20)
-xlabel("k", "fontsize", 18)
-ylabel("F", "fontsize", 18)
+%subplot(2,2,3)
+%plot(k, fase, "*", "linewidth", 3)
+%title("Grafico de fase", "fontsize", 20)
+%xlabel("k", "fontsize", 18)
+%ylabel("F", "fontsize", 18)
+%print plot4df.jpg
 
 % Encontrando a potencia de cada Xk
 P0 = abs(xk0)^2;
@@ -66,21 +68,22 @@ P9 = abs(xk9)^2;
 P10 = abs(xk10)^2;
 
 P = [P10 P9 P8 P7 P6 P5 P4 P3 P2 P1 P0 P1 P2 P3 P4 P5 P6 P7 P8 P9 P10];
-subplot(2,2,4)
-plot(k, P, "*", "linewidth", 3)
-title("Grafico da potencia", "fontsize", 20)
-xlabel("k", "fontsize", 18)
-ylabel("P", "fontsize", 18)
+%subplot(2,2,4)
+%plot(k, P, "*", "linewidth", 3)
+%title("Grafico da potencia", "fontsize", 20)
+%xlabel("k", "fontsize", 18)
+%ylabel("P", "fontsize", 18)
+%print plot4dp.jpg
 
 % Estimando a quantidade de harmonicos necessarios para reter 90% da potencia total
 p = abs(sum(x.*exp(-i*0*w0.*t)*dt)/T0)^2/Ptotal;
 harmonico = 1;
 while (p < 0.9)
-  p = p + 2*abs(sum(x.*exp(-i*harmonico*w0.*t)*dt)/T0)^2/Ptotal;
+  p = p + 2*abs(sum(x.*exp(-i*harmonico*w0.*t)*dt)/T0)^2/Ptotal
   harmonico++
 endwhile
 
-a0 = x0;
+a0 = xk0;
 a1 = (xk1+conj(xk1));
 a2 = (xk2+conj(xk2));
 a3 = (xk3+conj(xk3));
@@ -92,7 +95,7 @@ a8 = (xk8+conj(xk8));
 a9 = (xk9+conj(xk9));
 a10 = (xk10+conj(xk10));
 
-b0 = i(xk0-conj(xk0));
+b0 = i*(xk0-conj(xk0));
 b1 = i*(xk1-conj(xk1));
 b2 = i*(xk2-conj(xk2));
 b3 = i*(xk3-conj(xk3));
@@ -105,9 +108,9 @@ b9 = i*(xk9-conj(xk9));
 b10 = i*(xk10-conj(xk10));
 
 % Tracando grafico de x(t) e aproximacoes
-plot(t, x, "linewidth", 3)
-hold on
-plot(t, xk0.*exp(i*0*w0.*t), "linewidth", 3)
-plot(t, xk0.*exp(i*0*w0.*t) + xk1.*exp(i*1*w0.*t) + conj(xk1).*exp(i*1*w0.*t) , "linewidth", 3)
-hold off
+plot(t, x), hold on
+f0 = xk0.*exp(i*0*w0.*t);
+plot(t, f0), hold on
+f1 = xk0.*exp(i*0*w0.*t) + xk1.*exp(i*1*w0.*t) + conj(xk1).*exp(i*1*w0.*t);
+plot(t, f1)
 
