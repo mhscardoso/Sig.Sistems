@@ -153,6 +153,44 @@ Do gráfico, nota-se que este sinal não é periódico. As distâncias entre as 
 
 \vspace{\baselineskip}
 
+(b) Podemos, inicialmente, calcular a energia do sinal no período $[-2\;2]$ com $T_{0} = 4$ e $\omega_{0} = \frac{2 \pi}{T_{0}} = \frac{\pi}{2}$.\\
+$E = \int_{-2}^{2} \mid x(t) \mid ^{2}\,dt = \int_{-2}^{0} \mid 1 - e^{\mid t\mid} \mid^{2}\,dt + \int_{0}^{2} \mid 1 - e^{\mid t\mid} \mid^{2}\,dt$
+
+\[E = \int_{-2}^{0} (1 - 2e^{\mid t \mid} + e^{2\mid t \mid})\,dt + \int_{0}^{2} (1 - 2e^{\mid t \mid} + e^{2\mid t \mid})\,dt =\]
+\[E = (t - 2e^{\mid t \mid} + \frac{1}{2}e^{2 \mid t \mid}) \mid_{-2}^{0} + (t - 2e^{\mid t \mid} + \frac{1}{2}e^{2 \mid t \mid}) \mid_{0}^{2} = \]
+\[E = (0 -2 + \frac{1}{2} - (-2 - 2e^{2} + \frac{1}{2}e^{4})) + (2 - 2e^{2} + \frac{1}{2}e^{4}) - (0 -2 + \frac{1}{2}) = 4\]
+\[E = 4\]
+A potência, portanto, será calculada como a energia dividida pelo período de tempo calculado: $P = \frac{E}{4} = 1$.
+
+\vspace{\baselineskip}
+
+(c) A fórmula geral de $X_{k}$ é dada por:
+\[X_{k} = \frac{1}{T_{0}} \int_{T_{0}} x(t)\,e^{-jkw_{0}t}\,dt\]
+Para o nosso caso:
+\[X_{0} = \frac{1}{4} \biggl[\int_{-2}^{0} (1 - e^{-t})\,dt + \int_{0}^{2} (1 - e^{t})\,dt\biggr]\]
+\[X_{0} = \frac{1}{4} \biggl[\bigl(t + e^{-t}\bigr)_{-2}^{0} + \bigl(t - e^{t}\bigr)_{0}^{2}\biggr]\]
+\[X_{0} = \frac{1}{4} \biggl[\bigl(0 + 1\bigr) - \bigl(-2 + e^{2}\bigr) + \bigl(2 - e^{2}\bigr) - \bigl(0 - 1\bigr)\biggr]\]
+\[X_{0} = \frac{3 - e^{2}}{2}\]
+O termo DC, vale $\frac{3 - e^{2}}{2}$.
+
+\vspace{\baselineskip}
+
+(d) Já temos a fórmula geral de $X_{k}$ acima descrita. Assim, para o caso geral, temos:
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} (1 - e^{\mid t \mid})\,e^{-jk\frac{\pi}{2}t}\,dt\biggr]\]
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{0} (1 - e^{-t})\,e^{-jk\frac{\pi}{2}t}\,dt + \int_{-2}^{0} (1 - e^{t})\,e^{-jk\frac{\pi}{2}t}\,dt\biggr]\]
+
+\vspace{\baselineskip}
+
+Para facilitar as contas, e a visualização, chamaremos a constante $jk\frac{\pi}{2}$ de $c$.
+
+\vspace{\baselineskip}
+
+\[X_{k} = \frac{1}{4} \biggl[\int_{-2}^{0} (1 - e^{-t})\,e^{-ct}\,dt + \int_{0}^{2} (1 - e^{t})\,e^{-ct}\,dt\biggr]\]
+\[X_{k} = \frac{1}{4} \biggl[\int_{-2}^{0} (e^{-ct} - e^{-t(c + 1)})\,dt + \int_{0}^{2} (e^{-ct} - e^{t(1 - c)}\,dt)\biggr]\]
+
+
+\vspace{\baselineskip}
+
 4.) O grupo $i$ trabalhará com o sinal periódico $x(t)$ usado pelo grupo $i + 1$ na questão 1 (ao grupo 7: sinal 1). As aproximações numéricas para Octave/MatLab vistas, podem e devem ser utilizadas.
 (a) Traçar gráfico;
 (b) encontrar potência total $P$;
