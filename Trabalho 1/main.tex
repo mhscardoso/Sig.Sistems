@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage[portuguese]{babel}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -113,7 +113,7 @@ Dessa forma, teremos $x(t)$ definido como:
 \vspace{\baselineskip}
 
 \begin{figure}[h!]
-    \includegraphics[scale=0.3]{plot2b}
+    \includegraphics[scale=0.25]{plot2b}
     \centering
 \end{figure}
 
@@ -121,7 +121,7 @@ Dessa forma, teremos $x(t)$ definido como:
 
 (c) Plotando o gráfico com o Octave para $\omega = 7$, temos:
 \begin{figure}[h!]
-    \includegraphics[scale=0.3]{plot2c}
+    \includegraphics[scale=0.2]{plot2c}
     \centering
 \end{figure}
 
@@ -131,7 +131,7 @@ Daqui, já se nota que o sinal não é periódico. Além de ser bem destoante pa
 
 (d) Plotando o gráfico com o Octave para $\omega_{1} = \omega_{2} = 1$, temos:
 \begin{figure}[h!]
-    \includegraphics[scale=0.3]{plot2d}
+    \includegraphics[scale=0.25]{plot2d}
     \centering
 \end{figure}
 
@@ -155,7 +155,7 @@ Do gráfico, nota-se que este sinal não é periódico. As distâncias entre as 
 
 (a) Fazendo o esboço do gráfico, teremos:
 \begin{figure}[h!]
-    \includegraphics[scale=0.3]{img3a}
+    \includegraphics[scale=0.25]{img3a}
     \centering
 \end{figure}
 
@@ -185,32 +185,63 @@ O termo DC, vale $\frac{3 - e^{2}}{2}$.
 
 (d) Já temos a fórmula geral de $X_{k}$ acima descrita. Assim, para o caso geral, temos:
 \[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} (1 - e^{\mid t \mid})\,e^{-jk\frac{\pi}{2}t}\,dt\biggr]\]
-\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} (e^{-jk\frac{\pi}{2}t} - e^{\mid t \mid - jk\frac{\pi}{2}t})\,dt\biggr]\]
-\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} e^{-jk\frac{\pi}{2}t}\,dt - \int_{-2}^{2} e^{\mid t \mid - jk\frac{\pi}{2}t}\,dt\biggr]\]
-\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t)\,dt - \int_{-2}^{2} e^{\mid t \mid - jk\frac{\pi}{2}t}\,dt\biggr]\]
-\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t)\,dt - \int_{-2}^{2} e^{\mid t \mid}(cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t))\,dt\biggr]\]
-\[X_{k} = \frac{1}{4}\biggl[\frac{4j\,cos(k\pi)}{k\pi} - \biggl(\int_{-2}^{0} e^{-t}(cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t))\,dt + \int_{0}^{2} e^{t}(cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t))\,dt \biggr)\biggr]\]
 
-\[X_{k} = \frac{1}{4}\biggl[\frac{4j\,cos(k\pi)}{k\pi} - 
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} (e^{-jk\frac{\pi}{2}t} - e^{\mid t \mid - jk\frac{\pi}{2}t})\,dt\biggr]\]
+
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} e^{-jk\frac{\pi}{2}t}\,dt - \int_{-2}^{2} e^{\mid t \mid - jk\frac{\pi}{2}t}\,dt\biggr]\]
+
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t)\,dt - \int_{-2}^{2} e^{\mid t \mid - jk\frac{\pi}{2}t}\,dt\biggr]\]
+
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t)\,dt - \int_{-2}^{2} e^{\mid t \mid}(cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t))\,dt\biggr]\]
+
+\[X_{k} = \frac{1}{4}\biggl[\frac{4sen(k\pi)}{k\pi} - \biggl(\int_{-2}^{0} e^{-t}(cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t))\,dt + \int_{0}^{2} e^{t}(cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t))\,dt \biggr)\biggr]\]
+
+\[X_{k} = \frac{1}{4}\biggl[\frac{4sen(k\pi)}{k\pi} - 
 \biggl(
     -\frac{2e^{-t}cis(-k\frac{\pi}{2}t)}{2 + jk\pi}\bigg|_{-2}^{0} - 
     \frac{2e^{t}cis(-k\frac{\pi}{2}t)}{jk\pi - 2}\bigg|_{0}^{2}
 \biggr)\biggr]\] \textbf{OBS:} $cis(\theta) = cos(\theta) + j\,sen(\theta)$
 
-\[X_{k} = \frac{1}{4}\biggl[\frac{4j\,cos(k\pi)}{k\pi} - 
+\[X_{k} = \frac{1}{4}\biggl[\frac{4sen(k\pi)}{k\pi} - 
 \biggl(
     \frac{2e^{2}cos(k\pi) - 2}{2 + jk\pi} - 
     \frac{2e^{2}cos(k\pi) - 2}{jk\pi - 2}
 \biggr)\biggr]\]
 
-\[X_{k} = \frac{1}{4}\biggl[\frac{4j\,cos(k\pi)}{k\pi} - 
+\[X_{k} = \frac{1}{4}\biggl[\frac{4sen(k\pi)}{k\pi} - 
 \biggl(
     \frac{8(e^{2}cos(k\pi) - 1)}{4 + k^2\pi^2}
 \biggr)\biggr]\]
 
-\[X_{k} = \frac{2 - 2e^2cos(k\pi)}{4 + k^2\pi^2} + \frac{jcos(k\pi)}{k\pi}\]
+\[X_{k} = \frac{2 - 2e^2cos(k\pi)}{4 + k^2\pi^2} + \frac{sen(k\pi)}{k\pi}\]
 
-Agora, é fácil ver que existem indeterminações para o caso em que $k = 0$. Dessa forma, com este caso já calculado, temos todos os casos para $k$.
+\[X_{k} = \frac{2 - 2e^2cos(k\pi)}{4 + k^2\pi^2} + sinc(k)\]
+
+Agora, é fácil ver que não existem indeterminações para o caso em que $k = 0$.
+
+\vspace{\baselineskip}
+
+(e) Calculado o termo para cada valor de $k$, percebemos que todos são reais. Os reescrevendo:
+
+\[X_{k} = \frac{2 - 2e^2(-1)^{k}}{4 + k^2\pi^2} + sinc(k)\]
+
+vemos que $X_{k}$ assume valores negativos para k par e positivos para k ímpar, fazendo o espectro de fases variar entre os valores $0$ e $\pi$. Dessa forma, fica mais simples expressar o espectro de fases:
+
+\newpage
+
+\begin{figure}[!ht]
+    \includegraphics[scale=0.25]{img3e_fase}
+    \centering
+\end{figure}
+
+Com o auxílio do software Octave, foi possível calcular de maneira mais fácil as magnitudes para os k's pedidos.
+
+\begin{figure}[!ht]
+    \includegraphics[scale=0.25]{img3e_mag}
+    \centering
+\end{figure}
+
+\vspace{\baselineskip}
 
 4.) O grupo $i$ trabalhará com o sinal periódico $x(t)$ usado pelo grupo $i + 1$ na questão 1 (ao grupo 7: sinal 1). As aproximações numéricas para Octave/MatLab vistas, podem e devem ser utilizadas.
 (a) Traçar gráfico;

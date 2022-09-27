@@ -7,7 +7,33 @@ x = (1 - exp(abs(t)));
 Xk = zeros(1, 7);
 
 for k = -3:1:3;
-  Xk(k + 4) = sum(x.*(cos(-k*(pi/2)*t) + i*sin(-k*(pi/2)*t))* dt)/4;
+  Xk(k + 4) = ((2 - 2*exp(2)*cos(k * pi))/(4 + (k*pi)^2)) + sinc(k);
 end
 
 disp(Xk);
+
+% Magnitude
+
+M = zeros(1, 7);
+for k = 1:1:7;
+  M(k) = abs(Xk(k));
+end
+
+disp(M);
+
+% Potencia
+
+P = zeros(1, 4);
+for k = 1:1:4;
+  P(k) = M(k + 3)^2;
+end
+for k = 2:1:4;
+  P(k) = P(k) * 2;
+end
+
+disp(P);
+
+disp("Soma ate 3: "), disp(sum(P));
+
+
+
