@@ -239,6 +239,21 @@ Potência total $(P)$ = 2.5219
 \vspace{\baselineskip}
 
 (c) Calculando os $X_{k}$ para $k \in [-10\;10]$:
+\begin{align*}
+    xk0 = sum(x.*exp(-i*0*w0.*t)*dt)/T0;\\
+    xk1 = sum(x.*exp(-i*1*w0.*t)*dt)/T0;\\
+    xk2 = sum(x.*exp(-i*2*w0.*t)*dt)/T0;\\
+    xk3 = sum(x.*exp(-i*3*w0.*t)*dt)/T0;\\
+    xk4 = sum(x.*exp(-i*4*w0.*t)*dt)/T0;\\
+    xk5 = sum(x.*exp(-i*5*w0.*t)*dt)/T0;\\
+    xk6 = sum(x.*exp(-i*6*w0.*t)*dt)/T0;\\
+    xk7 = sum(x.*exp(-i*7*w0.*t)*dt)/T0;\\
+    xk8 = sum(x.*exp(-i*8*w0.*t)*dt)/T0;\\
+    xk9 = sum(x.*exp(-i*9*w0.*t)*dt)/T0;\\
+    xk10 = sum(x.*exp(-i*10*w0.*t)*dt)/T0;
+\end{align*}
+
+\vspace{\baselineskip}
 
 \begin{align*}
     X_{-10} &=  3.6250 \times 10^{-17} - 4.8377\times 10^{-3}j; & X_{10} &=  3.6250\times 10^{-17} + 4.8377\times 10^{-3}j.\\
@@ -260,6 +275,20 @@ Potência total $(P)$ = 2.5219
 
 \vspace{\baselineskip}
 
+M = [abs(xk10) abs(xk9) abs(xk8) abs(xk7) abs(xk6) abs(xk5) abs(xk4) abs(xk3) abs(xk2) abs(xk1) abs(xk0) abs(xk1) abs(xk2) abs(xk3) abs(xk4) abs(xk5) abs(xk6) abs(xk7) abs(xk8) abs(xk9) abs(xk10)];
+
+\vspace{\baselineskip}
+
+F = [arg(xk10) arg(xk9) arg(xk8) arg(xk7) arg(xk6) arg(xk5) arg(xk4) arg(xk3) arg(xk2) arg(xk1) arg(xk0) arg(xk1) arg(xk2) arg(xk3) arg(xk4) arg(xk5) arg(xk6) arg(xk7) arg(xk8) arg(xk9) arg(xk10)];
+
+\begin{align*}
+    P = |x_{k}|^2
+\end{align*}
+
+P = [P10 P9 P8 P7 P6 P5 P4 P3 P2 P1 P0 P1 P2 P3 P4 P5 P6 P7 P8 P9 P10];
+
+\vspace{\baselineskip}
+
 \begin{figure}[h!]
     \includegraphics[scale=0.3]{plot4dm}
     \includegraphics[scale=0.3]{plot4df}
@@ -267,7 +296,20 @@ Potência total $(P)$ = 2.5219
     \centering
 \end{figure}
 
-(e) Calculando $a_{k}$ e $b_{k}$ a partir dos coeficientes $X_{k}$, teremos:
+(e) Estimando quantos harmônicos são necessários para reter $90.00\%$ da potência:
+
+\vspace{\baselineskip}
+
+Dois harmônicos para alcançar $94,85\% $ da potência.
+
+\vspace{\baselineskip}
+
+(f) Calculando $a_{k}$ e $b_{k}$ a partir dos coeficientes $X_{k}$, teremos:
+
+\begin{align*}
+    a_{k} = X_{k} + X_{-k}\\
+    b_{k} = i*(X_{k} - X_{-k})
+\end{align*}
 
 \begin{align*}
     a_{0} &= 6.3307\times 10^{-17}   &   b_{0} &= 0\\
@@ -282,14 +324,6 @@ Potência total $(P)$ = 2.5219
     a_{9} &= 2.7717\times 10^{-18}   &   b_{9} &= -0.024014\\
     a_{10} &= 7.2500\times 10^{-17}  &   b_{10} &= -9.6755\times 10^{-3}
 \end{align*}
-
-(e) Estimando quantos harmônicos são necessários para reter $90.00\%$ da potência:
-
-\vspace{\baselineskip}
-
-Até o primeiro harmônico que consegue reter $94,85\% $
-
-\vspace{\baselineskip}
 
 5.) Na escala de tempo {\tt t=0:1/2000:5}, considere um sinal de áudio simples $x_{b}(t) = sen(2 \pi f_{0}t)$ ou $x_{b}(t) = cos(2 \pi f_{0}t)$ com frequência \textbf{G2:} $f_{0} = 132Hz$. Ouça este som usando o comando {\tt sound(xb)} no Octave; o resultado é, provavelmente, desagradável pois se trata de uma frequência pura e a sensação é seca, metálica. Para melhorar o \textbf{timbre} do som é preciso colocar mais harmônicos. Crie, na mesma escala de tempo, com a mesma frequência fundamental $f_{0}$, com parâmetros a seu critério e usando até o harmônico $k = 6\;(6f_{0}Hz)$ os sinais a seguir. Ouça cada um deles e compare a qualidade do timbre.\\
 (a) Uma onda quadrada $x_{q}(t)$;
