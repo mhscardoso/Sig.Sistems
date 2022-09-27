@@ -153,14 +153,22 @@ Do gráfico, nota-se que este sinal não é periódico. As distâncias entre as 
 
 \vspace{\baselineskip}
 
+(a) Fazendo o esboço do gráfico, teremos:
+\begin{figure}[h!]
+    \includegraphics[scale=0.3]{img3a}
+    \centering
+\end{figure}
+
+\vspace{\baselineskip}
+
 (b) Podemos, inicialmente, calcular a energia do sinal no período $[-2\;2]$ com $T_{0} = 4$ e $\omega_{0} = \frac{2 \pi}{T_{0}} = \frac{\pi}{2}$.\\
 $E = \int_{-2}^{2} \mid x(t) \mid ^{2}\,dt = \int_{-2}^{0} \mid 1 - e^{\mid t\mid} \mid^{2}\,dt + \int_{0}^{2} \mid 1 - e^{\mid t\mid} \mid^{2}\,dt$
 
-\[E = \int_{-2}^{0} (1 - 2e^{\mid t \mid} + e^{2\mid t \mid})\,dt + \int_{0}^{2} (1 - 2e^{\mid t \mid} + e^{2\mid t \mid})\,dt =\]
-\[E = (t - 2e^{\mid t \mid} + \frac{1}{2}e^{2 \mid t \mid}) \mid_{-2}^{0} + (t - 2e^{\mid t \mid} + \frac{1}{2}e^{2 \mid t \mid}) \mid_{0}^{2} = \]
-\[E = (0 -2 + \frac{1}{2} - (-2 - 2e^{2} + \frac{1}{2}e^{4})) + (2 - 2e^{2} + \frac{1}{2}e^{4}) - (0 -2 + \frac{1}{2}) = 4\]
-\[E = 4\]
-A potência, portanto, será calculada como a energia dividida pelo período de tempo calculado: $P = \frac{E}{4} = 1$.
+\[E = \int_{-2}^{0} (1 - 2e^{-t} + e^{-2t})\,dt + \int_{0}^{2} (1 - 2e^{t} + e^{2t})\,dt =\]
+\[E = (t + 2e^{-t} - \frac{1}{2}e^{-2t}) \bigg|_{-2}^{0} + (t - 2e^{t} + \frac{1}{2}e^{2t}) \bigg|_{0}^{2} = \]
+\[E = (0 +2 - \frac{1}{2} - (-2 + 2e^{2} - \frac{1}{2}e^{4})) + (2 - 2e^{2} + \frac{1}{2}e^{4}) - (0 -2 + \frac{1}{2}) = 7 - 4e^{2} + e^{4}\]
+\[E = 7 - 4e^{2} + e^{4}\]
+A potência, portanto, será calculada como a energia dividida pelo período de tempo calculado: $P = \frac{7 - 4e^{2} + e^{4}}{4}$.
 
 \vspace{\baselineskip}
 
@@ -177,36 +185,32 @@ O termo DC, vale $\frac{3 - e^{2}}{2}$.
 
 (d) Já temos a fórmula geral de $X_{k}$ acima descrita. Assim, para o caso geral, temos:
 \[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} (1 - e^{\mid t \mid})\,e^{-jk\frac{\pi}{2}t}\,dt\biggr]\]
-\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{0} (1 - e^{-t})\,e^{-jk\frac{\pi}{2}t}\,dt + \int_{-2}^{0} (1 - e^{t})\,e^{-jk\frac{\pi}{2}t}\,dt\biggr]\]
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} (e^{-jk\frac{\pi}{2}t} - e^{\mid t \mid - jk\frac{\pi}{2}t})\,dt\biggr]\]
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} e^{-jk\frac{\pi}{2}t}\,dt - \int_{-2}^{2} e^{\mid t \mid - jk\frac{\pi}{2}t}\,dt\biggr]\]
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t)\,dt - \int_{-2}^{2} e^{\mid t \mid - jk\frac{\pi}{2}t}\,dt\biggr]\]
+\[X_{k} = \frac{1}{4}\biggl[\int_{-2}^{2} cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t)\,dt - \int_{-2}^{2} e^{\mid t \mid}(cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t))\,dt\biggr]\]
+\[X_{k} = \frac{1}{4}\biggl[\frac{4j\,cos(k\pi)}{k\pi} - \biggl(\int_{-2}^{0} e^{-t}(cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t))\,dt + \int_{0}^{2} e^{t}(cos(-k\frac{\pi}{2}t) + j\,sen(-k\frac{\pi}{2}t))\,dt \biggr)\biggr]\]
 
-\vspace{\baselineskip}
+\[X_{k} = \frac{1}{4}\biggl[\frac{4j\,cos(k\pi)}{k\pi} - 
+\biggl(
+    -\frac{2e^{-t}cis(-k\frac{\pi}{2}t)}{2 + jk\pi}\bigg|_{-2}^{0} - 
+    \frac{2e^{t}cis(-k\frac{\pi}{2}t)}{jk\pi - 2}\bigg|_{0}^{2}
+\biggr)\biggr]\] \textbf{OBS:} $cis(\theta) = cos(\theta) + j\,sen(\theta)$
 
-Para facilitar as contas, e a visualização, chamaremos a constante $jk\frac{\pi}{2}$ de $c$.
+\[X_{k} = \frac{1}{4}\biggl[\frac{4j\,cos(k\pi)}{k\pi} - 
+\biggl(
+    \frac{2e^{2}cos(k\pi) - 2}{2 + jk\pi} - 
+    \frac{2e^{2}cos(k\pi) - 2}{jk\pi - 2}
+\biggr)\biggr]\]
 
-\vspace{\baselineskip}
+\[X_{k} = \frac{1}{4}\biggl[\frac{4j\,cos(k\pi)}{k\pi} - 
+\biggl(
+    \frac{8(e^{2}cos(k\pi) - 1)}{4 + k^2\pi^2}
+\biggr)\biggr]\]
 
-\[X_{k} = \frac{1}{4} \biggl[\int_{-2}^{0} (1 - e^{-t})\,e^{-ct}\,dt + \int_{0}^{2} (1 - e^{t})\,e^{-ct}\,dt\biggr]\]
-\[X_{k} = \frac{1}{4} \biggl[\int_{-2}^{0} (e^{-ct} - e^{-t(c + 1)})\,dt + \int_{0}^{2} (e^{-ct} - e^{t(1 - c)}\,dt)\biggr]\]
-\[4X_{k} = \Biggl(\frac{-e^{-ct}}{c} - \biggl(\frac{-e^{-t(c+1)}}{c + 1}\biggr)\Biggr)_{-2}^{2} + \Biggl(\frac{-e^{-ct}}{c} - \frac{e^{t(1 - c)}}{1 - c}\Biggr)_{0}^{2}\]
-\[4X_{k} = \Biggl(-\frac{1}{c} + \frac{1}{c + 1} + \frac{e^{2c}}{c} - \frac{e^{2(c + 1)}}{c + 1}\Biggr) + \Biggl(- \frac{e^{-2c}}{c} - \frac{e^{2(1 - c)}}{1 - c} + \frac{1}{c} + \frac{1}{1-c}\Biggr)\]
-\[4X_{k} = \Biggl(\frac{1}{c + 1} + \frac{1}{1-c} + \frac{e^{2c}}{c} - \frac{e^{2(c + 1)}}{c + 1} - \frac{e^{-2c}}{c} - \frac{e^{2(1 - c)}}{1 - c} \Biggr)\]
+\[X_{k} = \frac{2 - 2e^2cos(k\pi)}{4 + k^2\pi^2} + \frac{jcos(k\pi)}{k\pi}\]
 
-Substituindo $c$ pela constante $jk\frac{\pi}{2}$, chegamos à expressão final:
-
-\[X_{k} = \frac{2}{k^2\pi^2 + 4} - \frac{2e^2}{k^2\pi^2 + 4}cos(k\pi) + sinc(k)\]
-
-Que pode ser simplificada para:
-
-\[X_{k} = \frac{2}{k^2\pi^2 + 4} - \frac{2e^2}{k^2\pi^2 + 4}(-1)^{k} + sinc(k)\]
-
-Perceba, então, que não existe indeterminações na expressão $X_{k}$, na qual podemos, inclusive, calcular para $k = 0$.
-\[X_{0} = \frac{2}{4} - \frac{2e^2}{4}(-1)^{0} + sinc(0)\]
-\[X_{0} = \frac{1}{2} - \frac{e^2}{2} + 1\]
-\[X_{0} = \frac{3 - e^2}{2}\]
-
-Que foi a expressão inicialmente obtida.
-
-\vspace{\baselineskip}
+Agora, é fácil ver que existem indeterminações para o caso em que $k = 0$. Dessa forma, com este caso já calculado, temos todos os casos para $k$.
 
 4.) O grupo $i$ trabalhará com o sinal periódico $x(t)$ usado pelo grupo $i + 1$ na questão 1 (ao grupo 7: sinal 1). As aproximações numéricas para Octave/MatLab vistas, podem e devem ser utilizadas.
 (a) Traçar gráfico;
