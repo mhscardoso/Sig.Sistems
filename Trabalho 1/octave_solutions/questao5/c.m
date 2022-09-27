@@ -1,5 +1,11 @@
+%% Programa da quinta questao do trabalho de Sinais e Sistemas
+## 2022.2
+
+% dados basicos
 A=1;f0=132;w0=2*pi*f0;cossenos=0;
 dt=1/2000; t=0:dt:5;
+
+% gerando o sinal
 for i=1:6,
     n=2*i;
     soma=(2*A/(pi*(power(n,2)-1))).*cos(n*w0*t);
