@@ -37,6 +37,13 @@ xk8 = sum(x.*exp(-i*8*w0.*t)*dt)/T0;
 xk9 = sum(x.*exp(-i*9*w0.*t)*dt)/T0;
 xk10 = sum(x.*exp(-i*10*w0.*t)*dt)/T0;
 
+Xks = zeros(1, 21);
+for k = -10:1:10;
+  Xks(k + 11) = sum(x.*exp(-i*k*w0.*t)*dt)/T0;
+end
+
+disp(Xks);
+
 k = [-10:10];
 magnitude = [abs(xk10) abs(xk9) abs(xk8) abs(xk7) abs(xk6) abs(xk5) abs(xk4) abs(xk3) abs(xk2) abs(xk1) abs(xk0) abs(xk1) abs(xk2) abs(xk3) abs(xk4) abs(xk5) abs(xk6) abs(xk7) abs(xk8) abs(xk9) abs(xk10)];
 fase = [arg(xk10) arg(xk9) arg(xk8) arg(xk7) arg(xk6) arg(xk5) arg(xk4) arg(xk3) arg(xk2) arg(xk1) arg(xk0) arg(xk1) arg(xk2) arg(xk3) arg(xk4) arg(xk5) arg(xk6) arg(xk7) arg(xk8) arg(xk9) arg(xk10)];
@@ -107,10 +114,35 @@ b8 = i*(xk8-conj(xk8));
 b9 = i*(xk9-conj(xk9));
 b10 = i*(xk10-conj(xk10));
 
+
+
 % Tracando grafico de x(t) e aproximacoes
-plot(t, x), hold on
-f0 = xk0.*exp(i*0*w0.*t);
-plot(t, f0), hold on
-f1 = xk0.*exp(i*0*w0.*t) + xk1.*exp(i*1*w0.*t) + conj(xk1).*exp(i*1*w0.*t);
-plot(t, f1)
+f0 = xk0*exp(i*0*w0.*t);
+f1 = f0 + xk1*exp(i*1*w0.*t) + conj(xk1)*exp(-i*1*w0.*t);
+f2 = f1 + xk2*exp(i*2*w0.*t) + conj(xk2)*exp(-i*2*w0.*t);
+f3 = f2 + xk3*exp(i*3*w0.*t) + conj(xk3)*exp(-i*3*w0.*t);
+f4 = f3 + xk4*exp(i*4*w0.*t) + conj(xk4)*exp(-i*4*w0.*t);
+f5 = f4 + xk5*exp(i*5*w0.*t) + conj(xk5)*exp(-i*5*w0.*t);
+f6 = f5 + xk6*exp(i*6*w0.*t) + conj(xk6)*exp(-i*6*w0.*t);
+f7 = f6 + xk7*exp(i*7*w0.*t) + conj(xk7)*exp(-i*7*w0.*t);
+f8 = f7 + xk8*exp(i*8*w0.*t) + conj(xk8)*exp(-i*8*w0.*t);
+f9 = f8 + xk9*exp(i*9*w0.*t) + conj(xk9)*exp(-i*9*w0.*t);
+f10 = f9 + xk10*exp(i*10*w0.*t) + conj(xk10)*exp(-i*10*w0.*t);
+plot(t, x, "linewidth", 3), hold on
+plot(t, f0, "linewidth", 3), hold on
+plot(t, f1, "linewidth", 3), hold on
+plot(t, f2, "linewidth", 3), hold on
+plot(t, f3, "linewidth", 3), hold on
+plot(t, f4, "linewidth", 3), hold on
+plot(t, f5, "linewidth", 3), hold on
+plot(t, f6, "linewidth", 3), hold on
+plot(t, f7, "linewidth", 3), hold on
+plot(t, f8, "linewidth", 3), hold on
+plot(t, f9, "linewidth", 3), hold on
+plot(t, f10, "linewidth", 3)
+title("Questao 4 - g")
+xlabel("t")
+ylabel("x(t)")
+
+
 
