@@ -1,0 +1,51 @@
+\documentclass[10pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\graphicspath{ {./images/} }
+
+\title{Sinais e Sistemas - Trabalho 2}
+\author{
+    Leonardo Soares da Costa Tanaka\\
+    Matheus Henrique Sant Anna Cardoso \\
+    Theo Rudra Macedo e Silva
+}
+\date{Setembro de 2022}
+
+\begin{document}
+
+\maketitle
+
+%% Primeira questao
+\noindent {\textbf 1.)} Uma nota musical, ou tom, pode ser modelada por um sinal periódico com uma frequência fundamental e vários harmônicos. Quando duas notas musicais são “tocadas” ao mesmo tempo — um acorde — o efeito resultante pode soar agradável, consonante ou desagradável, dissonante. Desde os antigos gregos, com Pitágoras, se sabe que as combinações ou acordes agradáveis acontecem quando a razão entre as frequências fundamentais das notas é expressa por números naturais pequenos. Assim, os acordes mais harmônicos e consonantes são, pela ordem, aqueles associados às razões 1:1 (uníssono), 2:1 (oitava), 3:2 (5.a perfeita), 4:3 (4.a perfeita), 5:4 (3.a maior) etc.\\
+(a) Crie, no Octave, uma nota com frequência \textbf{G2:} $f_{0} = 170Hz$, usando ondas quadradas ou triangulares (pesquise e use os comandos {\texttt square} ou {\texttt sawtooth} no Octave) em uma escala de tempo de 3 segundos com espaçamento entre as amostras de {\texttt{dt = 1/44000 (t=0:dt:3)}} e chame-a de tônica $x_{t}(t)$;\\
+(b) crie a oitava $x_{8}(t)$ da tônica, a 5.a $x_{5}(t)$, a 4.a $x_{4}(t)$, a 2.a (9:8) $x_{2}(t)$ e também a nota com relação 321:319 $x_{d}(t)$;\\
+(c) usando o comando {\texttt sound(x, 44000)} ouça no Octave as notas isoladas e todos os acordes (para os acordes, crie a soma {\texttt{z = xt + x8}}, por exemplo, e depois use o comando {\texttt sound} acima em z) verificando se são consonantes;\\
+(d) explique a teoria harmônica de Pitágoras usando Série de Fourier e análise dos harmônicos da tônica e das companheiras.
+
+\vspace{\baselineskip}
+%% Segunda questao
+\noindent {\textbf 2.)} Um sinal definido como abaixo em um intervalo de largura $L = 4$ e nulo para outros valores de $t$ é chamado de pulso:\\
+{\textbf G2:} $x(t) = 1 - e^{|t|}$ para $- L/2 \leq t < L/2$\\
+(a) Esboce o gráfico do pulso;\\
+(b) calcule sua energia total $E_{t}$;\\
+(c) calcule $X(0)$ fazendo $f = 0$ na fórmula de definição;\\
+(d) calcule analiticamente $X(f)$ e verifique se $X(0)$ pode ser obtido a partir desta fórmula sem indeterminações;\\
+(e) trace o espectro de energia $|X(f)|^{2} \times f$ para $f \in [-1\,+ 1]Hz$ usando muitos pontos e calcule a energia contida nesta banda $(\int_{-1}^{1} |X(f)|^{2}\,dt)$ usando integração aproximada;\\
+(f) por tentativa e erro, e usando o método anterior, calcule a banda de passagem que retém $95\%$ da energia do sinal: $f_{M}$ tal que $\int_{-f_{M}}^{f_{M}} |X(f)|^{2}\,df$;\\
+Dica: há vários possíveis meios para integrar funções não triviais, como por exemplo https://www.integral-calculator.com/ e certamente outros.
+
+\vspace{\baselineskip}
+%% Terceira questao
+\noindent {\textbf 3.)} Um sinal é caracterizado por\\
+{\textbf G2:} $ X_{m}(f) = 80p_{20}(f + 810) + 80p_{20}(f - 790) $\\
+com frequências medidas em $kHz$. Lembrar que $p_{\Delta}(f - \tau)$ denota um pulso de largura $\Delta$, amplitude $\Delta^{-1}$ e aplicado a partir de $\tau$, com transformada conhecida.\\
+(a) Esboçar os espectros de amplitude e de energia;\\
+(b) calcular sua anti-transformada de Fourier: $\mathcal{F}^{-1} \{X_{m}(f)\} = x_{m}(t)$ (use as propriedades);\\
+(c) ao sinal $x_{m}(t)$ se aplica um filtro PB (passa-baixas) ideal; determinar sua frequência de corte $M$ de modo que 50\% da energia total seja retida;\\
+(d) ao sinal $x_{m}(t)$ se aplica um filtro PA (passa-altas) ideal; determinar sua frequência de corte $M$ de modo que 50\% da energia total seja retida.
+
+\end{document}
