@@ -116,9 +116,35 @@ Finalmente, a banda de passagem que retém $95\%$ da energia é para $f_{M} = 2.
 {\textbf 3.)} Um sinal é caracterizado por\\
 {\textbf G2:} $ X_{m}(f) = 80p_{20}(f + 810) + 80p_{20}(f - 790) $\\
 com frequências medidas em $kHz$. Lembrar que $p_{\Delta}(f - \tau)$ denota um pulso de largura $\Delta$, amplitude $\Delta^{-1}$ e aplicado a partir de $\tau$, com transformada conhecida.\\
-(a) Esboçar os espectros de amplitude e de energia;\\
-(b) calcular sua anti-transformada de Fourier: $\mathcal{F}^{-1} \{X_{m}(f)\} = x_{m}(t)$ (use as propriedades);\\
-(c) ao sinal $x_{m}(t)$ se aplica um filtro PB (passa-baixas) ideal; determinar sua frequência de corte $M$ de modo que 50\% da energia total seja retida;\\
-(d) ao sinal $x_{m}(t)$ se aplica um filtro PA (passa-altas) ideal; determinar sua frequência de corte $M$ de modo que 50\% da energia total seja retida.
+{\textbf{(a)}} Esboçar os espectros de amplitude e de energia;
+
+\begin{figure}[h]
+    \begin{minipage}[!]{0.50\linewidth}
+        \includegraphics[scale=0.27]{plot3a2.jpeg}
+    \end{minipage}
+    \begin{minipage}[!]{0.48\linewidth}
+        \includegraphics[scale=0.27]{plot3a1.jpeg}
+    \end{minipage}
+\end{figure}
+
+{\textbf{(b)}} calcular sua anti-transformada de Fourier: $\mathcal{F}^{-1} \{X_{m}(f)\} = x_{m}(t)$ (use as propriedades);
+
+Queremos calcular a inversa da transformada de Fourier. Para isso, usamos:
+
+\[x_{m}(t) = \int_{-810}^{-790} 4e^{j2\pi ft}\,df + \int_{790}^{810} 4e^{j2\pi ft}\, df\]
+\[x_{m}(t) = \biggl[\frac{4e^{j2\pi ft}}{j2\pi t}\biggr]_{-810}^{-790} + \biggl[\frac{4e^{j2\pi ft}}{j2\pi t}\biggr]_{790}^{810}\]
+\[x_{m}(t) = 4\biggl[\frac{2sen(2\pi 810t)}{2\pi t} - \frac{2sen(2\pi 790t)}{2\pi t}\biggr]\]
+\[x_{m}(t) = 4\biggl[\frac{2sen(2\pi 810t) \cdot 810}{2\pi t \cdot 810} - \frac{2sen(2\pi 790t) \cdot 790}{2\pi t \cdot 790}\biggr]\]
+\[x_{m}(t) = 6480\,sinc(1620t) - 6320\,sinc(1580t)\]
+
+{\textbf{(c)}} ao sinal $x_{m}(t)$ se aplica um filtro PB (passa-baixas) ideal; determinar sua frequência de corte $M$ de modo que 50\% da energia total seja retida;
+
+Aqui é bem mais conveniente trabalharmos com o sinal no domínio da frequência (o dado da questão), sendo, dessa forma, fácil ver que a frequência de corte assume, nesse caso, o valor de $800Hz$, percorrendo o intervalo de $[-800\, 800]$. Isso fica claro, pois, ao obtermos o espectro de energia, para termos metade do gráfico preenchido (50\% da área), devemos percorrer os valores entre -800 até 800.
+
+\vspace{\baselineskip}
+
+{\textbf{(d)}} ao sinal $x_{m}(t)$ se aplica um filtro PA (passa-altas) ideal; determinar sua frequência de corte $M$ de modo que 50\% da energia total seja retida.
+
+Perceba que, de forma análoga ao anterior, é mais conveniente trabalharmos no domínio da frequência. Aqui, diferentemente, queremos um filtro passa-alta, sendo a frequência de corte, também $800Hz$. Finalmente, obtemos 50\% da área do gráfico de espectro de energia, com os intervalos $[-\infty\,\,-800]$ e $[800\,\,\infty]$. Logo, a frequência de corte é, novamente $800Hz$.
 
 \end{document}
