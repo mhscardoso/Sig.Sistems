@@ -52,21 +52,37 @@ Fazendo os cálculos utilizando o Octave, a energia total será:
 {\textbf{(c)}} calcule $X(0)$ fazendo $f = 0$ na fórmula de definição;\\
 Primeiramente, anotemos a definição com a fórmula abaixo:
 \[X(f) = \int_{-\infty}^{\infty} x(t) e^{-j2\pi ft}\,dt\]
+Deve-se perceber que o intervalo de integração será de $[-2\,2]$.
 Como queremos $X(0)$, fazemos $f = 0$ na fórmula:
-\[X(0) = \int_{-\infty}^{\infty} x(t) e^{-j2\pi 0t}\,dt\]
-\[X(0) = \int_{-\infty}^{\infty} x(t)\,dt\]
-\[X(0) = \int_{-\infty}^{\infty} (1 - e^{|t|})\,dt\]
+\[X(0) = \int_{-2}^{2} x(t) e^{-j2\pi 0t}\,dt\]
+\[X(0) = \int_{-2}^{2} (1 - e^{|t|})\,dt\]
 Separando, novamente, em duas integrais, temos:
-\[X(0) = \int_{-\infty}^{0} (1 - e^{-t})\,dt + \int_{0}^{\infty} (1 - e^{t})\,dt\]
-\[X(0) = \lim_{T\to\infty}\int_{-T}^{0} (1 - e^{-t})\,dt + \lim_{T\to\infty}\int_{0}^{T} (1 - e^{t})\,dt\]
-\[X(0) = \lim_{T\to\infty}(T - e^{T} + 1) + \lim_{T\to\infty}(T - e^{T} + 1)\]
-\[X(0) = \lim_{T\to\infty}(2T - 2e^{T} + 2)\]
-
-Veja que este limite não converge para um valor, em que temos $X(0) \to -\infty$
+\[X(0) = \int_{-2}^{0} (1 - e^{-t})\,dt + \int_{0}^{2} (1 - e^{t})\,dt\]
+\[X(0) = (t + e^{-t})\bigg|_{-2}^{0} + (t - e^{t})\bigg|_{0}^{2}\]
+\[X(0) = 3 - e^2 + 3 - e^2\]
+\[X(0) = 6 - 2e^2\]
 
 \vspace{\baselineskip}
 
 {\textbf{(d)}} calcule analiticamente $X(f)$ e verifique se $X(0)$ pode ser obtido a partir desta fórmula sem indeterminações;\\
+Agora, queremos calcular a seguinte integral:
+\[X(f) = \int_{-2}^{2} (1 - e^{|t|})e^{-j2\pi ft}\,dt\]
+Aqui, podemos, novamente, separar em duas integrais:
+\[X(f) = \int_{-2}^{0} (1 - e^{-t})e^{-j2\pi ft}\,dt + \int_{0}^{2} (1 - e^{t})e^{-j2\pi ft}\,dt\]
+\[X(f) = \biggl(-\frac{e^{-j2\pi ft}}{j2\pi f} + \frac{e^{-t(1 + j2\pi f)}}{1 + j2\pi f}\biggr)\bigg|_{-2}^{0} + 
+\biggl(-\frac{e^{-j2\pi ft}}{j2\pi f} - \frac{e^{t(1 - j2\pi f)}}{1 - j2\pi f}\biggr)\bigg|_{0}^{2}\]
+\[X(f) = -\frac{1}{j2\pi f} + \frac{1}{1 + j2\pi f} + \frac{e^{j4\pi f}}{j2\pi f} - \frac{e^2e^{j4\pi f}}{1 + j2\pi f} +
+\frac{1}{j2\pi f} + \frac{1}{1 - j2\pi f} - \frac{e^{-j4\pi f}}{j2\pi f} - \frac{e^2e^{-j4\pi f}}{1 - j2\pi f}\]
+Resumindo as contas, temos:
+\[X(f) = 4sinc(4f) + \frac{2}{1 + 4\pi^2f^2} - \frac{2e^2cos(4\pi f)}{1 + 4\pi^2 f^2} + \frac{4e^2\pi f sen(4\pi f)}{1 + 4\pi^2 f^2}\]
+Primeiramente, perceba que os valores de $X(f)$ são reais.\\
+Agora, que temos a expressão, calculemos $X(0)$ com base nela e comparar com a expressão obtida em (c).
+\[X(0) = 4sinc(0) + \frac{2}{1 + 4\pi^2 0} - \frac{2e^2cos(4\pi 0)}{1 + 4\pi^2 0} + \frac{4e^2\pi 0 sen(4\pi 0)}{1 + 4\pi^2 0}\]
+\[X(0) = 4 + 2 - 2e^2 = 6 - 2e^2\]
+Perceba, então, que obtivemos a mesma expressão, não existindo indeterminações para $f = 0$.
+
+\vspace{\baselineskip}
+
 {\textbf{(e)}} trace o espectro de energia $|X(f)|^{2} \times f$ para $f \in [-1\,+ 1]Hz$ usando muitos pontos e calcule a energia contida nesta banda $(\int_{-1}^{1} |X(f)|^{2}\,dt)$ usando integração aproximada;\\
 {\textbf{(f)}} por tentativa e erro, e usando o método anterior, calcule a banda de passagem que retém $95\%$ da energia do sinal: $f_{M}$ tal que $\int_{-f_{M}}^{f_{M}} |X(f)|^{2}\,df$;\\
 Dica: há vários possíveis meios para integrar funções não triviais, como por exemplo https://www.integral-calculator.com/ e certamente outros.
