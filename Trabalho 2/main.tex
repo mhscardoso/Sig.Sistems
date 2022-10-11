@@ -32,7 +32,13 @@
 %% Segunda questao
 {\textbf 2.)} Um sinal definido como abaixo em um intervalo de largura $L = 4$ e nulo para outros valores de $t$ é chamado de pulso:\\
 {\textbf G2:} $x(t) = 1 - e^{|t|}$ para $- L/2 \leq t < L/2$\\
-{\textbf{(a)}} Esboce o gráfico do pulso;\\
+{\textbf{(a)}} Esboce o gráfico do pulso;
+
+\begin{figure}[h]
+    \includegraphics[scale=0.3]{plot2a.jpeg}
+    \centering
+\end{figure}
+
 {\textbf{(b)}} calcule sua energia total $E_{t}$;\\
 O que buscamos é:
 \[E_{t} = \int_{-2}^{2} |1 - e^{|t|}|^2\,dt\]
@@ -74,20 +80,39 @@ Aqui, podemos, novamente, separar em duas integrais:
 \[X(f) = -\frac{1}{j2\pi f} + \frac{1}{1 + j2\pi f} + \frac{e^{j4\pi f}}{j2\pi f} - \frac{e^2e^{j4\pi f}}{1 + j2\pi f} +
 \frac{1}{j2\pi f} + \frac{1}{1 - j2\pi f} - \frac{e^{-j4\pi f}}{j2\pi f} - \frac{e^2e^{-j4\pi f}}{1 - j2\pi f}\]
 Resumindo as contas, temos:
-\[X(f) = 4sinc(4f) + \frac{2}{1 + 4\pi^2f^2} - \frac{2e^2cos(4\pi f)}{1 + 4\pi^2 f^2} + \frac{4e^2\pi f sen(4\pi f)}{1 + 4\pi^2 f^2}\]
+\[X(f) = 4sinc(4f) + \frac{2}{1 + 4\pi^2f^2} - \frac{2e^2cos(4\pi f)}{1 + 4\pi^2 f^2} - \frac{4e^2\pi f sen(4\pi f)}{1 + 4\pi^2 f^2}\]
 Primeiramente, perceba que os valores de $X(f)$ são reais.\\
 Agora, que temos a expressão, calculemos $X(0)$ com base nela e comparar com a expressão obtida em (c).
-\[X(0) = 4sinc(0) + \frac{2}{1 + 4\pi^2 0} - \frac{2e^2cos(4\pi 0)}{1 + 4\pi^2 0} + \frac{4e^2\pi 0 sen(4\pi 0)}{1 + 4\pi^2 0}\]
+\[X(0) = 4sinc(0) + \frac{2}{1 + 4\pi^2 0} - \frac{2e^2cos(4\pi 0)}{1 + 4\pi^2 0} - \frac{4e^2\pi 0 sen(4\pi 0)}{1 + 4\pi^2 0}\]
 \[X(0) = 4 + 2 - 2e^2 = 6 - 2e^2\]
 Perceba, então, que obtivemos a mesma expressão, não existindo indeterminações para $f = 0$.
 
 \vspace{\baselineskip}
 
 {\textbf{(e)}} trace o espectro de energia $|X(f)|^{2} \times f$ para $f \in [-1\,+ 1]Hz$ usando muitos pontos e calcule a energia contida nesta banda $(\int_{-1}^{1} |X(f)|^{2}\,dt)$ usando integração aproximada;\\
-{\textbf{(f)}} por tentativa e erro, e usando o método anterior, calcule a banda de passagem que retém $95\%$ da energia do sinal: $f_{M}$ tal que $\int_{-f_{M}}^{f_{M}} |X(f)|^{2}\,df$;\\
-Dica: há vários possíveis meios para integrar funções não triviais, como por exemplo https://www.integral-calculator.com/ e certamente outros.
+Utilizando o Octave para calcular a aproximação do espectro de energia e plotar o gráfico. O resultado é o visto abaixo:
+
+\begin{figure}[h]
+    \begin{minipage}[!]{0.50\linewidth}
+        \includegraphics[scale=0.27]{plot2e.jpg}        
+    \end{minipage}
+    \begin{minipage}[!]{0.48\linewidth}
+        Calculando a energia para o intervalo definido (de -1 até 1), utilizando o próprio Octave para realizar os cálculos aproximados, encontramos que a energia para este intervalo de frequências.
+        \[E_{[-1\,1]} = 27.923\]        
+    \end{minipage}
+\end{figure}
+
+\newpage
+
+{\textbf{(f)}} por tentativa e erro, e usando o método anterior, calcule a banda de passagem que retém $95\%$ da energia do sinal: $f_{M}$ tal que $\int_{-f_{M}}^{f_{M}} |X(f)|^{2}\,df$;
+
+Utilizando, novamente, o software Octave, pudemos testar, para algumas faixas de frequências, quantos porcento da energia havia naquela banda de frequência. O valor mais próximo que chegamos para a frequência $f_{M}$ foi de $2.5985$, em que chegamos a uma retenção de $95.000\%$.
+\[E_{t} = 32.042\]
+\[E_{f_{M}} = 30.440\]
+Finalmente, a banda de passagem que retém $95\%$ da energia é para $f_{M} = 2.5985$.
 
 \vspace{\baselineskip}
+
 %% Terceira questao
 {\textbf 3.)} Um sinal é caracterizado por\\
 {\textbf G2:} $ X_{m}(f) = 80p_{20}(f + 810) + 80p_{20}(f - 790) $\\
