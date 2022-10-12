@@ -22,10 +22,91 @@
 
 %% Primeira questao
 {\textbf 1.)} Uma nota musical, ou tom, pode ser modelada por um sinal periódico com uma frequência fundamental e vários harmônicos. Quando duas notas musicais são “tocadas” ao mesmo tempo — um acorde — o efeito resultante pode soar agradável, consonante ou desagradável, dissonante. Desde os antigos gregos, com Pitágoras, se sabe que as combinações ou acordes agradáveis acontecem quando a razão entre as frequências fundamentais das notas é expressa por números naturais pequenos. Assim, os acordes mais harmônicos e consonantes são, pela ordem, aqueles associados às razões 1:1 (uníssono), 2:1 (oitava), 3:2 (5.a perfeita), 4:3 (4.a perfeita), 5:4 (3.a maior) etc.\\
-(a) Crie, no Octave, uma nota com frequência \textbf{G2:} $f_{0} = 170Hz$, usando ondas quadradas ou triangulares (pesquise e use os comandos {\texttt square} ou {\texttt sawtooth} no Octave) em uma escala de tempo de 3 segundos com espaçamento entre as amostras de {\texttt{dt = 1/44000 (t=0:dt:3)}} e chame-a de tônica $x_{t}(t)$;\\
-(b) crie a oitava $x_{8}(t)$ da tônica, a 5.a $x_{5}(t)$, a 4.a $x_{4}(t)$, a 2.a (9:8) $x_{2}(t)$ e também a nota com relação 321:319 $x_{d}(t)$;\\
-(c) usando o comando {\texttt sound(x, 44000)} ouça no Octave as notas isoladas e todos os acordes (para os acordes, crie a soma {\texttt{z = xt + x8}}, por exemplo, e depois use o comando {\texttt sound} acima em z) verificando se são consonantes;\\
-(d) explique a teoria harmônica de Pitágoras usando Série de Fourier e análise dos harmônicos da tônica e das companheiras.
+{\textbf{(a)}} Crie, no Octave, uma nota com frequência \textbf{G2:} $f_{0} = 170Hz$, usando ondas quadradas ou triangulares (pesquise e use os comandos {\texttt square} ou {\texttt sawtooth} no Octave) em uma escala de tempo de 3 segundos com espaçamento entre as amostras de {\texttt{dt = 1/44000 (t=0:dt:3)}} e chame-a de tônica $x_{t}(t)$;
+\begin{verbatim}
+% Tonica:
+dt = 1/44000;
+t = 0:dt:3;
+f0 = 170; A=0.02;
+w0 = 2*pi*f0;
+
+% A constante A para diminuir o volume
+xt = square(w0*t);
+\end{verbatim}
+
+{\textbf{(b)}} crie a oitava $x_{8}(t)$ da tônica, a 5.a $x_{5}(t)$, a 4.a $x_{4}(t)$, a 2.a (9:8) $x_{2}(t)$ e também a nota com relação 321:319 $x_{d}(t)$;
+\begin{figure}[h]
+\begin{minipage}[!]{0.24\linewidth}
+\begin{verbatim}
+% Oitava:
+dt = 1/44000;
+t = 0:dt:3;
+f0 = 2*170; A=0.01;
+w0 = 2*pi*f0;
+
+x8 = square(w0*t);
+sound(A*x8, 44000);
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[!]{0.25\linewidth}
+\begin{verbatim}
+% Quinta:
+dt = 1/44000;
+t = 0:dt:3;
+f0 = (3/2)*170; A=0.01;
+w0 = 2*pi*f0;
+
+x5 = square(w0*t);
+sound(A*x5, 44000);
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[!]{0.25\linewidth}
+\begin{verbatim}
+% Quarta:
+dt = 1/44000;
+t = 0:dt:3;
+f0 = (4/3)*170; A=0.01;
+w0 = 2*pi*f0;
+
+x4 = square(w0*t);
+sound(A*x4, 44000);
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[!]{0.24\linewidth}
+\begin{verbatim}
+% Segunda:
+dt = 1/44000;
+t = 0:dt:3;
+f0 = (9/8)*170; A=0.01;
+w0 = 2*pi*f0;
+
+x2 = square(w0*t);
+sound(A*x2, 44000);
+\end{verbatim}
+\end{minipage}
+
+\end{figure}
+
+\begin{verbatim}
+% Nota com relação '321:319':
+dt = 1/44000;
+t = 0:dt:3;
+f0 = (321/319)*170; A=0.01;
+w0 = 2*pi*f0;
+
+xd = square(w0*t);
+sound(A*xd, 44000);
+\end{verbatim}
+
+{\textbf{(c)}} usando o comando {\texttt sound(x, 44000)} ouça no Octave as notas isoladas e todos os acordes (para os acordes, crie a soma {\texttt{z = xt + x8}}, por exemplo, e depois use o comando {\texttt sound} acima em z) verificando se são consonantes;
+
+Utilizando o comando {\texttt sound(A*z, 44000)} para ouvir as saídas, foi possível perceber que para a oitava $x_{8}(t)$, o som se assemelha ao uníssono. As combinações da tônica com as demais notas ($x_{t} + x_{i}$, para $i = 2, 3, 4, 5$) são consonantes. As combinações das notas de índice par ($x_{t} + x_{2} + x_{4}$, por exemplo), normalmente geravam um som mais agradável, assim como às de índice ímpar ($x_{3} + x_{5}$, por exemplo).
+
+\vspace{\baselineskip}
+
+{\textbf{(d)}} explique a teoria harmônica de Pitágoras usando Série de Fourier e análise dos harmônicos da tônica e das companheiras.
+
+Sabe-se que a soma de dois sinais periódicos é periódica se a razão de suas frequências é racional. Portanto, é preciso que isso ocorra para termos sinais harmônicos. Sinais consonantes respeitam essa regra, sendo periódicos e harmônicos.
 
 \vspace{\baselineskip}
 %% Segunda questao
@@ -100,8 +181,6 @@ Utilizando o Octave para calcular a aproximação do espectro de energia e plota
         \[E_{[-1\,1]} = 27.923\]        
     \end{minipage}
 \end{figure}
-
-\newpage
 
 {\textbf{(f)}} por tentativa e erro, e usando o método anterior, calcule a banda de passagem que retém $95\%$ da energia do sinal: $f_{M}$ tal que $\int_{-f_{M}}^{f_{M}} |X(f)|^{2}\,df$;
 
