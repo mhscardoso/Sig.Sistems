@@ -1,0 +1,102 @@
+\documentclass{article}
+
+% Pacotes extras necessários
+\usepackage{amsmath}
+\usepackage[lmargin=0.7in, rmargin=0.7in, tmargin=0.5in, bmargin=0.5in, includehead, includefoot]{geometry}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{fancyhdr}
+
+% Sets para outras partes
+\setlength{\parindent}{0pt}
+\DeclareMathOperator{\sen}{sen}
+
+% ------- Estilo do trabalho -------- %
+\fancypagestyle{capa}{
+    \fancyhf{}
+    \renewcommand\headrulewidth{0pt}
+    \fancyfoot[C]{
+        Rio de Janeiro\\
+        2022
+    }
+}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\thepage}
+\fancyfoot{}
+% ----------------------------------- %
+
+% Dados do Grupo
+\title{Sinais e Sistemas - Trabalho 3 - Avaliação 5}
+\author{
+    \textbf{Grupo 2}\\
+    Leonardo Soares da Costa Tanaka\\
+    Matheus Henrique Sant Anna Cardoso\\
+    Theo Rudra Macedo e Silva
+}
+\date{}
+
+
+\begin{document}
+
+% Capa
+\maketitle
+\thispagestyle{capa}
+
+\newpage
+
+\textbf{1.)} Um SLIT é modelado por $\tau \dot{y}(t) + y(t) = u(t)$ com $y(0^{-}) = \alpha$.
+\textbf{G2:} $\tau = 3, \alpha = -2$
+
+(a) Calcular a resposta ao degrau unitário e esboçar o seu gráfico;
+
+(b) calcular a resposta à rampa unitária e esboçar o seu gráfico;
+
+(c) calcular a resposta ao seno $u(t) = \sen(\omega t)$ para $\alpha = 0,\, \omega = 1/(4\tau)$ e esboçar o seu gráfico;
+
+(d) calcular a resposta ao seno $u(t) = \sen(\omega t)$ para $\alpha = 0,\, \omega = 4/\tau$ e esboçar o seu gráfico;
+
+(e) encontrar a entrada $u(t)$ para que $y(t) = \alpha\,\forall t \geq 0$;
+
+(f) encontrar a entrada $u(t)$ para que  $y(t) = 0\,\forall t > 0$;.
+
+
+\vspace{\baselineskip}
+
+
+\textbf{2.)} Um SLIT relaxado é descrito por $\ddot{y}(t) + a_1\dot{y}(t) + a_0y(t) = b_1\dot{u}(t) + u(t)$.
+\textbf{G2:} $a_1 = 30, a_0 = 3$
+
+(a) Para $b_1 = 0$ calcular a resposta ao degrau unitário e esboçar o seu gráfico;
+
+(b) para $b_1 = 0$ calcular a resposta à rampa unitária e esboçar o seu gráfico;
+
+(c) para $b_1 = 1$ calcular a resposta ao degrau unitário e esboçar o seu gráfico;
+
+(d) para $b_1 = -1$ calcular a resposta ao degrau unitário e esboçar o seu gráfico;
+
+(e) traçar com precisão um único gráfico com as 3 respostas ao degrau;
+
+(f) calcular a resposta a seno $u(t) = \sen(\omega t)$ para $b_1 = 0, \omega = 4a_0$ e esboçar o seu gráfico.
+
+
+\vspace{\baselineskip}
+
+\textbf{3.)} Um SLIT relaxado é descrito por uma função de transferência com numerador e denominador dados por $n(s) = K$ e $d(s) = (s + p_1)(s + p_2)(s + p_3)$.
+\textbf{G2:} $p_1 = 1, p_2 = 3, p_3 = 4$
+
+(a) Esboçar a resposta ao degrau unitário (escolha o valor de $K$);
+
+(b) esboçar a resposta ao degrau unitário quando os $p_i$ são divididos por 5;
+
+(c) esboçar a resposta ao degrau unitário quando os $p_i$ são multiplicados por 5;
+
+(d) comentar os resultados acima;
+
+(e) esboçar a resposta ao degrau unitário quando dois $p_i$ são multiplicados por 5 e o outro é dividido por 5;
+
+(f) comentar os resultados acima.
+
+\end{document}
