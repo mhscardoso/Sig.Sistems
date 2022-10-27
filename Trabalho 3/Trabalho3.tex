@@ -269,7 +269,43 @@ Finalmente
 
 (a) Para $b_1 = 0$ calcular a resposta ao degrau unitário e esboçar o seu gráfico;
 
+\vspace{\baselineskip}
+
+\[\ddot{y}(t) + 30\dot{y}(t) + 3y(t) = u(t)\,\,\,\,,\,\,\,\,y(0^{-}) = 0\]
+
+\[\mathcal{L} \left\{\ddot{y}(t) + 30\dot{y}(t) + 3y(t)\right\} = \mathcal{L} \left\{1(t)\right\}\]
+
+\[ s^{2}Y(s) + 30sY(s) + 3Y(s) = \frac{1}{s} \]
+
+\[ Y(s) = \frac{1}{s \cdot (s^{2} + 30s + 3)} = \frac{1}{s} \cdot \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} =\]
+
+\[ = \frac{1}{s} \cdot \left(\frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}}\right) \]
+
+\[ y(t) = \int \mathcal{L}^{-1} \left\{\frac{\sqrt{222}}{444} \cdot \left[ \frac{1}{s + 15 - \sqrt{222}} - \frac{1}{s + 15 + \sqrt{222}} \right] \right\} = \]
+
+\[ = \frac{\sqrt{222}}{444} \cdot \int (e^{(-15+\sqrt{222})t} - e^{(-15-\sqrt{222})t}) dt = \frac{\sqrt{222}}{444} \cdot \left\{ \frac{e^{(-15+\sqrt{222})t}}{-15+\sqrt{222}} + \frac{e^{(-15+\sqrt{222})t}}{15+\sqrt{222}} \right\}  \]
+
+\vspace{\baselineskip}
+
 (b) para $b_1 = 0$ calcular a resposta à rampa unitária e esboçar o seu gráfico;
+
+\vspace{\baselineskip}
+
+\[\ddot{y}(t) + 30\dot{y}(t) + 3y(t) = u(t)\,\,\,\,,\,\,\,\,y(0^{-}) = 0\]
+
+\[\mathcal{L} \left\{\ddot{y}(t) + 30\dot{y}(t) + 3y(t)\right\} = \mathcal{L} \left\{t1(t)\right\}\]
+
+\[ s^{2}Y(s) + 30sY(s) + 3Y(s) = \frac{1}{s^{2}} \]
+
+\[ Y(s) = \frac{1}{s^{2} \cdot (s^{2} + 30s + 3)} = \frac{1}{s^{2}} \cdot \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} =\]
+
+\[ = \frac{1}{s^{2}} \cdot \left(\frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}}\right) \]
+
+\[ y(t) = \int \int \mathcal{L}^{-1} \left\{\frac{\sqrt{222}}{444} \cdot \left[ \frac{1}{s + 15 - \sqrt{222}} - \frac{1}{s + 15 + \sqrt{222}} \right] \right\} = \]
+
+\[ = \frac{\sqrt{222}}{444} \cdot \int \left\{ \frac{e^{(-15+\sqrt{222})t}}{-15+\sqrt{222}} + \frac{e^{(-15+\sqrt{222})t}}{15+\sqrt{222}} \right\} dt = \frac{\sqrt{222}}{444} \cdot \left\{ \frac{e^{(-15+\sqrt{222})t}}{(-15+\sqrt{222})^{2}} + \frac{e^{(-15+\sqrt{222})t}}{(15+\sqrt{222})^{2}} \right\} \]
+
+\vspace{\baselineskip}
 
 (c) para $b_1 = 1$ calcular a resposta ao degrau unitário e esboçar o seu gráfico;
 
