@@ -258,8 +258,30 @@ Finalmente
 
 (e) encontrar a entrada $u(t)$ para que $y(t) = \alpha\,\forall t \geq 0$;
 
+Trabalhando com a seguinte EDO, teremos:
+
+\[3\dot{y}(t) + y(t) = u(t)\,\,\,\,,\,\,\,\,y(0^-) = -2\]
+
+Porém, temos que $y(t) = -2 \forall t \geq 0$. Assim, podemos definir a função $y(t) = -2$, pois respeitará o fato de $y(0^-) = -2$. Dessa forma, $\dot{y}(t) = 0$. Na equação, teremos:
+
+\[3\cdot 0 + (-2) = u(t)\]
+Finalmente
+\[u(t) = -2\]
+
 (f) encontrar a entrada $u(t)$ para que  $y(t) = 0\,\forall t > 0$.
 
+Aqui, devemos tomar o cuidado para manter a condição de que $y(0^-) = -2$. Para isso, podemos definir que
+\[y(t) = -2 \cdot 1(-t)\]
+Tendo, por consequência que
+\[\dot{y}(t) = -2\delta(-t) = -2\delta(t)\]
+Acima, utilizamos a inversão na escala de tempo para chegar que $\dot{y}(t) = -2\delta(t)$.
+
+Agora, podemos resolver a equação, que é dada por
+
+\[3\dot{y}(t) + y(t) = u(t)\,\,\,\,,\,\,\,\,y(0^-) = -2\]
+\[3(-2\delta(t)) + (-2\cdot 1(t)) = u(t)\]
+Finalmente
+\[u(t) = -6\delta(t) - 2\cdot 1(t)\]
 
 \vspace{\baselineskip}
 
@@ -315,9 +337,11 @@ Finalmente
 
 \[ s^{2}Y(s) + 30sY(s) + 3Y(s) = 1 + \frac{1}{s} \]
 
-\[ Y(s) = \frac{1}{s^{2} + 30s + 3} + \frac{1}{s \cdot (s^{2} + 30s + 3)} = \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} + \frac{1}{s} \cdot \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} =\]
+\[Y(s) = \frac{1}{s^{2} + 30s + 3} + \frac{1}{s \cdot (s^{2} + 30s + 3)}\]
 
-\[  = \frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}} + \frac{1}{s} \cdot \left(\frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}}\right) \]
+\[ Y(s) = \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} + \frac{1}{s} \cdot \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})}\]
+
+\[ = \frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}} + \frac{1}{s} \cdot \left(\frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}}\right) \]
 
 \[ = \frac{\sqrt{222}}{444} \cdot \left\{ e^{(-15+\sqrt{222})t} - e^{(-15+\sqrt{222})t} + \frac{e^{(-15+\sqrt{222})t}}{-15+\sqrt{222}} + \frac{e^{(-15+\sqrt{222})t}}{15+\sqrt{222}} \right\} \]
 
@@ -333,7 +357,9 @@ Finalmente
 
 \[ s^{2}Y(s) + 30sY(s) + 3Y(s) = - 1 + \frac{1}{s} \]
 
-\[ Y(s) = - \frac{1}{s^{2} + 30s + 3} + \frac{1}{s \cdot (s^{2} + 30s + 3)} = \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} + \frac{1}{s} \cdot \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} =\]
+\[Y(s) = - \frac{1}{s^{2} + 30s + 3} + \frac{1}{s \cdot (s^{2} + 30s + 3)}\]
+
+\[ Y(s) = \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} + \frac{1}{s} \cdot \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})}\]
 
 \[  = - \frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} + \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}} + \frac{1}{s} \cdot \left(\frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}}\right) \]
 
