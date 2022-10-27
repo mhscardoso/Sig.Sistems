@@ -309,7 +309,37 @@ Finalmente
 
 (c) para $b_1 = 1$ calcular a resposta ao degrau unitário e esboçar o seu gráfico;
 
+\[\ddot{y}(t) + 30\dot{y}(t) + 3y(t) = \dot{u}(t) + u(t)\,\,\,\,,\,\,\,\,y(0^{-}) = 0\]
+
+\[\mathcal{L} \left\{\ddot{y}(t) + 30\dot{y}(t) + 3y(t)\right\} = \mathcal{L} \left\{1(t) + t1(t)\right\}\]
+
+\[ s^{2}Y(s) + 30sY(s) + 3Y(s) = 1 + \frac{1}{s} \]
+
+\[ Y(s) = \frac{1}{s^{2} + 30s + 3} + \frac{1}{s \cdot (s^{2} + 30s + 3)} = \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} + \frac{1}{s} \cdot \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} =\]
+
+\[  = \frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}} + \frac{1}{s} \cdot \left(\frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}}\right) \]
+
+\[ = \frac{\sqrt{222}}{444} \cdot \left\{ e^{(-15+\sqrt{222})t} - e^{(-15+\sqrt{222})t} + \frac{e^{(-15+\sqrt{222})t}}{-15+\sqrt{222}} + \frac{e^{(-15+\sqrt{222})t}}{15+\sqrt{222}} \right\} \]
+
+\vspace{\baselineskip}
+
 (d) para $b_1 = -1$ calcular a resposta ao degrau unitário e esboçar o seu gráfico;
+
+\vspace{\baselineskip}
+
+\[\ddot{y}(t) + 30\dot{y}(t) + 3y(t) = - \dot{u}(t) + u(t)\,\,\,\,,\,\,\,\,y(0^{-}) = 0\]
+
+\[\mathcal{L} \left\{\ddot{y}(t) + 30\dot{y}(t) + 3y(t)\right\} = \mathcal{L} \left\{- 1(t) + t1(t)\right\}\]
+
+\[ s^{2}Y(s) + 30sY(s) + 3Y(s) = - 1 + \frac{1}{s} \]
+
+\[ Y(s) = - \frac{1}{s^{2} + 30s + 3} + \frac{1}{s \cdot (s^{2} + 30s + 3)} = \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} + \frac{1}{s} \cdot \frac{1}{(s + 15 - \sqrt{222}) \cdot (s + 15 + \sqrt{222})} =\]
+
+\[  = - \frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} + \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}} + \frac{1}{s} \cdot \left(\frac{ \frac{\sqrt{222}}{444}}{s + 15 - \sqrt{222}} - \frac{\frac{\sqrt{222}}{444}}{s + 15 + \sqrt{222}}\right) \]
+
+\[ = \frac{\sqrt{222}}{444} \cdot \left\{ - e^{(-15+\sqrt{222})t} + e^{(-15+\sqrt{222})t} + \frac{e^{(-15+\sqrt{222})t}}{-15+\sqrt{222}} + \frac{e^{(-15+\sqrt{222})t}}{15+\sqrt{222}} \right\} \]
+
+\vspace{\baselineskip}
 
 (e) traçar com precisão um único gráfico com as 3 respostas ao degrau;
 
