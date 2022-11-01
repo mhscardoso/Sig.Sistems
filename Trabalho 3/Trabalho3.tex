@@ -2,17 +2,19 @@
 
 % Pacotes extras necessários
 \usepackage{amsmath}
-\usepackage[lmargin=0.7in, rmargin=0.7in, tmargin=0.5in, bmargin=0.3in, includehead, includefoot]{geometry}
+\usepackage[lmargin=0.7in, rmargin=0.7in, tmargin=0.5in, bmargin=0.5in, includehead, includefoot]{geometry}
 \usepackage{amsfonts}
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese]{babel}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
+\usepackage{setspace}
 
 \graphicspath{ {./images/} }
 
 % Sets para outras partes
 \setlength{\parindent}{0pt}
+\setstretch{1.25}
 \DeclareMathOperator{\sen}{sen}
 
 % ------- Estilo do trabalho -------- %
@@ -95,10 +97,12 @@ Finalmente
 
 \[y(t) = 1(t) - 3e^{-\frac{t}{3}}1(t)\]
 
+\newpage
+
 \begin{figure}[h]
-    \includegraphics[scale=0.21]{Q1_a.png}
+    \includegraphics[scale=0.25]{Q1_a.png}
     \centering
-    \caption{Esboço do gráfico}
+    \caption{Esboço do gráfico - Questão 1) a)}
 \end{figure}
 
 \textbf{(b)} calcular a resposta à rampa unitária e esboçar o seu gráfico;
@@ -110,9 +114,8 @@ Para calcular a resposta à rampa, tomemos a seguinte EDO:
 Da mesma forma como no item \textbf{(a)}, podemos utilizar a propriedade da derivação e fazer em ambos os lados, a transformada de Laplace.
 
 \begin{align*}
-    \mathcal{L}\left\{\dot{y}(t)\right\} &= \left(sY(s) - y(0^-)\right) & \mathcal{L}\left\{t1(t)\right\} = U(s) &= \frac{1}{s^2}\\
+    \mathcal{L}\left\{\dot{y}(t)\right\} &= \left(sY(s) - y(0^-)\right) & \mathcal{L}\left\{t1(t)\right\} = U(s) &= \frac{1}{s^2}
 \end{align*}
-
 \begin{align*}
     3(Y(s) - y(0^-)) + Y(s) = U(s)\\
     Y(s)(3s + 1) + 6 = \frac{1}{s^2}\\
@@ -139,9 +142,9 @@ Finalmente
 \[y(t) = e^{-\frac{t}{3}}1(t) - 3\cdot1(t) + t1(t)\]
 
 \begin{figure}[h]
-    \includegraphics[scale=0.21]{Q1_b.png}
+    \includegraphics[scale=0.25]{Q1_b.png}
     \centering
-    \caption{Esboço do gráfico}
+    \caption{Esboço do gráfico - Questão 1) b)}
 \end{figure}
 
 \textbf{(c)} calcular a resposta ao seno $u(t) = \sen(\omega t)$ para $\alpha = 0,\, \omega = 1/(4\tau)$ e esboçar o seu gráfico;
@@ -207,10 +210,10 @@ Finalmente
 
 \[y(t) = 1(t)\cdot\frac{4e^{-\frac{t}{3}} - 4\cos\left(\frac{t}{12}\right) + 16sen\left(\frac{t}{12}\right)}{17}\]
 
-\begin{figure}[h]
-    \includegraphics[scale=0.21]{Q1_c.png}
+\begin{figure}[h!]
+    \includegraphics[scale=0.25]{Q1_c.png}
     \centering
-    \caption{Esboço do gráfico}
+    \caption{Esboço do gráfico - Questão 1) c)}
 \end{figure}
 
 \textbf{(d)} calcular a resposta ao seno $u(t) = \sen(\omega t)$ para $\alpha = 0,\, \omega = 4/\tau$ e esboçar o seu gráfico;
@@ -277,9 +280,9 @@ Finalmente
 \[y(t) = 1(t)\cdot\frac{4e^{-\frac{t}{3}} - 4\cos\left(\frac{4t}{3}\right) + sen\left(\frac{4t}{3}\right)}{17}\]
 
 \begin{figure}[h]
-    \includegraphics[scale=0.21]{Q1_d.png}
+    \includegraphics[scale=0.25]{Q1_d.png}
     \centering
-    \caption{Esboço do gráfico}
+    \caption{Esboço do gráfico - Questão 1) d)}
 \end{figure}
 
 \textbf{(e)} encontrar a entrada $u(t)$ para que $y(t) = \alpha\,\forall t \geq 0$;
@@ -331,14 +334,12 @@ Finalmente
 \[ = \frac{\sqrt{222}}{444} \cdot \int (e^{(-15+\sqrt{222})t} - e^{(-15-\sqrt{222})t}) dt = \frac{\sqrt{222}}{444} \cdot \left\{ \frac{e^{(-15+\sqrt{222})t}}{-15+\sqrt{222}} - \frac{e^{(-15-\sqrt{222})t}}{-15-\sqrt{222}} \right\}  \]
 
 \begin{figure}[h]
-    \includegraphics[scale=0.2]{Q2_a.png}
+    \includegraphics[scale=0.25]{Q2_a.png}
     \centering
-    \caption{Esboço do gráfico}
+    \caption{Esboço do gráfico - Questão 2) a)}
 \end{figure}
 
 \textbf{(b)} para $b_1 = 0$ calcular a resposta à rampa unitária e esboçar o seu gráfico;
-
-\vspace{\baselineskip}
 
 \[\ddot{y}(t) + 30\dot{y}(t) + 3y(t) = u(t)\,\,\,\,,\,\,\,\,y(0^{-}) = 0\]
 
@@ -355,9 +356,9 @@ Finalmente
 \[ = \frac{\sqrt{222}}{444} \cdot \int \left\{ \frac{e^{(-15+\sqrt{222})t}}{-15+\sqrt{222}} - \frac{e^{(-15-\sqrt{222})t}}{-15-\sqrt{222}} \right\} dt = \frac{\sqrt{222}}{444} \cdot \left\{ \frac{e^{(-15+\sqrt{222})t}}{(-15+\sqrt{222})^{2}} - \frac{e^{(-15-\sqrt{222})}}{(-15-\sqrt{222})^{2}} \right\} \]
 
 \begin{figure}[h]
-    \includegraphics[scale=0.21]{Q2_b.png}
+    \includegraphics[scale=0.25]{Q2_b.png}
     \centering
-    \caption{Esboço do gráfico}
+    \caption{Esboço do gráfico - Questão 2) b)}
 \end{figure}
 
 \vspace{\baselineskip}
@@ -381,7 +382,7 @@ Finalmente
 \begin{figure}[h]
     \includegraphics[scale=0.21]{Q2_c.png}
     \centering
-    \caption{Esboço do gráfico}
+    \caption{Esboço do gráfico - Questão 2) c)}
 \end{figure}
 
 \vspace{\baselineskip}
@@ -405,25 +406,131 @@ Finalmente
 \[ = \frac{\sqrt{222}}{444} \cdot \left\{ - e^{(-15+\sqrt{222})t} + e^{(-15-\sqrt{222})t} + \frac{e^{(-15+\sqrt{222})t}}{-15+\sqrt{222}} - \frac{e^{(-15-\sqrt{222})t}}{-15-\sqrt{222}} \right\} \]
 
 \begin{figure}[h]
-    \includegraphics[scale=0.21]{Q2_d.png}
+    \includegraphics[scale=0.25]{Q2_d.png}
     \centering
-    \caption{Esboço do gráfico}
+    \caption{Esboço do gráfico - Questão 2) d)}
 \end{figure}
-
-\vspace{\baselineskip}
-
-\newpage
 
 \textbf{(e)} traçar com precisão um único gráfico com as 3 respostas ao degrau;
 
 \begin{figure}[h]
-    \includegraphics[scale=0.21]{Q2_e.png}
+    \includegraphics[scale=0.25]{plot2e}
     \centering
-    \caption{Esboço do gráfico}
+    \caption{Gráficos da questão 2) e)}
 \end{figure}
 
 \textbf{(f)} calcular a resposta a seno $u(t) = \sen(\omega t)$ para $b_1 = 0, \omega = 4a_0$ e esboçar o seu gráfico.
 
+Aqui, teremos a seguinte EDO:
+
+\[\ddot{y}(t) + 30\dot{y}(t) + 3y(t) = \sen(12t)\]
+
+Como $y(0^-) = 0$, pois o sistema é relaxado, fazendo a transformada de Laplace em ambos os lados, teremos:
+
+\[s^2Y(s) + 30sY(s) + 3Y(s) = \frac{12}{s^2 + 144}\]
+\[Y(s)\left[s^2 + 30s + 3\right] = \frac{12}{s^2 + 144}\]
+\[Y(s) = \frac{1}{s^2 + 30s + 3} \cdot \frac{12}{s^2 + 144}\]
+
+Podemos fazer, primeiramente, a separação entre os dois produtos principais, de forma que fique como abaixo:
+
+\[\frac{1}{s^2 + 30s + 3} - \frac{1}{s^2 + 144}\]
+
+Corrigindo a equação acima, multiplicamos por um fator, tendo:
+
+\[Y(s) = \frac{12}{141 - 30s} \cdot \left[\frac{1}{s^2 + 30s + 3} - \frac{1}{s^2 + 144}\right]\]
+
+Fazendo por partes, podemos começar a separar a primeira parcela $\frac{1}{s^2 + 30s + 3}$.
+
+\[\frac{1}{s^2 + 30s + 3} = \frac{1}{2\sqrt{222}} \cdot \left[ \frac{1}{s + 15 - \sqrt{222}} - \frac{1}{s + 15 - \sqrt{222}}\right]\]
+
+E agora, a segunda parcela $\frac{1}{s^2 + 144}$.
+
+\[\frac{1}{s^2 + 144} = \frac{1}{24j} \cdot \left[\frac{1}{s - 12j} - \frac{1}{s + 12j}\right]\]
+
+Por partes, novamente, multiplicamos os resultados por $\frac{12}{141 - 30s}$. Começando da primeira parcela, já separada.
+
+\[\frac{12}{141 - 30s} \cdot \left(\frac{1}{2\sqrt{222}} \cdot \left[
+    \frac{1}{s + 15 - \sqrt{222}} - \frac{1}{s + 15 - \sqrt{222}}
+\right]\right)\]
+
+\[\frac{6}{\sqrt{222}} \cdot \left[ 
+    \frac{1}{141 - 30s} \cdot \frac{1}{s + 15 - \sqrt{222}} - 
+    \frac{1}{141 - 30s} \cdot \frac{1}{s + 15 + \sqrt{222}}
+\right]\]
+
+\[\frac{2}{\sqrt{222}} \cdot \left[ 
+    \frac{1}{197 - 10\sqrt{222}} \cdot \left(\frac{30}{141 - 30s} + \frac{1}{s + 15 - \sqrt{222}}\right) -
+    \frac{1}{197 + 10\sqrt{222}} \cdot \left(\frac{30}{141 - 30s} + \frac{1}{s + 15 + \sqrt{222}}\right)
+\right]\]
+
+\[\frac{2}{\sqrt{222}} \cdot \left[ 
+    \frac{1}{197 - 10\sqrt{222}} \cdot \left(-\frac{1}{s - 141/30} + \frac{1}{s + 15 - \sqrt{222}}\right) -
+    \frac{1}{197 + 10\sqrt{222}} \cdot \left(-\frac{1}{s - 141/30} + \frac{1}{s + 15 + \sqrt{222}}\right)
+\right]\]
+
+\[\frac{2}{\sqrt{222}} \cdot \left[ 
+    \frac{-1}{s - 141/30} \cdot \frac{20\sqrt{222}}{16609} +
+    \frac{1}{197 - 10\sqrt{222}} \cdot \frac{1}{s + 15 - \sqrt{222}} -
+    \frac{1}{197 + 10\sqrt{222}} \cdot \frac{1}{s + 15 + \sqrt{222}}
+\right]\]
+
+Chamando de $p_1$ a primeira parcela na qual faremos a inversa de Laplace, teremos:
+
+\[p_1(t) = 
+    -\frac{40}{16609} \cdot e^{\frac{141}{30}t} +
+    \frac{2}{197\sqrt{222} - 2220} \cdot e^{(-15 + \sqrt{222})t} - 
+    \frac{2}{197\sqrt{222} + 2220} \cdot e^{(-15 - \sqrt{222})t}
+\]
+
+Podemos, agora, tratar da segunda parcela, também já separada. Ao final ficamos com:
+
+\[- \frac{12}{141 - 30s} \cdot \frac{1}{s^2 + 144} = 
+    -\frac{1}{2j} \cdot \left[
+        \frac{30}{141 - 30s} \cdot \frac{80j}{16609} +
+        \frac{1}{141 - 360j} \cdot \frac{1}{s - 12j} -
+        \frac{1}{141 + 360j} \cdot \frac{1}{s + 12j}
+    \right]
+\]
+
+\[ \left[
+        \frac{1}{s - 141/30} \cdot \frac{40}{16609} -
+        \frac{1}{282j + 720} \cdot \frac{1}{s - 12j} +
+        \frac{1}{282j - 720} \cdot \frac{1}{s + 12j}
+    \right]
+\]
+
+Chamando de $p_2$ a inversa de Laplace desta segunda parcela, teremos:
+
+\[ p_2(t) = 
+    \frac{40}{16609} \cdot e^{\frac{141}{30}t} -
+    \frac{1}{282j + 720} \cdot e^{j12t} +
+    \frac{1}{282j - 720} \cdot e^{-j12t}
+\]
+
+Somando $p_1(t) + p_2(t) = y(t)$, temos:
+
+\[y(t) = 
+\frac{2}{197\sqrt{222} - 2220} \cdot e^{(-15 + \sqrt{222})t} -
+\frac{2}{197\sqrt{222} + 2220} \cdot e^{(-15 - \sqrt{222})t} -
+\frac{1}{282j + 720} \cdot e^{j12t} +
+\frac{1}{282j - 720} \cdot e^{-j12t}
+\]
+
+Fazendo mais alterações, chegamos em:
+
+\[y(t) = 
+\frac{2}{197\sqrt{222} - 2220} \cdot e^{(-15 + \sqrt{222})t} -
+\frac{2}{197\sqrt{222} + 2220} \cdot e^{(-15 - \sqrt{222})t} -
+\frac{40}{16609}\cos(12t) - \frac{47}{49827}\sen(12t)
+\]
+
+Esboçando o gráfico:
+
+\begin{figure}[h]
+    \includegraphics[scale=0.25]{plot2f}
+    \centering
+    \caption{Esboço do gráfico - Questão 2) f)}
+\end{figure}
 
 \vspace{\baselineskip}
 
