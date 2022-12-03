@@ -14,7 +14,7 @@
 
 % Sets para outras partes
 \setlength{\parindent}{0pt}
-\setstretch{1.5}
+\setstretch{1.25}
 \DeclareMathOperator{\sen}{sen}
 
 %% Facilidades
@@ -63,14 +63,12 @@ Matrizes relativas ao \textbf{Grupo 2 (p = 2)}:
 
 \textbf{(a) Encontre o polinômio característico $\Delta(s)$ associado;}
 
-\vspace{\baselineskip}
-
 \[
-\Delta(s) = det(sI - A) = \left| s
+\Delta(s) = det(sI - A) = det\left(
 \left[ {\begin{array}{ccc}
-  1 & 0 & 0 \\
-  0 & 1 & 0 \\
-  0 & 0 & 0 \\
+  s & 0 & 0 \\
+  0 & s & 0 \\
+  0 & 0 & s \\
 \end{array} } \right]
 -
 \left[ {\begin{array}{ccc}
@@ -78,7 +76,7 @@ Matrizes relativas ao \textbf{Grupo 2 (p = 2)}:
     0 & 0 & -1 \\
     4 & 2 & 0 \\
   \end{array} } \right]
-  \right|
+  \right)
   =
   \left| \begin{array}{rcr}
     s & -1  & 0 \\ 
@@ -89,14 +87,9 @@ Matrizes relativas ao \textbf{Grupo 2 (p = 2)}:
   = s^3 + 2s + 4
 \]
 
-\vspace{\baselineskip}
-
 \textbf{(b) encontre a função de transferência $T(s)$ associada, manualmente e pelo Octave (descubra como);}
-
-\vspace{\baselineskip}
-
 \[
-  T(s) = C(sI - A)^{-1} + d =
+  T(s) = C(sI - A)^{-1}B =
   \left[ {\begin{array}{ccc}
     1 & 0 & 0 \\
   \end{array} } \right]
@@ -104,7 +97,7 @@ Matrizes relativas ao \textbf{Grupo 2 (p = 2)}:
     s & -1  & 0 \\ 
     0 & s & -1 \\
     4 & 2  & s \\
-  \end{array} \right]
+  \end{array} \right]^{-1}
   \left[ {\begin{array}{c}
     0 \\
     0 \\
@@ -143,15 +136,50 @@ Matrizes relativas ao \textbf{Grupo 2 (p = 2)}:
   = \frac{1}{s^3 + 2s + 4}
 \]
 
-\vspace{\baselineskip}
+Bastou, agora, encontrarmos a função de transferência utilizando a ferramenta Octave. Para tal, foi feito o programa a seguir:
+\begin{verbatim}
+%% Dados Iniciais
+A = [0 1 0 ; 0 0 1 ; -4 -2 0];
+B = [0 ; 0 ; 1];
+C = [1 0 0];
+%% Carregando o pacote de controle
+pkg load control;
+%% Sistema de espaço de estados
+sys = ss(A, B, C);
+%% Função de transferência
+SYS = tf(sys)
+\end{verbatim}
 
-\textbf{(c) encontre a resposta ao degrau (comando \texttt{step}) para $y \text{e} x$;}
+Tendo por saída, a mensagem com a função de transferência:
+\begin{verbatim}
+
+                  1
+y1:  ----------------------------
+     s^3 + 2.22e-16 s^2 + 2 s + 4
+\end{verbatim}
+Perceba que existe um coeficiente maior que zero para o termo ao quadrado. Porém, este é desprezível.
+
+Ficamos, pelo Octave, com a função de transferência dada por:
+\[y_1 = \frac{1}{s^3 + 2.22 \times 10^{-16} s^2 + 2s + 4} \approx \frac{1}{s^3 + 2s + 4}\]
+
+\textbf{(c) encontre a resposta ao degrau (comando \texttt{step}) para $y \text{ e } x$;}
+
+Aqui, precisamos utilizar, novamente, o Octave.
+
+\begin{figure}[h]
+  \includegraphics[scale=0.3]{plot1c1.jpg}
+  \centering
+\end{figure}
+\begin{figure}[h]
+  \includegraphics[scale=0.25]{plot1c2.jpg}
+  \centering
+\end{figure}
 
 \textbf{(d) encontre manualmente os autovetores;}
 
 \textbf{(e) escreva a REN seguindo o exemplo completo na nova versão dos slides094pwd.pdf a partir do slide 83;}
 
-\textbf{(f) usando o comando \texttt{initial} encontre a REN ($y \text{e} x$) para $x_0$ colocado em um ponto da matriz $V$;}
+\textbf{(f) usando o comando \texttt{initial} encontre a REN ($y \text{ e } x$) para $x_0$ colocado em um ponto da matriz $V$;}
 
 \textbf{(g) idem para $x_0$ como uma combinação linear das colunas da matriz $W$.}
 
