@@ -63,7 +63,87 @@ Matrizes relativas ao \textbf{Grupo 2 (p = 2)}:
 
 \textbf{(a) Encontre o polinômio característico $\Delta(s)$ associado;}
 
+\vspace{\baselineskip}
+
+\[
+\Delta(s) = det(sI - A) = \left| s
+\left[ {\begin{array}{ccc}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  0 & 0 & 0 \\
+\end{array} } \right]
+-
+\left[ {\begin{array}{ccc}
+    0 & -1 & 0 \\
+    0 & 0 & -1 \\
+    4 & 2 & 0 \\
+  \end{array} } \right]
+  \right|
+  =
+  \left| \begin{array}{rcr}
+    s & -1  & 0 \\ 
+    0 & s & -1 \\
+    4 & 2  & s \\
+  \end{array}
+  \right|
+  = s^3 + 2s + 4
+\]
+
+\vspace{\baselineskip}
+
 \textbf{(b) encontre a função de transferência $T(s)$ associada, manualmente e pelo Octave (descubra como);}
+
+\vspace{\baselineskip}
+
+\[
+  T(s) = C(sI - A)^{-1} + d =
+  \left[ {\begin{array}{ccc}
+    1 & 0 & 0 \\
+  \end{array} } \right]
+  \left[ \begin{array}{rcr}
+    s & -1  & 0 \\ 
+    0 & s & -1 \\
+    4 & 2  & s \\
+  \end{array} \right]
+  \left[ {\begin{array}{c}
+    0 \\
+    0 \\
+    1 \\
+  \end{array} } \right]
+  \\
+=
+\] 
+ 
+\[=
+  \left[ {\begin{array}{ccc}
+    1 & 0 & 0 \\
+  \end{array} } \right]
+  \left[ \begin{array}{rcr}
+    -\frac{s^2 + 2}{-s^3-2s-4} & -\frac{s}{-s^3-2s-4}  & -\frac{1}{-s^3-2s-4} \\ 
+    \frac{4}{-s^3-2s-4} & -\frac{s^2}{-s^3-2s-4} & -\frac{s}{-s^3-2s-4} \\
+    \frac{4s}{-s^3-2s-4} & \frac{2s+4}{-s^3-2s-4}  & -\frac{s^2}{-s^3-2s-4} \\
+  \end{array} \right]
+  \left[ {\begin{array}{c}
+    0 \\
+    0 \\
+    1 \\
+  \end{array} } \right]
+  =
+  \] 
+  \[
+    =
+  \left[ {\begin{array}{ccc}
+    -\frac{s^2 + 2}{-s^3-2s-4} & -\frac{s}{-s^3-2s-4} & -\frac{1}{-s^3-2s-4} \\
+  \end{array} } \right]
+  \left[ {\begin{array}{c}
+    0 \\
+    0 \\
+    1 \\
+  \end{array} } \right]
+  = \frac{1}{s^3 + 2s + 4}
+\]
+
+\vspace{\baselineskip}
 
 \textbf{(c) encontre a resposta ao degrau (comando \texttt{step}) para $y \text{e} x$;}
 
