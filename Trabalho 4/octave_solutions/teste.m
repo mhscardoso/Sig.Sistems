@@ -22,7 +22,7 @@ SYS = tf(sys);
 
 
 %% Plotando X
-plot(T, X);
-title("x X t - Resposta ao Degrau");
-xlabel("t");
-ylabel("x");
+%plot(T, X);
+%title("x X t - Resposta ao Degrau");
+%xlabel("t");
+%ylabel("x");

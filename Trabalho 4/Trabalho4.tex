@@ -72,9 +72,9 @@ Matrizes relativas ao \textbf{Grupo 2 (p = 2)}:
 \end{array} } \right]
 -
 \left[ {\begin{array}{ccc}
-    0 & -1 & 0 \\
-    0 & 0 & -1 \\
-    4 & 2 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    -4 & -2 & 0 \\
   \end{array} } \right]
   \right)
   =
@@ -176,6 +176,84 @@ Aqui, precisamos utilizar, novamente, o Octave.
 \end{figure}
 
 \textbf{(d) encontre manualmente os autovetores;}
+
+Vamos encontrar as raízes de $\Delta(s)$ que são os autovalores de $A$. Para isso, podemos utilizar a função \texttt{eig} no Octave para encontrá-los. Dessa forma, encontramos os seguintes valores:
+\begin{align*}
+  \lambda_1 &= -1.1795;\\
+  \lambda_2 &= 0.5898 + j1.7445;\\
+  \lambda_3 &= 0.5898 - j1.7445
+\end{align*}
+
+Chamando de $\lambda$ quaisquer uma das três raízes, teremos que:
+\begin{align*}
+  \begin{bmatrix}
+    0 & 1 & 0\\
+    0 & 0 & 1\\
+    -4 & -2 & 0
+  \end{bmatrix}
+  \begin{bmatrix}
+    \alpha\\
+    \beta\\
+    \gamma
+  \end{bmatrix}
+  =
+  \lambda
+  \begin{bmatrix}
+    \alpha\\
+    \beta\\
+    \gamma
+  \end{bmatrix}
+\end{align*}
+
+ou
+\begin{align*}
+  \begin{cases}
+    \beta  &= \lambda \alpha\\
+    \gamma &= \lambda \beta\\
+    -4\alpha - 2\beta &= \lambda \gamma
+  \end{cases}
+  &
+  &
+  \begin{cases}
+    \alpha &= \alpha\\
+    \beta  &= \lambda \alpha\\
+    \gamma &= \lambda^2 \alpha
+  \end{cases}
+\end{align*}
+
+Ficamos, com um padrão para os autovetores:
+\begin{align*}
+  \alpha
+  \begin{bmatrix}
+    1\\
+    \lambda\\
+    \lambda^2
+  \end{bmatrix}
+\end{align*}
+
+Temos, finalmente, como autovetores, os seguintes vetores:
+\begin{align*}
+  v_1 &=
+  \begin{bmatrix}
+    1\\
+    -1.1795\\
+    1.39122
+  \end{bmatrix}
+  &
+  v_2 &=
+  \begin{bmatrix}
+    1\\
+    0.5898 + j 1.7445\\
+    -2.6954 + j 2.0578
+  \end{bmatrix}
+  &
+  v_3 &=
+  \begin{bmatrix}
+    1\\
+    0.5898 + j 1.7445\\
+    -2.6954 - j 2.0578
+  \end{bmatrix}
+\end{align*}
 
 \textbf{(e) escreva a REN seguindo o exemplo completo na nova versão dos slides094pwd.pdf a partir do slide 83;}
 
