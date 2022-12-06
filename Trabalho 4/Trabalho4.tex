@@ -250,14 +250,157 @@ Temos, finalmente, como autovetores, os seguintes vetores:
   v_3 &=
   \begin{bmatrix}
     1\\
-    0.5898 + j 1.7445\\
+    0.5898 - j 1.7445\\
     -2.6954 - j 2.0578
   \end{bmatrix}
 \end{align*}
 
 \textbf{(e) escreva a REN seguindo o exemplo completo na nova versão dos slides094pwd.pdf a partir do slide 83;}
 
+Sendo $v_1, v_2 \text{ e }, v_3$ os autovetores e $\lambda_1, \lambda_2, \lambda_3$ os autovalores, podemos  fazer uma pequena mudança para facilitar os cálculos, fazendo $\lambda_2 = \sigma + j\omega$ e $\lambda_3 = \sigma - j \omega$.
+\begin{align*}
+  x(t) &= \alpha v_1 e^{\lambda_1 t} + \beta v_2 e^{(\sigma + j\omega) t} + \gamma v_3 e^{(\sigma - j\omega) t}\\
+       &= \alpha v_1 e^{\lambda_1 t} + \beta v_2 e^{\sigma t} e^{j \omega t} + \gamma v_3 e^{\sigma t} e^{-j \omega t}\\
+       &= \alpha v_1 e^{\lambda_1 t} + \left[\beta v_2 e^{j \omega t} + \gamma v_3 e^{-j \omega t}\right] e^{\sigma t}\\
+       &= \alpha v_1 e^{\lambda_1 t} + \left[(\beta v_2 + \gamma v_3) \cos(\omega t) + j(\beta v_2 - \gamma v_3) \sen(\omega t) \right] e^{\sigma t}
+\end{align*}
+
+Sabemos que $x(t)$ é real, então $(\beta v_2 + \gamma v_3)$ e $j(\beta v_2 - \gamma v_3)$ são reais.
+\begin{align*}
+  \beta v_2 + \gamma v_3 &=
+  \begin{bmatrix}
+    \beta + \gamma\\
+    \sigma(\beta + \omega) + j\omega (\beta - \omega)\\
+    (\sigma^2 - \omega^2)(\beta + \omega) + j 2 \sigma \omega (\beta - \omega)
+  \end{bmatrix}
+  &
+  j(\beta v_2 - \gamma v_3) &=
+  \begin{bmatrix}
+    j(\beta - \gamma)\\
+    j\sigma(\beta - \omega) - \omega (\beta + \omega)\\
+    j(\sigma^2 - \omega^2)(\beta - \omega) - 2 \sigma \omega (\beta + \omega)
+  \end{bmatrix}
+\end{align*}
+
+Fazendo $\beta + \gamma = \delta \in \mathbb{R}$ e $j(\beta - \gamma) = \epsilon \in \mathbb{R}$, teremos:
+\begin{align*}
+  \beta v_2 + \gamma v_3 &=
+  \begin{bmatrix}
+    \delta\\
+    \sigma \delta + \omega \epsilon\\
+    (\sigma^2 - \omega^2) \delta + 2 \sigma \omega \epsilon
+  \end{bmatrix}
+  &
+  j(\beta v_2 - \gamma v_3) &=
+  \begin{bmatrix}
+    \epsilon\\
+    \sigma \epsilon - \omega \delta\\
+    (\sigma^2 - \omega^2) \epsilon - 2 \sigma \omega \delta
+  \end{bmatrix}\\ %% ------------------------------------------
+  \beta v_2 + \gamma v_3 &=
+  \begin{bmatrix}
+    1 & 0\\
+    \sigma & \omega\\
+    (\sigma^2 - \omega^2) & 2 \sigma \omega
+  \end{bmatrix}
+  \begin{bmatrix}
+    \delta\\
+    \epsilon
+  \end{bmatrix}
+  &
+  j(\beta v_2 - \gamma v_3) &=
+  \begin{bmatrix}
+    1 & 0\\
+    \sigma & \omega\\
+    (\sigma^2 - \omega^2) & 2 \sigma \omega
+  \end{bmatrix}
+  \begin{bmatrix}
+    \epsilon\\
+    -\delta
+  \end{bmatrix}
+\end{align*}
+
+Substituindo, teremos:
+\begin{align*}
+  x(t) = \alpha v_1 e^{\lambda_1 t} +
+  \begin{bmatrix}
+    1 & 0\\
+    \sigma & \omega\\
+    (\sigma^2 - \omega^2) & 2 \sigma \omega
+  \end{bmatrix}
+  \left\{
+    \begin{bmatrix}
+      \delta\\
+      \epsilon
+    \end{bmatrix}
+    \cos(\omega t) +
+    \begin{bmatrix}
+      \epsilon\\
+      -\delta
+    \end{bmatrix}
+    \sen(\omega t)
+  \right\}
+  e^{\sigma t}
+\end{align*}
+
+finalmente, tendo $\sigma = 0.5898$ e $\omega = 1.7445$.
+\begin{align*}
+  x(t) = \alpha
+  \begin{bmatrix}
+    1\\
+    -1.1795\\
+    1.39122
+  \end{bmatrix}
+  e^{-1.1795 t} + 
+  \begin{bmatrix}
+    1 & 0\\
+    0.5898 & 1.7445\\
+    -2.6954& 2.0578122
+  \end{bmatrix}
+  \left\{
+    \begin{bmatrix}
+      \delta\\
+      \epsilon
+    \end{bmatrix}
+    \cos(1.7445 t) +
+    \begin{bmatrix}
+      \epsilon\\
+      -\delta
+    \end{bmatrix}
+    \sen(1.7445 t)
+  \right\}
+  e^{0.5898 t}
+\end{align*}
+
 \textbf{(f) usando o comando \texttt{initial} encontre a REN ($y \text{ e } x$) para $x_0$ colocado em um ponto da matriz $V$;}
+
+De maneira similar ao comando \texttt{step}, traremos os outputs \texttt{X, Y} do comando \texttt{initial}. Fazendo $\alpha = 1$ na equação $x(t)$.
+\begin{verbatim}
+... %% Programa anterior
+%% Primeiro termo (real) dos autovalores
+lambda1 = eig(A)(1);
+V0 = [1 ; lambda1 ; lambda1^2];
+
+%% Calculo do sinal
+[Y, T, X] = initial(SYS, V0);
+\end{verbatim}
+
+Em seguida, no prompt:
+\begin{verbatim}
+plot(T, Y)
+plot(T, X)
+\end{verbatim}
+
+Temos, por final, os gráficos:
+\begin{figure}[h]
+  \includegraphics[scale=0.35]{plot1f1.jpg}
+  \centering
+\end{figure}
+
+\begin{figure}[h]
+  \includegraphics[scale=0.25]{plot1f2.jpg}
+  \centering
+\end{figure}
 
 \textbf{(g) idem para $x_0$ como uma combinação linear das colunas da matriz $W$.}
 
