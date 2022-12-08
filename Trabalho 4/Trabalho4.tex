@@ -575,6 +575,42 @@ Disso, obtemos:
 
 \textbf{(c) escreva a expressão da REN: $x(t) = \sum_{i=1}^{4} r_i v_i e^{\lambda_i t}$ onde os $r_i$ são parâmetros de cada modo e os $\lambda_i$ são os autovalores;}
 
+\begin{align*}
+  x(t) = \sum_{i=1}^{4} r_i v_i e^{\lambda_i t} =
+  r_1
+  \begin{bmatrix}
+    1\\
+    2j\\
+    1\\
+    2 - 2j
+  \end{bmatrix}
+  e^{2j t} +
+  r_2
+  \begin{bmatrix}
+    1\\
+    -2j\\
+    1\\
+    2 + 2j
+  \end{bmatrix}
+  e^{-2j t} +
+  r_3
+  \begin{bmatrix}
+    1\\
+    2\sqrt{3}j\\
+    -1\\
+    2 - 6\sqrt{3}j
+  \end{bmatrix}
+  e^{2\sqrt{3}j t} +
+  r_4
+  \begin{bmatrix}
+    1\\
+    -2\sqrt{3}j\\
+    -1\\
+    2 + 6\sqrt{3}j
+  \end{bmatrix}
+  e^{-2\sqrt{3}j t}
+\end{align*}
+
 \textbf{(d) usando a identidade de Euler, coloque a expressão acima em uma forma onde apareçam senos e co-seno;}
 
 \textbf{(e) analisando esta última expressão, verifique que os pares $r_1 \text{ e } r_2, r_3 \text{ e } r_4$ são complexos conjugados;}
