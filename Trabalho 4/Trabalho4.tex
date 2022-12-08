@@ -393,16 +393,44 @@ plot(T, X)
 
 Temos, por final, os gráficos:
 \begin{figure}[h]
-  \includegraphics[scale=0.35]{plot1f1.jpg}
+  \includegraphics[scale=0.3]{plot1f1.jpg}
   \centering
 \end{figure}
 
 \begin{figure}[h]
-  \includegraphics[scale=0.25]{plot1f2.jpg}
+  \includegraphics[scale=0.23]{plot1f2.jpg}
   \centering
 \end{figure}
 
 \textbf{(g) idem para $x_0$ como uma combinação linear das colunas da matriz $W$.}
+
+\begin{verbatim}
+%% ... Programa anterior
+%% Definindo um multiplo das colunas de W
+
+%% Parte real dos autovalores
+sigma = (eig(A)(2) + eig(A)(3)) / 2
+omega = - i * (eig(A)(2) - eig(A)(3)) / 2
+
+%% Vetor combinação linear das colunas de W
+w = [1 ; sigma + omega ; (sigma^2 - omega^2) + 2 * sigma * omega]
+
+[Y, T, X] = initial(SYS, w);
+
+plot(T, Y);
+plot(T, X);
+\end{verbatim}
+
+Disso, obtemos:
+\begin{figure}[h]
+  \includegraphics[scale=0.28]{plot1g1.jpg}
+  \centering
+\end{figure}
+
+\begin{figure}[h!]
+  \includegraphics[scale=0.28]{plot1g2.jpg}
+  \centering
+\end{figure}
 
 
 %% ------------------------------------------------ %%
