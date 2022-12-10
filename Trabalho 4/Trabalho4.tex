@@ -499,9 +499,11 @@ Disso, obtemos:
 \]
 
 \textbf{(b) os autovalores (faça $\lambda_1; \lambda_2; \lambda_3; \lambda_4;$ pares complexos conjugados) e, manualmente, os autovetores $v_1, v_2, v_3, v_4$;}
+Vamos encontrar as raízes de $\Delta(s)$ que são os autovalores de $A$. Para isso, podemos utilizar a função \texttt{eig} no Octave para encontrá-los. Dessa forma, encontramos os seguintes valores:
 \[
   \lambda_1 = 2j; \lambda_2 = -2j; \lambda_3 = 2\sqrt{3}j; \lambda_4 = -2\sqrt{3}j
 \]
+Chamando de $\lambda$ quaisquer uma das quatro raízes, teremos que:
 \begin{align*}
   \begin{bmatrix}
     0 & 1 & 0 & 0 \\
@@ -524,6 +526,7 @@ Disso, obtemos:
     \delta
   \end{bmatrix}
 \end{align*}
+ou
 \begin{align*}
   \begin{cases}
     \beta  &= \lambda \alpha\\
@@ -540,6 +543,7 @@ Disso, obtemos:
     \delta &= \frac{\alpha (\lambda^3 +8)}{4}
   \end{cases}
 \end{align*}
+Ficamos, com um padrão para os autovetores:
 \begin{align*}
   \alpha
   \begin{bmatrix}
@@ -549,7 +553,7 @@ Disso, obtemos:
     \frac{\lambda^3 +8}{4}
   \end{bmatrix}
 \end{align*}
-
+Temos, finalmente, como autovetores, os seguintes vetores:
 \begin{align*}
   v_1 &=
   \begin{bmatrix}
