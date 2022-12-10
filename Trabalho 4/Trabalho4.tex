@@ -164,16 +164,31 @@ Ficamos, pelo Octave, com a função de transferência dada por:
 
 \textbf{(c) encontre a resposta ao degrau (comando \texttt{step}) para $y \text{ e } x$;}
 
-Aqui, precisamos utilizar, novamente, o Octave.
+Aqui, precisamos utilizar, novamente, o Octave, para encontrarmos a resposta ao degrau, utilizando o comando \texttt{step}.
+\begin{verbatim}
+%% Resposta ao Degrau
+[Y_degrau, T_degrau, X_degrau] = step(sp);
+%% Plotagem de Y
+plot(T_degrau, Y_degrau, "r", "linewidth", 3)
+title("Y x T - Resposta ao Degrau")
+xlabel("t"), ylabel("y")
 
+%% Plotagem de X
+plot(T_degrau, X_degrau, "linewidth", 3)
+title("X x T - Resposta ao Degrau")
+xlabel("t"), ylabel("x")
+\end{verbatim}
+
+\begin{center}
 \begin{figure}[h]
+\begin{minipage}[!]{0.5\linewidth}
   \includegraphics[scale=0.3]{plot1c1.jpg}
-  \centering
+\end{minipage}
+\begin{minipage}[!]{0.5\linewidth}
+  \includegraphics[scale=0.3]{plot1c2.jpg}
+\end{minipage}
 \end{figure}
-\begin{figure}[h]
-  \includegraphics[scale=0.25]{plot1c2.jpg}
-  \centering
-\end{figure}
+\end{center}
 
 \textbf{(d) encontre manualmente os autovetores;}
 
@@ -377,85 +392,85 @@ finalmente, tendo $\sigma = 0.5898$ e $\omega = 1.7445$.
 De maneira similar ao comando \texttt{step}, traremos os outputs \texttt{X, Y} do comando \texttt{initial}. Fazendo $\alpha = 1$ na equação $x(t)$.
 \begin{verbatim}
 ... %% Programa anterior
-%% Primeiro termo (real) dos autovalores
-lambda1 = eig(A)(1);
-V0 = [1 ; lambda1 ; lambda1^2];
+%% REN
+%% x0 como multiplo de V:
+lambda1 = eig(A)(1)
+x0_1 = [1 ; lambda1 ; lambda1^2]    %% Multiplo de V
+[Y_ren_v, T_ren_v, X_ren_v] = initial(sp, x0_1)
 
-%% Calculo do sinal
-[Y, T, X] = initial(SYS, V0);
-\end{verbatim}
+%% Plotagem
+plot(T_ren_v, Y_ren_v, "r", "linewidth", 3)
+title("Y x T - REN (x0 = \lambda V)")
+xlabel("t"), ylabel("y")
 
-Em seguida, no prompt:
-\begin{verbatim}
-plot(T, Y)
-plot(T, X)
+plot(T_ren_v, X_ren_v, "linewidth", 3)
+title("X x T - REN (x0 = \lambda V)")
+xlabel("t"), ylabel("x")
 \end{verbatim}
 
 Temos, por final, os gráficos:
-\begin{figure}[h]
-  \includegraphics[scale=0.3]{plot1f1.jpg}
-  \centering
-\end{figure}
-
-\begin{figure}[h]
-  \includegraphics[scale=0.23]{plot1f2.jpg}
-  \centering
-\end{figure}
-
+\begin{center}
+  \begin{figure}[h]
+  \begin{minipage}[!]{0.5\linewidth}
+    \includegraphics[scale=0.3]{plot1f1.jpg}
+  \end{minipage}
+  \begin{minipage}[!]{0.5\linewidth}
+    \includegraphics[scale=0.3]{plot1f2.jpg}
+  \end{minipage}
+  \end{figure}
+\end{center}
 \textbf{(g) idem para $x_0$ como uma combinação linear das colunas da matriz $W$.}
 
 \begin{verbatim}
 %% ... Programa anterior
-%% Definindo um multiplo das colunas de W
+%% REN
+%% x0 como multiplo das colunas de W:
+sigma = (eig(A)(2) + eig(A)(3)) / 2       %% Parte real
+omega = (eig(A)(2) - eig(A)(3)) / (2 * i) %% Parte imaginaria
+x0_2 = [1 ; sigma + omega ; (sigma^2 - omega^2) + 2 * sigma * omega]
+[Y_ren_w, T_ren_w, X_ren_w] = initial(sp, x0_2)
 
-%% Parte real dos autovalores
-sigma = (eig(A)(2) + eig(A)(3)) / 2
-omega = - i * (eig(A)(2) - eig(A)(3)) / 2
+%% Plotagem
+%plot(T_ren_w, Y_ren_w, "r", "linewidth", 3)
+title("Y x T - REN (x0 = C.L de W)")
+xlabel("t"), ylabel("y")
 
-%% Vetor combinação linear das colunas de W
-w = [1 ; sigma + omega ; (sigma^2 - omega^2) + 2 * sigma * omega]
-
-[Y, T, X] = initial(SYS, w);
-
-plot(T, Y);
-plot(T, X);
+%plot(T_ren_w, X_ren_w, "linewidth", 3)
+title("X x T - REN (x0 = C.L de W)")
+xlabel("t"), ylabel("x")
 \end{verbatim}
 
 Disso, obtemos:
-\begin{figure}[h]
-  \includegraphics[scale=0.28]{plot1g1.jpg}
-  \centering
-\end{figure}
-
-\begin{figure}[h!]
-  \includegraphics[scale=0.28]{plot1g2.jpg}
-  \centering
-\end{figure}
+\begin{center}
+  \begin{figure}[h]
+  \begin{minipage}[!]{0.5\linewidth}
+    \includegraphics[scale=0.3]{plot1g1.jpg}
+  \end{minipage}
+  \begin{minipage}[!]{0.5\linewidth}
+    \includegraphics[scale=0.3]{plot1g2.jpg}
+  \end{minipage}
+  \end{figure}
+\end{center}
 
 
 %% ------------------------------------------------ %%
-\vspace{\baselineskip}
-
 \textbf{2.) Um oscilador ideal com duas massas, molas e sem atritos e/ou amortecimentos é descrito por $\ddot{y_1}(t) + 2\omega_1^2 y_1(t) = \omega_1^2 y_2(t)$ e $\ddot{y_2}(t) + 2\omega_2^2 y_2(t) = \omega_2^2 y_1(t)$. Use a escolha $x_1 = y_1; x_2 = \dot{y_1}; x_3 = y_2; x_4 = \dot{y_2}$ para variáveis de estado, ou qualquer outra, e considere $\omega_1 = \omega_2 = \omega_0$.}
 
 \textbf{G2: } $\omega_0 = 2$.
 
 \textbf{(a) Encontre a matriz de estados $A$, seu polinômio característico $\Delta(s)$;}
-
 \[\ddot{y_1}(t) + 8 y_1(t) = 4 y_2(t) ; \ddot{y_2}(t) + 8 y_2(t) = 4 y_1(t)\]
 \[x_1 = y_1; x_2 = \dot{y_1}; x_3 = y_2; x_4 = \dot{y_2}\]
 \[\dot{x_1}(t) = \dot{y_1}(t) = x_2(t)\]
 \[\dot{x_2}(t) = \ddot{y_1}(t) = - 8 y_1(t) + 4 y_2(t) = - 8 x_1 + 4 x_3\]
 \[\dot{x_3}(t) = \dot{y_2}(t) = x_4\]
 \[\dot{x_4}(t) = \ddot{y_2}(t) = 4 y_1(t) - 8 y_2(t) = 4 x_1 - 8 x_3\]
-
 \[A = \left[ {\begin{array}{cccc}
   0 & 1 & 0 & 0 \\
   -8 & 0 & 4 & 0 \\
   0 & 0 & 0 & 1 \\
   4 & 0 & -8 & 0 \\
 \end{array} } \right]\]
-
 \[
 \Delta(s) = det(sI - A) = det\left(
 \left[ {\begin{array}{cccc}
@@ -484,11 +499,9 @@ Disso, obtemos:
 \]
 
 \textbf{(b) os autovalores (faça $\lambda_1; \lambda_2; \lambda_3; \lambda_4;$ pares complexos conjugados) e, manualmente, os autovetores $v_1, v_2, v_3, v_4$;}
-
 \[
   \lambda_1 = 2j; \lambda_2 = -2j; \lambda_3 = 2\sqrt{3}j; \lambda_4 = -2\sqrt{3}j
 \]
-
 \begin{align*}
   \begin{bmatrix}
     0 & 1 & 0 & 0 \\
@@ -511,7 +524,6 @@ Disso, obtemos:
     \delta
   \end{bmatrix}
 \end{align*}
-
 \begin{align*}
   \begin{cases}
     \beta  &= \lambda \alpha\\
@@ -528,7 +540,6 @@ Disso, obtemos:
     \delta &= \frac{\alpha (\lambda^3 +8)}{4}
   \end{cases}
 \end{align*}
-
 \begin{align*}
   \alpha
   \begin{bmatrix}
