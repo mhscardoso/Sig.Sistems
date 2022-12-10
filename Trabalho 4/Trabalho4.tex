@@ -676,6 +676,7 @@ Finalmente:
 
 \textbf{(f) usando $r_1 = \alpha + j\beta, r_2 = \alpha - j\beta$, $r_3 = \gamma + j\delta, r_4 = \gamma - j\delta$ encontre a expressão final para $x(t)$;}
 \begin{align*}
+  x(t) =
   \begin{bmatrix}
     2\alpha\\
     -4\beta\\
@@ -708,6 +709,7 @@ Finalmente:
 
 Reescrenvendo, temos:
 \begin{align*}
+  x(t) =
   \begin{bmatrix}
     2 & 0\\
     0 & -4\\
@@ -748,9 +750,64 @@ Reescrenvendo, temos:
 
 \textbf{(g) encontre o estado inicial $x_0$ que corresponde a $(\alpha, \beta, \gamma, \delta) = (1, 0, 0, 0)$ e plote $x(t)$ no Octave (comando \texttt{initial});}
 
+\begin{align*}
+  x(0) =
+  \begin{bmatrix}
+    2\alpha\\
+    -4\beta\\
+    2\alpha\\
+    4(\alpha+\beta)
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    2\gamma\\
+    -4\sqrt{3}\delta\\
+    -2\gamma\\
+    4(\gamma+3\sqrt{3}\delta)
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    2\alpha + 2\gamma\\
+    -4\beta - 4\sqrt{3}\delta\\
+    2\alpha - 2\gamma\\
+    4(\alpha+\beta) + 4(\gamma+3\sqrt{3}\delta)
+  \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+  x(0) =
+  \begin{bmatrix}
+    2 \\
+    0\\
+    2\\
+    4
+  \end{bmatrix}
+  para (\alpha, \beta, \gamma, \delta) = (1, 0, 0, 0)
+\end{align*}
+
 \textbf{(h) idem $(\alpha, \beta, \gamma, \delta) = (0, 0, 1, 0)$ idem;}
 
+\begin{align*}
+  x(0) =
+  \begin{bmatrix}
+    2 \\
+    0\\
+    -2\\
+    4
+  \end{bmatrix}
+\end{align*}
+
 \textbf{(i) idem $(\alpha, \beta, \gamma, \delta) = (1, 0, 1, 0)$ idem;}
+
+\begin{align*}
+  x(0) =
+  \begin{bmatrix}
+    4 \\
+    0\\
+    0\\
+    8
+  \end{bmatrix}
+\end{align*}
 
 \textbf{(j) idem $(\alpha, \beta, \gamma, \delta) = $ sua escolha idem;}
 
