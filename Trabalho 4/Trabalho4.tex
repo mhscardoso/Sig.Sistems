@@ -624,9 +624,87 @@ Disso, obtemos:
 
 \textbf{(d) usando a identidade de Euler, coloque a expressão acima em uma forma onde apareçam senos e co-seno;}
 
+Sabemos que a identidade de Euler é dada por:
+\begin{align*}
+  e^{j\theta} = cos(\theta) + jsen(\theta)
+\end{align*}
+
+Ao aplicar na expressão da questão anterior, obtemos:
+\begin{align*}
+  V_1(cos(2t)+jsen(2t)) + V_2(cos(-2t)-jsen(2t)) + V_3(cos(2\sqrt{3}t)+jsen(2\sqrt{3}t)) + V_4(cos(-2\sqrt{3}t)-jsen(2\sqrt{3}t)) = \\
+  = (V_1+V_2)cos(2t) + (V_1-V_2)jsen(t) + (V_3+V_4)cos(2\sqrt{3}t) + (V_3-V_4)jsen(2\sqrt{3}t)
+\end{align*}
+
+Finalmente:
+\begin{align*}
+  \begin{bmatrix}
+    r_1+r_2\\
+    (r_1-r_2)2j\\
+    r_1+r_2\\
+    2(r_1+r_2)-2j(r_1-r_2)
+  \end{bmatrix}
+  cos(2t) +
+    \begin{bmatrix}
+      r_1-r_2\\
+      (r_1+r_2)2j\\
+      r_1-r_2\\
+      2(r_1-r_2)+2j(r_1-r_2)
+    \end{bmatrix}
+    jsen(t) +
+  \begin{bmatrix}
+    r_3+r_4\\
+    2\sqrt{3}j(r_3-r_4)\\
+    -r_3-r_4\\
+    2(r_3+r_4)-6\sqrt{3}j(r_3-r_4)
+  \end{bmatrix}
+  cos(2\sqrt{3}t) +
+\end{align*}
+
+\begin{align*}
+  \begin{bmatrix}
+    r_3-r_4\\
+    2\sqrt{3}j(r_3+r_4)\\
+    -r_3+r_4\\
+    2(r_3-r_4)-6\sqrt{3}j(r_3+r_4)
+  \end{bmatrix}
+  jsen(2\sqrt{3}t)
+\end{align*}
+
 \textbf{(e) analisando esta última expressão, verifique que os pares $r_1 \text{ e } r_2, r_3 \text{ e } r_4$ são complexos conjugados;}
 
 \textbf{(f) usando $r_1 = \alpha + j\beta, r_2 = \alpha - j\beta$, $r_3 = \gamma + j\delta, r_4 = \gamma - j\delta$ encontre a expressão final para $x(t)$;}
+
+
+\begin{align*}
+  \begin{bmatrix}
+    2\alpha\\
+    -4\beta\\
+    2\alpha\\
+    4(\alpha+\beta)
+  \end{bmatrix}
+  cos(2t) +
+  \begin{bmatrix}
+    2j\beta\\
+    4j\alpha\\
+    2j\beta\\
+    4\beta(j-1)
+  \end{bmatrix}
+  jsen(t) +
+  \begin{bmatrix}
+    2\gamma\\
+    -4\sqrt{3}\delta\\
+    -2\gamma\\
+    4(\gamma+3\sqrt{3}\delta)
+  \end{bmatrix}
+  cos(2\sqrt{3}t) +
+  \begin{bmatrix}
+    2j\delta\\
+    4\sqrt{3}j\delta\\
+    -2j\delta\\
+    4j(\delta-3\sqrt{3}\gamma)
+  \end{bmatrix}
+  jsen(2\sqrt{3}t)
+\end{align*}
 
 \textbf{(g) encontre o estado inicial $x_0$ que corresponde a $(\alpha, \beta, \gamma, \delta) = (1, 0, 0, 0)$ e plote $x(t)$ no Octave (comando \texttt{initial});}
 
