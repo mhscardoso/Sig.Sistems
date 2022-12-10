@@ -812,6 +812,29 @@ Reescrenvendo, temos:
   para (\alpha, \beta, \gamma, \delta) = (1, 0, 0, 0)
 \end{align*}
 
+\begin{verbatim}
+  %% Progama no Octave para plotar x(t)
+  A = [0 1 0 0 ; -8 0 4 0 ; 0 0 0 1 ; 4 0 -8 0 ];
+  B = [0 ; 0 ; 0 ; 0];
+  C = [1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1];
+  pkg load control
+  %% Sistema de espaço de estados
+  sp = ss(A, B, C, "outname", {"y1", "dy1/dt", "y2", "dy2/dt"});
+
+  %% Estado inicial
+  x0 = [2 ; 0 ; 2 ; 0];
+  initial(sp, x0)
+\end{verbatim}
+
+\begin{center}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{plot2g.jpg}
+  \end{figure}
+\end{center}
+
+\newpage
+
 \textbf{(h) idem $(\alpha, \beta, \gamma, \delta) = (0, 0, 1, 0)$ idem;}
 
 \begin{align*}
@@ -823,6 +846,23 @@ Reescrenvendo, temos:
     0
   \end{bmatrix}
 \end{align*}
+
+\begin{verbatim}
+  %% ... Programa anterior
+
+  %% Estado inicial
+  x0 = [2 ; 0 ; -2 ; 0];
+  initial(sp, x0)
+\end{verbatim}
+
+\begin{center}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{plot2h.jpg}
+  \end{figure}
+\end{center}
+
+\newpage
 
 \textbf{(i) idem $(\alpha, \beta, \gamma, \delta) = (1, 0, 1, 0)$ idem;}
 
@@ -836,8 +876,54 @@ Reescrenvendo, temos:
   \end{bmatrix}
 \end{align*}
 
+\begin{verbatim}
+  %% ... Programa anterior
+
+  %% Estado inicial
+  x0 = [4 ; 0 ; 0 ; 0];
+  initial(sp, x0)
+\end{verbatim}
+
+\begin{center}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{plot2i.jpg}
+  \end{figure}
+\end{center}
+
+\newpage
+
 \textbf{(j) idem $(\alpha, \beta, \gamma, \delta) = $ sua escolha idem;}
 
+$(\alpha, \beta, \gamma, \delta) = (0, 1, 0, 0)$
+
+\begin{align*}
+  x(0) =
+  \begin{bmatrix}
+    0 \\
+    -4\\
+    0\\
+    -4
+  \end{bmatrix}
+\end{align*}
+
+\begin{verbatim}
+  %% ... Programa anterior
+
+  %% Estado inicial
+  x0 = [0 ; -4 ; 0 ; -4];
+  initial(sp, x0)
+\end{verbatim}
+
+\begin{center}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{plot2j.jpg}
+  \end{figure}
+\end{center}
+
 \textbf{(k) comente as curvas obtidas.}
+
+As curvas obtidas das letras g, h, i, j são somas de senos e cossenos de frequências angulares 2 e $2\sqrt{3}$
 
 \end{document}
