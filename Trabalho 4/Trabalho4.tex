@@ -677,20 +677,21 @@ Finalmente:
 
 Primeiramente, vamos relembrar do que se trata a equação acima.
 
-$x(t) = \sum{i=1}^{4} r_i v_i e^{\lambda_i t}$, é a expressão da REN de um sistema massa mola.
+$x(t) = \sum_{i=1}^4 r_i v_i e^{\lambda_i t}$, é a expressão da REN de um sistema massa mola.
 
 Isso significa que a equação representa um sistema físico, e portanto, as somas e variáveis das componentes de $x(t)$ devem ser Reais.
 
 Vamos analisar esta primeira parcela da equação da questão anterior:
-\begin{align}
+
+\begin{align*}
   \begin{bmatrix}
-    r_1+r_2\
-    (r_1-r_2)2j\
-    r_1+r_2\
-    2(r_1+r_2)-2j(r_1-r_2)
+    r_1+r_2\\
+    2j(r_1-r_2)\\
+    r_1+r_2\\
+    2j(r_1-r_2)
   \end{bmatrix}
   cos(2t)
-\end{align}
+\end{align*}
 
 Observe que, para que o produto de cada termo desse vetor pelo $cos(2t)$ resulte em um número Real, os pares $r_1 \text{ e } r_2, r_3 \text{ e } r_4$ devem obedecer à seguinte relação:\
 $r_1+r_2$ resulta em um número Real, pois $cos(2t)$ também é um Real.\
