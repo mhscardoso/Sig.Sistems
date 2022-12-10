@@ -508,7 +508,7 @@ Chamando de $\lambda$ quaisquer uma das quatro raízes, teremos que:
   \begin{bmatrix}
     0 & 1 & 0 & 0 \\
     -8 & 0 & 4 & 0 \\
-    0 & -2 & 0 & 1 \\
+    0 & 0 & 0 & 1 \\
     4 & 0 & -8 & 0 \\
   \end{bmatrix}
   \begin{bmatrix}
@@ -540,7 +540,7 @@ ou
     \alpha &= \alpha\\
     \beta  &= \alpha \lambda\\
     \gamma &= \frac{\alpha (\lambda^2 +8)}{4} \\
-    \delta &= \frac{\alpha (\lambda^3 +8)}{4}
+    \delta &= \frac{\alpha (\lambda^3 + \lambda 8)}{4}
   \end{cases}
 \end{align*}
 Ficamos, com um padrão para os autovetores:
@@ -550,7 +550,7 @@ Ficamos, com um padrão para os autovetores:
     1\\
     \lambda\\
     \frac{\lambda^2 +8}{4} \\
-    \frac{\lambda^3 +8}{4}
+    \frac{\lambda^3 +\lambda 8}{4}
   \end{bmatrix}
 \end{align*}
 Temos, finalmente, como autovetores, os seguintes vetores:
@@ -560,7 +560,7 @@ Temos, finalmente, como autovetores, os seguintes vetores:
     1\\
     2j\\
     1\\
-    2 - 2j
+    2j
   \end{bmatrix}
   &
   v_2 &=
@@ -568,7 +568,7 @@ Temos, finalmente, como autovetores, os seguintes vetores:
     1\\
     -2j\\
     1\\
-    2 + 2j
+    -2j
   \end{bmatrix}
   &
   v_3 &=
@@ -576,7 +576,7 @@ Temos, finalmente, como autovetores, os seguintes vetores:
     1\\
     2\sqrt{3}j\\
     -1\\
-    2 - 6\sqrt{3}j
+    -2\sqrt{3}j
   \end{bmatrix}
   &
   v_4 &=
@@ -584,7 +584,7 @@ Temos, finalmente, como autovetores, os seguintes vetores:
     1\\
     -2\sqrt{3}j\\
     -1\\
-    2 + 6\sqrt{3}j
+    2\sqrt{3}j
   \end{bmatrix}
 \end{align*}
 
@@ -597,7 +597,7 @@ Temos, finalmente, como autovetores, os seguintes vetores:
     1\\
     2j\\
     1\\
-    2 - 2j
+    2j
   \end{bmatrix}
   e^{2j t} +
   r_2
@@ -605,7 +605,7 @@ Temos, finalmente, como autovetores, os seguintes vetores:
     1\\
     -2j\\
     1\\
-    2 + 2j
+    -2j
   \end{bmatrix}
   e^{-2j t} +
   r_3
@@ -613,7 +613,7 @@ Temos, finalmente, como autovetores, os seguintes vetores:
     1\\
     2\sqrt{3}j\\
     -1\\
-    2 - 6\sqrt{3}j
+    -2\sqrt{3}j
   \end{bmatrix}
   e^{2\sqrt{3}j t} +
   r_4
@@ -621,7 +621,7 @@ Temos, finalmente, como autovetores, os seguintes vetores:
     1\\
     -2\sqrt{3}j\\
     -1\\
-    2 + 6\sqrt{3}j
+    2\sqrt{3}j
   \end{bmatrix}
   e^{-2\sqrt{3}j t}
 \end{align*}
@@ -642,37 +642,63 @@ Ao aplicar na expressão da questão anterior, obtemos:
 
 Finalmente:
 \begin{align*}
+  x(t) =
   \begin{bmatrix}
     r_1+r_2\\
-    (r_1-r_2)2j\\
+    2j(r_1-r_2)\\
     r_1+r_2\\
-    2(r_1+r_2)-2j(r_1-r_2)
+    2j(r_1-r_2)
   \end{bmatrix}
   cos(2t) +
     \begin{bmatrix}
       r_1-r_2\\
-      (r_1+r_2)2j\\
+      2j(r_1+r_2)\\
       r_1-r_2\\
-      2(r_1-r_2)-2j(r_1+r_2)
+      2j(r_1+r_2)
     \end{bmatrix}
-    jsen(2t) +\\
+    jsen(2t) + \\
   \begin{bmatrix}
     r_3+r_4\\
     2\sqrt{3}j(r_3-r_4)\\
     -r_3-r_4\\
-    2(r_3+r_4)-6\sqrt{3}j(r_3-r_4)
+    -2\sqrt{3}j(r_3-r_4)
   \end{bmatrix}
   cos(2\sqrt{3}t) +
   \begin{bmatrix}
     r_3-r_4\\
     2\sqrt{3}j(r_3+r_4)\\
     -r_3+r_4\\
-    2(r_3-r_4)-6\sqrt{3}j(r_3+r_4)
+    -2\sqrt{3}j(r_3+r_4)
   \end{bmatrix}
   jsen(2\sqrt{3}t)
 \end{align*}
 
 \textbf{(e) analisando esta última expressão, verifique que os pares $r_1 \text{ e } r_2, r_3 \text{ e } r_4$ são complexos conjugados;}
+
+Primeiramente, vamos relembrar do que se trata a equação acima.
+
+$x(t) = \sum{i=1}^{4} r_i v_i e^{\lambda_i t}$, é a expressão da REN de um sistema massa mola.
+
+Isso significa que a equação representa um sistema físico, e portanto, as somas e variáveis das componentes de $x(t)$ devem ser Reais.
+
+Vamos analisar esta primeira parcela da equação da questão anterior:
+\begin{align}
+  \begin{bmatrix}
+    r_1+r_2\
+    (r_1-r_2)2j\
+    r_1+r_2\
+    2(r_1+r_2)-2j(r_1-r_2)
+  \end{bmatrix}
+  cos(2t)
+\end{align}
+
+Observe que, para que o produto de cada termo desse vetor pelo $cos(2t)$ resulte em um número Real, os pares $r_1 \text{ e } r_2, r_3 \text{ e } r_4$ devem obedecer à seguinte relação:\
+$r_1+r_2$ resulta em um número Real, pois $cos(2t)$ também é um Real.\
+$r_1-r_2$ resulta em um número Imaginário puro, devido ao termo $2j$.\
+Analogamente, para os termos $r_3\ e\ r_4$, chegamos à conclusão final de que:\
+$r_1+r_2$ e $r_3+r_4$ são números Reais.\
+$r_1-r_2$ e $r_3-r_4$ são números Imaginários.\
+Com isso, as condições acima mostram que $r_1 \text{ e } r_2, r_3 \text{ e } r_4$ formam pares complexos conjugados.\
 
 \textbf{(f) usando $r_1 = \alpha + j\beta, r_2 = \alpha - j\beta$, $r_3 = \gamma + j\delta, r_4 = \gamma - j\delta$ encontre a expressão final para $x(t)$;}
 \begin{align*}
@@ -681,28 +707,28 @@ Finalmente:
     2\alpha\\
     -4\beta\\
     2\alpha\\
-    4(\alpha+\beta)
+    -4\beta
   \end{bmatrix}
-  \cos(2t) -
+  \cos(2t) +
   \begin{bmatrix}
-    2\beta\\
-    4\alpha\\
-    2\beta\\
-    4(\beta -  \alpha)
+    -2\beta\\
+    -4\alpha\\
+    -2\beta\\
+    -4\alpha
   \end{bmatrix}
   \sen(2t) +
   \begin{bmatrix}
     2\gamma\\
     -4\sqrt{3}\delta\\
     -2\gamma\\
-    4(\gamma+3\sqrt{3}\delta)
+    4\sqrt{3}\delta
   \end{bmatrix}
-  \cos(2\sqrt{3}t) -
+  \cos(2\sqrt{3}t) +
   \begin{bmatrix}
-    2\delta\\
-    4\sqrt{3}\gamma\\
     -2\delta\\
-    4(\delta-3\sqrt{3}\gamma)
+    -4\sqrt{3}\gamma\\
+    2\delta\\
+    4\sqrt{3}\gamma
   \end{bmatrix}
   \sen(2\sqrt{3}t)
 \end{align*}
@@ -714,7 +740,7 @@ Reescrenvendo, temos:
     2 & 0\\
     0 & -4\\
     2 & 0\\
-    4 & 4
+    0 & -4
   \end{bmatrix}
   \left[
     \begin{bmatrix}
@@ -732,7 +758,7 @@ Reescrenvendo, temos:
     2 & 0\\
     0 & -4\sqrt{3}\\
     -2 & 0\\
-    4 & 12\sqrt{3}
+    0 & 4\sqrt{3}
   \end{bmatrix}
   \left[
     \begin{bmatrix}
@@ -756,21 +782,21 @@ Reescrenvendo, temos:
     2\alpha\\
     -4\beta\\
     2\alpha\\
-    4(\alpha+\beta)
+    -4\beta
   \end{bmatrix}
   +
   \begin{bmatrix}
     2\gamma\\
     -4\sqrt{3}\delta\\
     -2\gamma\\
-    4(\gamma+3\sqrt{3}\delta)
+    4\sqrt{3}\delta
   \end{bmatrix}
   =
   \begin{bmatrix}
     2\alpha + 2\gamma\\
     -4\beta - 4\sqrt{3}\delta\\
     2\alpha - 2\gamma\\
-    4(\alpha+\beta) + 4(\gamma+3\sqrt{3}\delta)
+    -4\beta + 4\sqrt{3}\delta
   \end{bmatrix}
 \end{align*}
 
@@ -780,7 +806,7 @@ Reescrenvendo, temos:
     2 \\
     0\\
     2\\
-    4
+    0
   \end{bmatrix}
   para (\alpha, \beta, \gamma, \delta) = (1, 0, 0, 0)
 \end{align*}
@@ -793,7 +819,7 @@ Reescrenvendo, temos:
     2 \\
     0\\
     -2\\
-    4
+    0
   \end{bmatrix}
 \end{align*}
 
@@ -805,7 +831,7 @@ Reescrenvendo, temos:
     4 \\
     0\\
     0\\
-    8
+    0
   \end{bmatrix}
 \end{align*}
 
