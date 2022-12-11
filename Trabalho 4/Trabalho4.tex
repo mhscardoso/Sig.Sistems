@@ -809,7 +809,7 @@ Reescrenvendo, temos:
     2\\
     0
   \end{bmatrix}
-  para (\alpha, \beta, \gamma, \delta) = (1, 0, 0, 0)
+  \text{ para } (\alpha, \beta, \gamma, \delta) = (1, 0, 0, 0)
 \end{align*}
 
 \begin{verbatim}
@@ -924,6 +924,57 @@ $(\alpha, \beta, \gamma, \delta) = (0, 1, 0, 0)$
 
 \textbf{(k) comente as curvas obtidas.}
 
-As curvas obtidas das letras g, h, i, j são somas de senos e cossenos de frequências angulares 2 e $2\sqrt{3}$
+As curvas obtidas das letras g, h, i, j são somas de senos e cossenos de frequências angulares 2 e $2\sqrt{3}$.
+
+Matrizes obtidas em $x(t)$:
+\begin{align*}
+  \begin{bmatrix}
+    2 & 0\\
+    0 & -4\\
+    2 & 0\\
+    0 & -4
+  \end{bmatrix} &= M_1
+  &
+  \begin{bmatrix}
+    2 & 0\\
+    0 & -4\sqrt{3}\\
+    -2 & 0\\
+    0 & 4\sqrt{3}
+  \end{bmatrix} &= M_2
+\end{align*}
+
+Vamos analisar para cada $x_0$ calculado, comparando com as matrizes obtidas para $x(t)$:
+\begin{align*}
+\text{(g) } x_0 &=
+\begin{bmatrix}
+  2\\
+  0\\
+  2\\
+  0
+\end{bmatrix} \rightarrow \text{ Primeira coluna de } M_1 \text{. Combinação Linear de } M_1.\\
+\text{(h) } x_0 &=
+\begin{bmatrix}
+  2\\
+  0\\
+  -2\\
+  0
+\end{bmatrix} \rightarrow \text{ Primeira coluna de } M_2 \text{. Combinação Linear de } M_2.\\
+\text{(i) } x_0 &=
+\begin{bmatrix}
+  4\\
+  0\\
+  0\\
+  0
+\end{bmatrix} \rightarrow \text{ \textbf{Não} é conbinação linear dessas matrizes.}\\
+\text{(j) } x_0 &=
+\begin{bmatrix}
+  0\\
+  -4\\
+  0\\
+  -4
+\end{bmatrix} \rightarrow \text{ Segunda coluna de } M_1 \text{. Combinação Linear de } M_1.
+\end{align*}
+
+Percebe-se que os comportamentos comportadamente periódicos, se devem aos $x_0$ que são combinações lineares das colunas de algumas das matrizes $M_1$ ou $M_2$. Aqueles que não são combinações lineares das colunas dessas matrizes não reproduzem comportamentos comportados.
 
 \end{document}

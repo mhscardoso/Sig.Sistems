@@ -8,7 +8,9 @@ pkg load control
 %% Sistema de espaço de estados
 sp = ss(A, B, C, "outname", {"y1", "dy1/dt", "y2", "dy2/dt"});
 
-x0 = [0 ; -4 ; 0 ; -4];
+x0 = [4 ; 0 ; 0 ; 0];
 
-initial(sp, x0)
+[Y, T, X] = initial(sp, x0);
+
+plot(T, X);
 
