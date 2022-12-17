@@ -1,8 +1,8 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 
 % Pacotes extras necessários
 \usepackage{amsmath}
-\usepackage[lmargin=0.7in, rmargin=0.7in, tmargin=0.5in, bmargin=0.5in, includehead, includefoot]{geometry}
+\usepackage[lmargin=0.5in, rmargin=0.5in, tmargin=0.5in, bmargin=0.5in, includehead, includefoot]{geometry}
 \usepackage{amsfonts}
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese]{babel}
@@ -14,7 +14,7 @@
 
 % Sets para outras partes
 \setlength{\parindent}{0pt}
-\setstretch{1.25}
+\setstretch{1.5}
 \DeclareMathOperator{\sen}{sen}
 
 %% Facilidades
@@ -24,8 +24,11 @@
 %% -- Fourier
 \newcommand{\Fou}[1]{\mathcal{F}\left\{#1\right\}}
 
-%% -- Trnasformada Z
+%% -- Transformada Z
 \newcommand{\Z}[1]{\mathcal{Z}\left\{#1\right\}}
+
+%% -- Negrito em matemáticas
+\newcommand{\bm}[1]{\boldsymbol{#1}}
 
 
 % ------- Estilo do trabalho -------- %
@@ -45,7 +48,7 @@
 % ----------------------------------- %
 
 % Dados do Grupo
-\title{Sinais e Sistemas - Trabalho 4 - Avaliação 8}
+\title{Sinais e Sistemas - Trabalho 5 - Avaliação 9}
 \author{
     \textbf{Grupo 2}\\
     Leonardo Soares da Costa Tanaka\\
@@ -55,5 +58,87 @@
 \date{}
 
 \begin{document}
-    \maketitle \newpage
+\maketitle
+\thispagestyle{capa}
+\newpage
+
+%% Questão 1 -----------------
+\textbf{1.) Um SLIT relaxado é descrito pela equação a diferenças $y_{k + 2} + \alpha y_k = \beta u_{k + 1} + \gamma u_k$.\\
+Os dados $(\alpha, \beta, \gamma)$ são: \textbf{G2: }$(-1/4, 1, 2)$;}
+
+Utilizando as constantes do grupo, a equação torna-se: $y_{k + 2} - \frac{1}{4} y_k = u_{k + 1} + 2 u_k$
+
+(a) Encontrar a função de transferência $G(z)$;
+
+(b) encontrar polos e zeros e verificar a estabilidade;
+
+(c) encontrar as equações dinâmicas;
+
+(d) calcular, iterativamente, os 10 primeiros valores $y_k$ para entrada em degrau unitário;
+
+(e) usando transformada em $Z$, encontrar uma expressão analítica para a $y_k$;
+
+(f) comparar os resultados iterativo e analítico.
+
+
+\vspace{\baselineskip}
+
+
+%% Questão 2 ------------------
+\textbf{G2: 2.) Eis um ``Problema de Algibeira": um vendedor de queijos efetua apenas transações do tipo \emph{vende metade de seu estoque mais meia peça}. Pede-se o número inicial de peças, $x_0$ se após a 6ª venda seus queijos acabam. Interpretar a filosofia de vendas por meio de uma equação a diferenças e calcular $x_k$, o saldo de estoque após a $k$-ésima venda. Dar a resposta ao problema de algibeira.}
+
+
+\vspace{\baselineskip}
+
+%% Questão 3 --------------------
+\textbf{3.) Para a EDLIT $\tau \dot{y}(t) + y(t) = \beta u(t)$ com $y(0^-) = y_0$:\\
+\textbf{G2: } $\tau = 2, \beta = 2 \text{ e } y_0 = 1$.}
+
+Utilizando as constantes do grupo, a equação torna-se: $2 \dot{y}(t) + y(t) = 2 u(t)$ com $y(0^-) = 1$
+
+(a) Calcular a resposta à rampa unitária por Laplace, e traçar com precisão o seu gráfico para $t \in [0,\,5\tau]$;
+
+(b) por Euler I, encontrar a equação que relaciona $y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$;
+
+(c) resolvê-la por transformada $Z$ para entrada em rampa;
+
+(d) listar as sequências obtidas para $T = \tau, T = \tau / 2, T = \tau / 4 \text{ e } T = \tau / 8$;
+
+(e) plotar os valores de $y(kT)$ no mesmo gráfico do ítem (a) e comparar as aproximações numéricas;
+
+(f) repetir (b), (c), (d) e (e) para Newton.
+
+\vspace{\baselineskip}
+
+
+%% Questão 4 ----------------------------
+\textbf{4.) Para a EDLIT $\ddot{y}(t) + 2\zeta \omega_n \dot{y}(t) = \alpha \dot{u}(t) + \beta u(t)$ com CIs nulas:\\
+Os dados $(\zeta,\, \omega_n,\, \beta,\, \alpha)$ são \textbf{G2: }$(1/3,\, 2,\, 3,\, -1)$.}
+
+Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) = -\dot{u}(t) + 3u(t)$
+
+(a) para $u(t) = 1$, encontre, por Laplace, a solução e plote-a com precisão para $t \in [0,\, 8/(\zeta \omega_n)]$;
+
+(b) por meio de variáveis $x_1$ e $x_2$ apropriadas, expressá-la como $\dot{\bm{x}}(t) = A\bm{x}(t) + B\bm{u}(t)$ e $\bm{y}(t) = C\bm{x}(t) + D\bm{u}(t)$;
+
+(c) por Euler I, relacione $\bm{x}_k \leftrightarrow \bm{x}(kT), \, y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$ (o procedimento para vetores é o mesmo e leva a $\bm{x}_k = A_d \bm{x}_{k - 1} + B_d \bm{u}_k$ e $\dot{\bm{y}}_k = C_d \bm{x}_k + D_d \bm{u}_k$) e obtenha $y_k$;
+
+(d) plota as sequências obtidas para $T = T_0 = 1 / (\zeta \omega_n), \, T = T_0/2, \, T = T_0/4$ e $T = T_0/8$ no gráfico de (a) e compare as aproximações numéricas.
+
+
+\vspace{\baselineskip}
+
+%% Questão 5 ------------------------------
+\textbf{5.) Seja EDVT $\dot{y}(t) + \alpha(t)y(t) = u(t)$ com $u(t) = 1(t)$. Quando um sinal contínuo $p$ tende a uma constante para valores altos de $t$ ($\lim p(t) = p_r = $ cte. para $t \to \infty$) esta é chamada de valor de regime do sinal.}
+
+(a) sem resolver a equação calcular o valor de regime $y_r$, supondo que $y(t)$ tende a ele;
+
+(b) por Euler I, relacione as sequências $u_k \leftrightarrow u(kT)$ e $y_k \leftrightarrow y(kT)$;
+
+(c) resolva, manualmente ou por meio de um script em alguma linguagem, para $T = 1, T = 1/2, T = 1/4$ e $T = 1/10$; a solução $y(t)$ deve ser aproximada para $t \in [0, \, 10]$;
+
+(d) repetir (b) e (c) para Euler II.
+
+Os dados $a(t)$a e $y(0^-)$ são: \textbf{G2: }$(t^2 - 1)/(t^2 + 1)$ e $-1$.
+
 \end{document}
