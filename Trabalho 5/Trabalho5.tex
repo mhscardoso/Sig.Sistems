@@ -87,6 +87,67 @@ Utilizando as constantes do grupo, a equação torna-se: $y_{k + 2} - \frac{1}{4
 %% Questão 2 ------------------
 \textbf{G2: 2.) Eis um ``Problema de Algibeira": um vendedor de queijos efetua apenas transações do tipo \emph{vende metade de seu estoque mais meia peça}. Pede-se o número inicial de peças, $x_0$ se após a 6ª venda seus queijos acabam. Interpretar a filosofia de vendas por meio de uma equação a diferenças e calcular $x_k$, o saldo de estoque após a $k$-ésima venda. Dar a resposta ao problema de algibeira.}
 
+Antes de mais nada, podemos pensar um pouco antes de tomarmos quaisquer decisões. É claro ser impossível realizar a venda de meia peça, portanto, é provável que seja uma correção, justamente para que não se venda meia peça. Veja o processo:
+
+\textbf{Processo: (Venda)}
+
+Após a venda $k$: $c$ peças.
+
+Logo antes: $c + 1/2$ peças.
+
+Antes da venda $k$: $2 \cdot (c + 1/2) = \boxed{2c + 1}$ peças. Ou, após a venda $k - 1$.
+
+Disso, podemos ir dando passos para trás até chegarmos ao momento anterior à primeira venda. Considerando, cada processo, uma venda e que antes de cada venda, teremos $2c + 1$ peças, sendo $c$ o número de peças após essa venda:
+
+Após a venda 6: 0\\
+Após a venda 5: $2 \cdot 0 + 1 = 1$\\
+Após a venda 4: $2 \cdot 1 + 1 = 3$\\
+Após a venda 3: $2 \cdot 3 + 1 = 7$\\
+Após a venda 2: $2 \cdot 7 + 1 = 15$\\
+Após a venda 1: $2 \cdot 15 + 1 = 31$\\
+Finalmente, antes da primeira venda, teremos: $2 \cdot 31 + 1 = 63$
+
+Portanto, com passos simples, podemos resolver este problema.
+
+Ainda assim, é possível resolvê-lo por métodos analíticos, com uma equação a diferenças, modelando da seguinte maneira: a quantidade de peças após a venda $k$ $(x_k)$ é a metade da anterior subtraída de 1/2, da forma abaixo:
+\[x_k = \frac{1}{2}x_{k - 1} - \frac{1}{2}\]
+
+Podemos realizar a transformada Z desta equação, obtendo:
+\begin{align*}
+    \Z{x_k} &= \frac{1}{2} \Z{x_{k - 1}} - \frac{1}{2} \Z{1[k]}\\
+    X(z) &= \frac{1}{2} \left(z^{-1} X(z) + x[-1]\right) - \frac{z}{2z - 2}\\
+    X(z) \left[\frac{2z - 1}{2z}\right] &= \frac{x[-1]}{2} - \frac{z}{2z - 2}\\
+    X(z) \left[\frac{2z - 1}{2z}\right] &= \frac{x[-1](z - 1)}{2z - 2} - \frac{z}{2z - 2}\\
+    X(z) \left[\frac{2z - 1}{2z}\right] &= \frac{x[-1]z - x[-1] - z}{2z - 2}\\
+    \frac{X(z)}{z} &= \frac{x[-1]z - x[-1] - z}{(z - 1)(2z - 1)}\\
+    \frac{X(z)}{z} &= \frac{x[-1] + 1}{2z - 1} - \frac{1}{z - 1}\\
+    X(z) &= \frac{x[-1] + 1}{2} \left(\frac{z}{z - 1/2}\right) - \frac{1}{z - 1}
+\end{align*}
+
+A partir daqui, podemos fazer a transformada inversa:
+\begin{align*}
+    x[k] = \frac{x[-1] + 1}{2} \left(\frac{1}{2}\right)^{k} - 1[k]
+\end{align*}
+
+Podemos descobrir $x[-1]$ dado que sabemos $x[6]$:
+\begin{align*}
+    x[6] &= 0 = \frac{x[-1] + 1}{2} \left(\frac{1}{2}\right)^{6} - 1[6]\\
+    0 &= \frac{x[-1] + 1}{128} - 1\\
+    128 &= x[-1] + 1
+\end{align*}
+\[\boxed{x[-1] = 127}\]
+
+Temos tudo o que precisamos:
+\begin{align*}
+    x[k] = \frac{x[-1] + 1}{2} \left(\frac{1}{2}\right)^{k} - 1[k]\\
+    x[k] = 64 \left(\frac{1}{2}\right)^k - 1[k]
+\end{align*}
+
+Aplicando para $k = 0$, teremos:
+\[x[0] = 64 \cdot 1 - 1\]
+\[\boxed{x[0] = 63}\]
+
+Que foi o resultado obtido da primeira forma.
 
 \vspace{\baselineskip}
 
