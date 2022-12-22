@@ -70,7 +70,33 @@ Utilizando as constantes do grupo, a equação torna-se: $y_{k + 2} - \frac{1}{4
 
 (a) Encontrar a função de transferência $G(z)$;
 
+\vspace{\baselineskip}
+
+\begin{align*}
+    y_{k + 2} - \frac{1}{4} y_k = u_{k + 1} + 2 u_k => z^2 Y(z) - \frac{1}{4}Y(z) = z U(z) + 2 U(z) => Y(z) = \frac{z + 2}{z^2 - \frac{1}{4}}U(z)
+\end{align*}
+
+\begin{align*}
+    G(z) = \frac{z + 2}{z^2 - \frac{1}{4}}
+\end{align*}
+
+\vspace{\baselineskip}
+
 (b) encontrar polos e zeros e verificar a estabilidade;
+
+\vspace{\baselineskip}
+
+\begin{align*}
+    Polos => x^2 - \frac{1}{4} = \left(x + \frac{1}{2}\right)\left(x - \frac{1}{2}\right) => p_1 = \frac{1}{2} ; p_2 = -\frac{1}{2}
+\end{align*}
+
+\begin{align*}
+    Zeros => x + 2 => z_1 = -2
+\end{align*}
+
+O SLIT é estável nesse caso, porque seus pólos $p_1$ e $p_2$ estão no círculo unitário.
+
+\vspace{\baselineskip}
 
 (c) encontrar as equações dinâmicas;
 
