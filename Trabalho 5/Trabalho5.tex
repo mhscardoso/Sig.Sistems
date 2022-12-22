@@ -70,8 +70,6 @@ Utilizando as constantes do grupo, a equação torna-se: $y_{k + 2} - \frac{1}{4
 
 (a) Encontrar a função de transferência $G(z)$;
 
-\vspace{\baselineskip}
-
 \begin{align*}
     y_{k + 2} - \frac{1}{4} y_k = u_{k + 1} + 2 u_k => z^2 Y(z) - \frac{1}{4}Y(z) = z U(z) + 2 U(z) => Y(z) = \frac{z + 2}{z^2 - \frac{1}{4}}U(z)
 \end{align*}
@@ -80,11 +78,7 @@ Utilizando as constantes do grupo, a equação torna-se: $y_{k + 2} - \frac{1}{4
     G(z) = \frac{z + 2}{z^2 - \frac{1}{4}}
 \end{align*}
 
-\vspace{\baselineskip}
-
 (b) encontrar polos e zeros e verificar a estabilidade;
-
-\vspace{\baselineskip}
 
 \begin{align*}
     Polos => x^2 - \frac{1}{4} = \left(x + \frac{1}{2}\right)\left(x - \frac{1}{2}\right) => p_1 = \frac{1}{2} ; p_2 = -\frac{1}{2}
@@ -99,6 +93,42 @@ O SLIT é estável nesse caso, porque seus pólos $p_1$ e $p_2$ estão no círcu
 \vspace{\baselineskip}
 
 (c) encontrar as equações dinâmicas;
+
+\begin{align*}
+    x_1[k] = y[k]&& => && x_1[k+1] = y[k+1] = x_2[k] - p_1 u[k] \\
+    x_2[k] = y[k+1] + p_1 u[k] && => && x_2[k+1] = y[k+2] + p_1 u[k] = \frac{1}{4} x_1[k] + (p_1 + 1) u[k+1] + u[k]
+\end{align*}
+
+\begin{align*}
+    p_1 = - 1
+\end{align*}
+
+\begin{align*}
+    x_1[k] = y[k]&& => && x_1[k+1] = x_2[k] + u[k] \\
+    x_2[k] = y[k+1] - u[k] && => && x_2[k+1] = \frac{1}{4} x_1[k] + u[k]
+\end{align*}
+
+\begin{align*}
+    x[k+1]
+    =
+    \begin{bmatrix}
+        0 && 1 \\
+        1/4 && 0
+    \end{bmatrix}
+    x[k]
+    +
+    \begin{bmatrix}
+        1\\
+        1
+    \end{bmatrix}
+    u[k];
+    \quad
+    y[k] =
+    \begin{bmatrix}
+        1 && 0
+    \end{bmatrix}
+    x[k]
+\end{align*}
 
 (d) calcular, iterativamente, os 10 primeiros valores $y_k$ para entrada em degrau unitário;
 
