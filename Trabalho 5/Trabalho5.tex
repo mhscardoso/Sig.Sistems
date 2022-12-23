@@ -215,6 +215,16 @@ Utilizando as constantes do grupo, a equação torna-se: $2 \dot{y}(t) + y(t) = 
 
 (a) Calcular a resposta à rampa unitária por Laplace, e traçar com precisão o seu gráfico para $t \in [0,\,5\tau]$;
 
+\begin{align*}
+    \dot{y}(t) + \frac{1}{2} y(t) = u(t); \quad y(0^-) = 1; \quad u(t) = t1(t) \\
+    sY(s) - y(0^-) + \frac{1}{2} Y(s) = \frac{1}{s^2} \\
+    (s + 1/2)Y(s) = \frac{s^2 + 1}{s^2} \\
+    Y(s) = \frac{s^2 + 1}{s^2(s + 1/2)} = \frac{r_1}{s^2} + \frac{r_2}{s} + \frac{r_3}{s + 1/2} \\
+    r_1 = 2; \quad r_2 = -4; \quad r_3 = 5 \\
+    Y(s) = \frac{2}{s^2} - \frac{4}{s} + \frac{5}{s + 1/2} \\
+    y(t) = 2t \ 1(t) - 4 \ 1(t) + 5e^{-\frac{1}{2} t} 1(t)
+\end{align*}
+
 (b) por Euler I, encontrar a equação que relaciona $y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$;
 
 (c) resolvê-la por transformada $Z$ para entrada em rampa;
