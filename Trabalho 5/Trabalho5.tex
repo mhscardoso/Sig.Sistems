@@ -225,6 +225,25 @@ Utilizando as constantes do grupo, a equação torna-se: $2 \dot{y}(t) + y(t) = 
     y(t) = 2t \ 1(t) - 4 \ 1(t) + 5e^{-\frac{1}{2} t} 1(t)
 \end{align*}
 
+\begin{verbatim}
+    %Questão 3.a)
+
+    % Intervalo
+    dt=0.001;
+
+    % Dados basicos
+    t=0:dt:10-dt; x=2*t-4+5*exp(-1/2*t);
+    plot (t, x, "r", "linewidth", 3);
+    title("y(t) por t - 3.a)", "fontsize", 20);
+    xlabel("t", "fontsize", 18);
+    ylabel("y(t)", "fontsize", 18);
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.3]{questao3a.jpg}
+    \centering
+\end{figure}
+
 (b) por Euler I, encontrar a equação que relaciona $y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$;
 
 (c) resolvê-la por transformada $Z$ para entrada em rampa;
