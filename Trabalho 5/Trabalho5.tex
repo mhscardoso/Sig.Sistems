@@ -246,6 +246,13 @@ Utilizando as constantes do grupo, a equação torna-se: $2 \dot{y}(t) + y(t) = 
 
 (b) por Euler I, encontrar a equação que relaciona $y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$;
 
+\begin{align*}
+    y(kT) = y(kT - T) + Tu(kT - T) \\
+    y[k] = y[k-1] + Tu[k-1] \\
+    Y(z) = z^{-1}Y(z) + Tz^{-1}U(Z) \\
+    H_d(z) = \frac{Tz^{-1}}{1 - z^{-1}} = T \frac{1}{z - 1}
+\end{align*}
+
 (c) resolvê-la por transformada $Z$ para entrada em rampa;
 
 (d) listar as sequências obtidas para $T = \tau, T = \tau / 2, T = \tau / 4 \text{ e } T = \tau / 8$;
