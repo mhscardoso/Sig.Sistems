@@ -272,6 +272,33 @@ Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) = -\d
 
 (a) para $u(t) = 1$, encontre, por Laplace, a solução e plote-a com precisão para $t \in [0,\, 8/(\zeta \omega_n)]$;
 
+\begin{align*}
+    s^2Y(s) + \frac{4}{3} sY(s) = -sU(s) + 3U(s); \ U(s) = \frac{1}{s} \\
+    Y(s) = \frac{-1 + \frac{3}{s}}{s^2 + \frac{4}{3}s} = \frac{-s + 3}{s^3 + \frac{4}{3} s^2} = \frac{r_1}{s^2} + \frac{r_2}{s} + \frac{r_3}{s + 4/3} \\
+    r_1 = \frac{9}{4} ; \ r_2 = \frac{-39}{16} ; \ r_3 = \frac{39}{16} ; \\
+    Y(s) = \frac{9}{4} \frac{1}{s^2} -\frac{39}{16} \frac{1}{s} + \frac{39}{16} \frac{1}{s + 4/3} \\
+    y(t) = \frac{9t}{4} 1(t) - \frac{39}{16} 1(t) + \frac{39}{16} e^{\frac{-4t}{3}} 1(t)
+\end{align*}
+
+\begin{verbatim}
+    %Questão 4.a)
+
+    % Intervalo
+    dt=0.001;
+
+    % Dados basicos
+    t=0:dt:12-dt; x=9/4*t-39/16+39/16*exp(-4/3*t);
+    plot (t, x, "r", "linewidth", 3);
+    title("y(t) por t - 4.a)", "fontsize", 20);
+    xlabel("t", "fontsize", 18);
+    ylabel("y(t)", "fontsize", 18);
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.3]{questao4a.jpg}
+    \centering
+\end{figure}
+
 (b) por meio de variáveis $x_1$ e $x_2$ apropriadas, expressá-la como $\dot{\bm{x}}(t) = A\bm{x}(t) + B\bm{u}(t)$ e $\bm{y}(t) = C\bm{x}(t) + D\bm{u}(t)$;
 
 (c) por Euler I, relacione $\bm{x}_k \leftrightarrow \bm{x}(kT), \, y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$ (o procedimento para vetores é o mesmo e leva a $\bm{x}_k = A_d \bm{x}_{k - 1} + B_d \bm{u}_k$ e $\dot{\bm{y}}_k = C_d \bm{x}_k + D_d \bm{u}_k$) e obtenha $y_k$;
