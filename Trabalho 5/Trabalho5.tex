@@ -96,7 +96,7 @@ O SLIT é estável nesse caso, porque seus pólos $p_1$ e $p_2$ estão no círcu
 
 \begin{align*}
     x_1[k] = y[k]&& => && x_1[k+1] = y[k+1] = x_2[k] - p_1 u[k] \\
-    x_2[k] = y[k+1] + p_1 u[k] && => && x_2[k+1] = y[k+2] + p_1 u[k] = \frac{1}{4} x_1[k] + (p_1 + 1) u[k+1] + u[k]
+    x_2[k] = y[k+1] + p_1 u[k] && => && x_2[k+1] = y[k+2] + p_1 u[k] = \frac{1}{4} x_1[k] + (p_1 + 1) u[k+1] + 2u[k]
 \end{align*}
 
 \begin{align*}
@@ -105,7 +105,7 @@ O SLIT é estável nesse caso, porque seus pólos $p_1$ e $p_2$ estão no círcu
 
 \begin{align*}
     x_1[k] = y[k]&& => && x_1[k+1] = x_2[k] + u[k] \\
-    x_2[k] = y[k+1] - u[k] && => && x_2[k+1] = \frac{1}{4} x_1[k] + u[k]
+    x_2[k] = y[k+1] - u[k] && => && x_2[k+1] = \frac{1}{4} x_1[k] + 2u[k]
 \end{align*}
 
 \begin{align*}
@@ -119,7 +119,7 @@ O SLIT é estável nesse caso, porque seus pólos $p_1$ e $p_2$ estão no círcu
     +
     \begin{bmatrix}
         1\\
-        1
+        2
     \end{bmatrix}
     u[k];
     \quad
@@ -131,6 +131,36 @@ O SLIT é estável nesse caso, porque seus pólos $p_1$ e $p_2$ estão no círcu
 \end{align*}
 
 (d) calcular, iterativamente, os 10 primeiros valores $y_k$ para entrada em degrau unitário;
+
+Como o SLIT é relaxado, podemos assumir que y[0] = 0.\\
+Basta agora encontrar valores iniciais o suficiente para obter o resto.\\
+Sendo $u[k] = 1[k]$, a expressão fica $y[k+2]-\frac{1}{4}y[k] = 1[k+1]+2u[k]$
+
+\begin{align*}
+    Para\ k&=-1: \\
+    y[1]-\frac{1}{4}y[-1] &= 1[0]+2u[-1] \\
+    y[1] &= 1 \\
+    Para\ k&=0: \\
+    y[2]-\frac{1}{4}y[0] &= 1[1]+2u[0] \\
+    y[2] &= 3 \\
+    Para\ k&=1: \\
+    y[3]-\frac{1}{4}y[1] &= 1[0]+2u[-1]\\
+    y[3] &= \frac{13}{4}
+\end{align*}
+Omitiremos os cálculos a seguir, mas o leitor é convidado a verificar a validade destes.
+\begin{align*}
+    y[0] &= 0\\
+    y[1] &= 1\\
+    y[2] &= 3\\
+    y[3] &= \frac{13}{4}\\
+    y[4] &= \frac{15}{4}\\
+    y[5] &= \frac{61}{16}\\
+    y[6] &= \frac{63}{16}\\
+    y[7] &= \frac{253}{64}\\
+    y[8] &= \frac{255}{64}\\
+    y[9] &= \frac{1021}{256}\\
+    y[10] &= \frac{1023}{256}
+\end{align*}
 
 (e) usando transformada em $Z$, encontrar uma expressão analítica para a $y_k$;
 
