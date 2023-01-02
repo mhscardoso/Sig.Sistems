@@ -71,7 +71,13 @@ Utilizando as constantes do grupo, a equação torna-se: $y_{k + 2} - \frac{1}{4
 (a) Encontrar a função de transferência $G(z)$;
 
 \begin{align*}
-    y_{k + 2} - \frac{1}{4} y_k = u_{k + 1} + 2 u_k => z^2 Y(z) - \frac{1}{4}Y(z) = z U(z) + 2 U(z) => Y(z) = \frac{z + 2}{z^2 - \frac{1}{4}}U(z)
+    y_{k + 2} - \frac{1}{4} y_k = u_{k + 1} + 2 u_k
+\end{align*}
+\begin{align*}
+    z^2 Y(z) - z^2Y(0) - zY(1) - \frac{1}{4}Y(z) = zU(z) - zu(0) + 2U(z)
+\end{align*}
+\begin{align*}
+    Y(z) = \frac{z + 2}{z^2 - \frac{1}{4}}U(z) + \frac{z^2y(0)+zy(1)-zu(0)}{z^2 - \frac{1}{4}}
 \end{align*}
 
 \begin{align*}
