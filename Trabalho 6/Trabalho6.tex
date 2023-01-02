@@ -1,0 +1,160 @@
+\documentclass[10pt]{article}
+
+% Pacotes extras necessários
+\usepackage{amsmath}
+\usepackage[lmargin=0.5in, rmargin=0.5in, tmargin=0.5in, bmargin=0.5in, includehead, includefoot]{geometry}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+
+\graphicspath{ {./images/} }
+
+% Sets para outras partes
+\setlength{\parindent}{0pt}
+\setstretch{1.5}
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\sinc}{sinc}
+
+%% Facilidades
+%% -- Laplace
+\newcommand{\Lap}[1]{\mathcal{L}\left\{#1\right\}}
+
+%% -- Fourier
+\newcommand{\Fou}[1]{\mathcal{F}\left\{#1\right\}}
+
+%% -- Transformada Z
+\newcommand{\Z}[1]{\mathcal{Z}\left\{#1\right\}}
+
+%% -- Negrito em matemáticas
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+
+% ------- Estilo do trabalho -------- %
+\fancypagestyle{capa}{
+    \fancyhf{}
+    \renewcommand\headrulewidth{0pt}
+    \fancyfoot[C]{
+        Rio de Janeiro\\
+        2022
+    }
+}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\thepage}
+\fancyfoot{}
+% ----------------------------------- %
+
+% Dados do Grupo
+\title{Sinais e Sistemas - Trabalho 6 - Avaliação 10}
+\author{
+    \textbf{Grupo 2}\\
+    Leonardo Soares da Costa Tanaka\\
+    Matheus Henrique Sant Anna Cardoso\\
+    Theo Rudra Macedo e Silva
+}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{capa}
+\newpage
+
+\textbf{1.)} Considere o sinal $v(t) = e^{-2t^2}$. (\textbf{Grupo 2:})
+
+(a) Plote o seu gráfico;
+
+(b) escolha, a seu critério, uma janela de amostragem apropriada;
+
+(c) escolha uma frequência de amostragem $f_a$ bem pequena, que coloque poucos pontos na janela, ache a FFt da série temporal obtida e analise o espectro de magnigudes;
+
+(d) escolha a $f_a$ maior que a anterior, que coloque mais pontos na janela, ache a FFT correspondente e compare com a anterior;
+
+(e) siga o roteiro acima até não haver diferenças entre significativas entre os espectros;
+
+(f) usando esta $f_a$ ''boa'' altere a largura inicial da janela, obetenha o espectro mais uma vez e compare.
+
+
+\vspace{\baselineskip}
+
+
+\textbf{2.)} Para o sinal contínuo a seguir (\textbf{Grupo 2:})
+\[\text{\textbf{G2: }} x(t) = 8\sinc(4t) - 2\sinc(2t)\]
+
+(a) Plote o gráfico;
+
+(b) encontre, justificando, a largura $T_0$ de uma janela de observação centrada na origem;
+
+(c) idem período de amostragem $\Delta t$ seguro;
+
+(d) encontre o número de pontos $N = 1 + T_0 / (\Delta t)$ e o vetor base de tempo $t = -T_0 / 2 : \Delta t : T_0 / 2$;
+
+(e) construa a escala frequencial $\Delta f = 1 / T_0, F_0 = (N - 1)\Delta f$ e $f = -F_0 / 2 : \Delta f : F_0 / 2$;
+
+(f) encontre os vetores \texttt{x, X = fft(x)} e \texttt{mod = abs(x)};
+
+(g) plote o espectro de amplitude: \texttt{plot(f, mod)};
+
+(h) comente os resultados.
+
+
+\vspace{\baselineskip}
+
+
+\textbf{3.)} Os pulsos a seguir são pares e nulos para $\mid t \mid > \Delta$:
+
+$p_{\Delta}$ é o plano $p_{\Delta}(t) = \Delta$ para $\mid t \mid\,\,\leq\,\, \Delta$,
+
+$r_{\Delta}$ é triangular com $r_{\Delta}(-\Delta) = r_{\Delta}(\Delta) = 0$ e $r_{\Delta}(0) = \pi / 2$ e
+
+$c_{\Delta}$ é uma semicircunferência com $c_{\Delta}(-\Delta) = c_{\Delta}(\Delta) = 0$ e $c_{\Delta}(0) = \Delta$.
+
+(a) Esboçar o gráfico para os três pulsos e para (\textbf{Grupo 2:})
+\[x = p_4(t) + r_2(t - 2) - c_2(t + 2)\]
+
+(b) Traçar os espectros de x(t), via FFT, determinando $T_0$ e $f_0$ por tentativa e erros.
+
+
+\vspace{\baselineskip}
+
+
+\textbf{4.)} Sendo $p_{\tau}(t) = e^{-\Delta (t - \tau)^2}$ uma janela amostradora, com $\Delta = 0.5$ considere os sinais contínuos
+
+\begin{flushleft}
+\begin{align*}
+    x_1 &= \cos(2 \pi 261.1 t)\\
+    x_2 &= \cos(2 \pi 293.7 t)\\
+    x_3 &= \cos(2 \pi 311.1 t)\\
+    x_4 &= \cos(2 \pi 329.6 t)\\
+    x_5 &= \cos(2 \pi 349.2 t)\\
+    x_6 &= \cos(2 \pi 392.0 t)\\
+    x_7 &= \cos(2 \pi 440.0 t)\\
+    x_8 &= \cos(2 \pi 466.2 t)\\
+    x_9 &= \cos(2 \pi 522.2 t)
+\end{align*}
+\end{flushleft}
+e as combinações entre eles (\textbf{Grupo 2:})
+\[x(t) = x_1p_4 + x_2p_{12} + x_4p_{20} + x_1p_{28} + x_1p_{36} + x_2p_{44} + x_7p_{52} + x_1p_{60} + x_4p_{68} + x_5p_{76} + x_6p_{84}\]
+
+Se estiver usando o MATLAB/Octave use o comando \texttt{sound} ou o \texttt{wavplay} e ouça os sinais $x_i$ e $x$; no FAWAV use o comando \emph{Graph/Audio} com 16 bits, taxa de 8820 e volume de 32000.
+
+(a) Plote o gráfico de $x(t)$ e, a partir dele;
+
+(b) estime a mínima frequência de amostragem $f_a$ segura e uma resolução frequencial $\Delta f$ adequada;
+
+(c) amostre $x$, calcule sua DFT, e plote os espectros com escalas apropriadas;
+
+(d) calcule a energia $E$ do sinal.
+
+(e) Mantendo os pulsos $p_{\tau}$ fixos, construa um sinal $x_a(t)$ fazendo uma permutação aleatória nos ''coeficientes'' $x_i$;
+
+(f) ouça o sinal alterado;
+
+(g) repita (b) e (c) para o novo sinal;
+
+(h) comente os resultados.
+
+\end{document}
