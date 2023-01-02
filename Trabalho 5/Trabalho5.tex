@@ -138,34 +138,32 @@ O SLIT é estável nesse caso, porque seus pólos $p_1$ e $p_2$ estão no círcu
 
 (d) calcular, iterativamente, os 10 primeiros valores $y_k$ para entrada em degrau unitário;
 
-Como o SLIT é relaxado, podemos assumir que y[0] = 0.\\
-Basta agora encontrar valores iniciais o suficiente para obter o resto.\\
-Sendo $u[k] = 1[k]$, a expressão fica $y[k+2]-\frac{1}{4}y[k] = 1[k+1]+2u[k]$
+Podemos usar o seguinte formato para y(k):
 
 \begin{align*}
-    Para\ k&=-1: \\
-    y[1]-\frac{1}{4}y[-1] &= 1[0]+2u[-1] \\
-    y[1] &= 1 \\
-    Para\ k&=0: \\
-    y[2]-\frac{1}{4}y[0] &= 1[1]+2u[0] \\
-    y[2] &= 3 \\
-    Para\ k&=1: \\
-    y[3]-\frac{1}{4}y[1] &= 1[0]+2u[-1]\\
-    y[3] &= \frac{13}{4}
+    y(k) = CA^{k}x(0) + C \sum\limits_{j=0}^{k-1} A^{k-1-j}Bu(j)
 \end{align*}
-Omitiremos os cálculos a seguir, mas o leitor é convidado a verificar a validade destes.
+
+Assumindo que x(0) = 0, pois o SLIT é relaxado:
+
 \begin{align*}
-    y[0] &= 0\\
-    y[1] &= 1\\
-    y[2] &= 3\\
-    y[3] &= \frac{13}{4}\\
-    y[4] &= \frac{15}{4}\\
-    y[5] &= \frac{61}{16}\\
-    y[6] &= \frac{63}{16}\\
-    y[7] &= \frac{253}{64}\\
-    y[8] &= \frac{255}{64}\\
-    y[9] &= \frac{1021}{256}\\
-    y[10] &= \frac{1023}{256}
+    y(k) = C \sum\limits_{j=0}^{k-1} A^{k-1-j}Bu(j)
+\end{align*}
+
+Por fim, os valores são:
+
+\begin{align*}
+    y(0) = 0.000000\\
+    y(1) = 1.000000\\
+    y(2) = 3.000000\\
+    y(3) = 3.250000\\
+    y(4) = 3.750000\\
+    y(5) = 3.812500\\
+    y(6) = 3.937500\\
+    y(7) = 3.953125\\
+    y(8) = 3.984375\\
+    y(9) = 3.988281\\
+    y(10)= 3.996094
 \end{align*}
 
 (e) usando transformada em $Z$, encontrar uma expressão analítica para a $y_k$;
