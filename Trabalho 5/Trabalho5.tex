@@ -163,9 +163,23 @@ Omitiremos os cálculos a seguir, mas o leitor é convidado a verificar a valida
 \end{align*}
 
 (e) usando transformada em $Z$, encontrar uma expressão analítica para a $y_k$;
+\begin{align*}
+    Y(z) = \frac{z + 2}{z^2 - \frac{1}{4}}U(z)
+\end{align*}
+Ao dividir por z, vamos trabalhar com a seguinte expressão:
+\begin{align*}
+    \frac{z + 2}{z \cdot(z + \frac{1}{2}) \cdot(z - \frac{1}{2})} = \frac{r_1}{z + \frac{1}{2}} + \frac{r_2}{z - \frac{1}{2}} + \frac{r_3}{z}
+\end{align*}
+Após calcular, os resíduos são: $r_1 = 3;\ r_2 = 5;\ r_3 = -8$
+\begin{align*}
+    Y(z) &= \left( \frac{3z}{z + \frac{1}{2}} + \frac{5z}{z - \frac{1}{2}} - 8 \right) \cdot U(z)\\
+    Logo:\\
+    y[k] &= 3 \left(-\frac{1}{2}\right)^k \cdot 1[k] + 5 \left(\frac{1}{2}\right)^k \cdot 1[k] - 8 \cdot 1[k]
+\end{align*}
 
 (f) comparar os resultados iterativo e analítico.
 
+Os resultados não são compatíveis dentro do intervalo de 3 vezes o desvio padrão.
 
 \vspace{\baselineskip}
 
