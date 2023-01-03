@@ -339,19 +339,24 @@ Utilizando as constantes do grupo, a equação torna-se: $2 \dot{y}(t) + y(t) = 
 
 
 %% Questão 4 ----------------------------
-\textbf{4.) Para a EDLIT $\ddot{y}(t) + 2\zeta \omega_n \dot{y}(t) = \alpha \dot{u}(t) + \beta u(t)$ com CIs nulas:\\
+\textbf{4.) Para a EDLIT $\ddot{y}(t) + 2\zeta \omega_n \dot{y}(t) + \omega_n^2 y(t) = \alpha \dot{u}(t) + \beta u(t)$ com CIs nulas:\\
 Os dados $(\zeta,\, \omega_n,\, \beta,\, \alpha)$ são \textbf{G2: }$(1/3,\, 2,\, 3,\, -1)$.}
 
-Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) = -\dot{u}(t) + 3u(t)$
+Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) + 4 y(t) = -\dot{u}(t) + 3u(t)$
 
 (a) para $u(t) = 1$, encontre, por Laplace, a solução e plote-a com precisão para $t \in [0,\, 8/(\zeta \omega_n)]$;
 
 \begin{align*}
-    s^2Y(s) + \frac{4}{3} sY(s) = -sU(s) + 3U(s); \ U(s) = \frac{1}{s} \\
-    Y(s) = \frac{-1 + \frac{3}{s}}{s^2 + \frac{4}{3}s} = \frac{-s + 3}{s^3 + \frac{4}{3} s^2} = \frac{r_1}{s^2} + \frac{r_2}{s} + \frac{r_3}{s + 4/3} \\
-    r_1 = \frac{9}{4} ; \ r_2 = \frac{-39}{16} ; \ r_3 = \frac{39}{16} ; \\
-    Y(s) = \frac{9}{4} \frac{1}{s^2} -\frac{39}{16} \frac{1}{s} + \frac{39}{16} \frac{1}{s + 4/3} \\
-    y(t) = \frac{9t}{4} 1(t) - \frac{39}{16} 1(t) + \frac{39}{16} e^{\frac{-4t}{3}} 1(t)
+    s^2Y(s) + 2\zeta \omega_n sY(s) + \omega_n^2 Y(s) = \alpha sU(s) + \beta U(s); \ U(s) = \frac{1}{s} \\
+    Y(s) = \frac{\alpha s + \beta}{s^2 + 2\zeta \omega_n s + \omega_n^2} U(s) = \frac{\alpha s + \beta}{(s^2 + 2\zeta \omega_n s + \omega_n^2)s} \\
+    Y(s) = \frac{r_1 s + r_2}{s^2 + 2\zeta \omega_n s + \omega_n^2} + \frac{r_3}{s} = \frac{r_1 s + r_2}{s^2 + 2\zeta \omega_n s + \zeta^2 \omega_n^2 + \omega_n^2 - \zeta^2 \omega_n^2} + \frac{r_3}{s} \\
+    Y(s) = \frac{r_1 s + r_2}{(s + \zeta \omega_n)^2 + \omega_n^2 (1 - \zeta^2)} + \frac{r_3}{s} = \frac{r_1 s + r_2}{(s + \zeta \omega_n)^2 + (\omega_n \sqrt{1 - \zeta^2})^2} + \frac{r_3}{s} \\
+    \omega = \omega_n \sqrt{1 - \zeta^2} \\
+    Y(s) = \frac{r_1(s + \zeta \omega_n)}{(s + \zeta \omega_n)^2 + \omega^2} + \frac{\frac{r_2 - r_1 \zeta \omega_n}{\omega} \omega}{(s + \zeta \omega_n)^2 + \omega^2} + \frac{r_3}{s} \\
+    y(t) = e^{- \zeta \omega_n t}(r_1 cos(\omega t) + \frac{r_2 - r_1 \zeta \omega_n}{\omega}sen(wt)) + r_3 \\
+    r_1 = \frac{-\beta}{\omega_n^2}, r_2 = \alpha - \frac{2 \zeta}{\omega_n}, r_3 = \frac{\beta}{\omega_n^2} \\
+    \omega = \frac{4 \sqrt{2}}{3}, r_1 = \frac{3}{4}, r_2 = -2, r_3 = \frac{-3}{4} \\
+    y(t) = e^{\frac{2}{3}t} \left( \frac{3}{4}cos\left(\frac{4 \sqrt{2}}{3}t\right) - \frac{15 \sqrt{2}}{16} sen\left(\frac{4 \sqrt{2}}{3}t\right)\right) - \frac{3}{4} \\
 \end{align*}
 
 \begin{verbatim}
@@ -361,19 +366,24 @@ Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) = -\d
     dt=0.001;
 
     % Dados basicos
-    t=0:dt:12-dt; x=9/4*t-39/16+39/16*exp(-4/3*t);
-    plot (t, x, "r", "linewidth", 3);
+    t=0:dt:12-dt; y=e.^(2/3*t).*(3/4*cos(4*sqrt(2)/3*t)-15*sqrt(2)/16*sin(4*sqrt(2)/3*t))-3/4;
+    plot (t, y, "r", "linewidth", 3);
     title("y(t) por t - 4.a)", "fontsize", 20);
     xlabel("t", "fontsize", 18);
     ylabel("y(t)", "fontsize", 18);
 \end{verbatim}
 
 \begin{figure}[h]
-    \includegraphics[scale=0.3]{questao4a.jpg}
+    \includegraphics[scale=0.15]{questao4a.jpg}
     \centering
 \end{figure}
 
 (b) por meio de variáveis $x_1$ e $x_2$ apropriadas, expressá-la como $\dot{\bm{x}}(t) = A\bm{x}(t) + B\bm{u}(t)$ e $\bm{y}(t) = C\bm{x}(t) + D\bm{u}(t)$;
+
+\begin{align*}
+    x_1(t) = y(t), x_2(t) = \dot{y}(t) + pu(t) \\
+    \dot{x}_1(t) = \dot{y}(t) = x_2(t) - pu(u), \dot{x}_2(t) = \ddot{y}(y) + p\dot{u}(t)
+\end{align*}
 
 (c) por Euler I, relacione $\bm{x}_k \leftrightarrow \bm{x}(kT), \, y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$ (o procedimento para vetores é o mesmo e leva a $\bm{x}_k = A_d \bm{x}_{k - 1} + B_d \bm{u}_k$ e $\dot{\bm{y}}_k = C_d \bm{x}_k + D_d \bm{u}_k$) e obtenha $y_k$;
 
