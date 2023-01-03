@@ -320,14 +320,29 @@ Utilizando as constantes do grupo, a equação torna-se: $2 \dot{y}(t) + y(t) = 
 
 (b) por Euler I, encontrar a equação que relaciona $y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$;
 
+Buscando chegar em uma relação tal que $y(t) = \int_{0}^{t} a(\tau) \ d\tau$, fazemos:
 \begin{align*}
-    y(kT) = y(kT - T) + Tu(kT - T) \\
-    y[k] = y[k-1] + Tu[k-1] \\
-    Y(z) = z^{-1}Y(z) + Tz^{-1}U(Z) \\
-    H_d(z) = \frac{Tz^{-1}}{1 - z^{-1}} = T \frac{1}{z - 1}
+    2 \dot{y}(t) &= 2u(t) - y(t)\\
+    \dot{y}(t) &= \frac{2u(t) - y(t)}{2}\\
+    y(t) &= \int_{0}^{t} \frac{2u(t) - y(t)}{2} \ dt\\
+\end{align*}
+
+Tendo $a(t)$, fazemos:
+\begin{align*}
+    y(kT) &= y(kT -T) + Ta(kT - T)\\
+    y[k] &= y[k - 1] + Ta[k - 1]\\
+    y[k] &= y[k - 1] + T \frac{2u(t) - y(t)}{2}\\
+    y[k] &= y[k - 1] \left(1 - \frac{T}{2}\right) + Tu[k - 1]
 \end{align*}
 
 (c) resolvê-la por transformada $Z$ para entrada em rampa;
+
+Aqui, $u[k] = k \cdot 1[k]$. Logo, $U(z) = \frac{z}{(z - 1)^2}$
+
+Agora, temos: $y[k] = y[k - 1] \left(1 - \frac{T}{2}\right) + Tu[k - 1]$. Aplicando a transformada Z, teremos:
+\begin{align*}
+    Y(z) = z^{-1}Y(z) \left(1 - \frac{T}{2}\right) + Tz^{-1}U(z)
+\end{align*}
 
 (d) listar as sequências obtidas para $T = \tau, T = \tau / 2, T = \tau / 4 \text{ e } T = \tau / 8$;
 
@@ -421,7 +436,7 @@ Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) + 4 y
     x(t)
 \end{align*}
 
-(c) por Euler I, relacione $\bm{x}_k \leftrightarrow \bm{x}(kT), \, y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$ (o procedimento para vetores é o mesmo e leva a $\bm{x}_k = A_d \bm{x}_{k - 1} + B_d \bm{u}_k$ e $\dot{\bm{y}}_k = C_d \bm{x}_k + D_d \bm{u}_k$) e obtenha $y_k$;
+(c) por Euler I, relacione $\bm{x}_k \leftrightarrow \bm{x}(kT), \, y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$ (o procedimento para vetores é o mesmo e leva a $\bm{x}_k = A_d \bm{x}_{k - 1} + B_d \bm{u}_k$ e $\bm{y}_k = C_d \bm{x}_k + D_d \bm{u}_k$) e obtenha $y_k$;
 
 (d) plota as sequências obtidas para $T = T_0 = 1 / (\zeta \omega_n), \, T = T_0/2, \, T = T_0/4$ e $T = T_0/8$ no gráfico de (a) e compare as aproximações numéricas.
 
