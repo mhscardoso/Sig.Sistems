@@ -381,8 +381,44 @@ Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) + 4 y
 (b) por meio de variáveis $x_1$ e $x_2$ apropriadas, expressá-la como $\dot{\bm{x}}(t) = A\bm{x}(t) + B\bm{u}(t)$ e $\bm{y}(t) = C\bm{x}(t) + D\bm{u}(t)$;
 
 \begin{align*}
+    \ddot{y}(t) + 2\zeta \omega_n \dot{y}(t) + \omega_n^2 y(t) = \alpha \dot{u}(t) + \beta u(t) \\
     x_1(t) = y(t), x_2(t) = \dot{y}(t) + pu(t) \\
-    \dot{x}_1(t) = \dot{y}(t) = x_2(t) - pu(u), \dot{x}_2(t) = \ddot{y}(y) + p\dot{u}(t)
+    \dot{x}_1(t) = \dot{y}(t) = x_2(t) - pu(t) \\
+    \dot{x}_2(t) = \ddot{y}(t) + p\dot{u}(t) = -2\zeta \omega_n x_2(t) - \omega_n^2 x_1(t) + (\alpha + p)\dot{u}(t) + (\beta + 2\zeta\omega_n p)u(t) \\
+    p = - \alpha = 1
+\end{align*}
+
+\begin{align*}
+    \dot{x}(t) =
+    \begin{bmatrix}
+        0 && 1 \\
+        -\omega_n^2 && -2\zeta\omega_n
+    \end{bmatrix}
+    x(t) +
+    \begin{bmatrix}
+        -p \\
+        \beta + 2 \zeta\omega_n p
+    \end{bmatrix}
+    u(t), y(t) =
+    \begin{bmatrix}
+        1 && 0
+    \end{bmatrix}
+    x(t) \\
+    \dot{x}(t) =
+    \begin{bmatrix}
+        0 && 1 \\
+        -4 && -4/3
+    \end{bmatrix}
+    x(t) +
+    \begin{bmatrix}
+        -1 \\
+        3 + 4/3
+    \end{bmatrix}
+    u(t), y(t) =
+    \begin{bmatrix}
+        1 && 0
+    \end{bmatrix}
+    x(t)
 \end{align*}
 
 (c) por Euler I, relacione $\bm{x}_k \leftrightarrow \bm{x}(kT), \, y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$ (o procedimento para vetores é o mesmo e leva a $\bm{x}_k = A_d \bm{x}_{k - 1} + B_d \bm{u}_k$ e $\dot{\bm{y}}_k = C_d \bm{x}_k + D_d \bm{u}_k$) e obtenha $y_k$;
