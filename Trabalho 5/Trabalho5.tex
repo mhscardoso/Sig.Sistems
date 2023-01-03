@@ -167,23 +167,49 @@ Por fim, os valores são:
 \end{align*}
 
 (e) usando transformada em $Z$, encontrar uma expressão analítica para a $y_k$;
+
+Utilizaremos uma das expressões obtidas no item a)
 \begin{align*}
-    Y(z) = \frac{z + 2}{z^2 - \frac{1}{4}}U(z)
+    Y(z) = \frac{z + 2}{z^2 - \frac{1}{4}}U(z) + \frac{z^2y(0^-)+zy(1)-zu(0^-)}{z^2 - \frac{1}{4}}
 \end{align*}
-Ao dividir por z, vamos trabalhar com a seguinte expressão:
+
+Como a entrada é um degrau unitáio, e temos os valores obtidos para $ y(0),\ y(1)\ e\ u(0) $, obtém-se:
+
 \begin{align*}
-    \frac{z + 2}{z \cdot(z + \frac{1}{2}) \cdot(z - \frac{1}{2})} = \frac{r_1}{z + \frac{1}{2}} + \frac{r_2}{z - \frac{1}{2}} + \frac{r_3}{z}
+    Y(z) = \frac{z + 2}{z^2 - \frac{1}{4}} \cdot \frac{z}{z-1}
 \end{align*}
-Após calcular, os resíduos são: $r_1 = 3;\ r_2 = 5;\ r_3 = -8$
+
+Manipulando a equação:
+
 \begin{align*}
-    Y(z) &= \left( \frac{3z}{z + \frac{1}{2}} + \frac{5z}{z - \frac{1}{2}} - 8 \right) \cdot U(z)\\
-    Logo:\\
-    y[k] &= 3 \left(-\frac{1}{2}\right)^k \cdot 1[k] + 5 \left(\frac{1}{2}\right)^k \cdot 1[k] - 8 \cdot 1[k]
+    \frac{Y(z)}{z} = \frac{z + 2}{(z+\frac{1}{2})(z-\frac{1}{2})} \cdot \frac{z}{z(z-1)}\\
+    Y(z) = \frac{z}{z+\frac{1}{2}} - 5\frac{z}{z-\frac{1}{2}} + 4\frac{z}{z-1}
+\end{align*}
+
+Calculando a inversa:
+
+\begin{align*}
+    y(k) = \left[\left(-\frac{1}{2}\right)^k - 5\left(\frac{1}{2}\right)^k + 4\right] \cdot 1(k)
+\end{align*}
+
+Por fim, plotando os resultados:
+
+\begin{align*}
+    y(0) = 0.000000\\
+    y(1) = 1.000000\\
+    y(2) = 3.000000\\
+    y(3) = 3.250000\\
+    y(4) = 3.750000\\
+    y(5) = 3.812500\\
+    y(6) = 3.937500\\
+    y(7) = 3.953125\\
+    y(8) = 3.984375\\
+    y(9) = 3.988281\\
+    y(10)= 3.996094
 \end{align*}
 
 (f) comparar os resultados iterativo e analítico.
 
-Os resultados não são compatíveis dentro do intervalo de 3 vezes o desvio padrão.
 
 \vspace{\baselineskip}
 
