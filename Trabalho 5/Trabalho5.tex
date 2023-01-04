@@ -361,17 +361,39 @@ Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) + 4 y
 
 (a) para $u(t) = 1$, encontre, por Laplace, a solução e plote-a com precisão para $t \in [0,\, 8/(\zeta \omega_n)]$;
 
+\vspace{\baselineskip}
+
+Utilizando Laplace na EDLIT:
 \begin{align*}
     s^2Y(s) + 2\zeta \omega_n sY(s) + \omega_n^2 Y(s) = \alpha sU(s) + \beta U(s); \ U(s) = \frac{1}{s} \\
-    Y(s) = \frac{\alpha s + \beta}{s^2 + 2\zeta \omega_n s + \omega_n^2} U(s) = \frac{\alpha s + \beta}{(s^2 + 2\zeta \omega_n s + \omega_n^2)s} \\
+    Y(s) = \frac{\alpha s + \beta}{s^2 + 2\zeta \omega_n s + \omega_n^2} U(s) = \frac{\alpha s + \beta}{(s^2 + 2\zeta \omega_n s + \omega_n^2)s}
+\end{align*}
+
+Descobrindo os valores do denominador das frações polinomiais:
+
+\begin{align*}
     Y(s) = \frac{r_1 s + r_2}{s^2 + 2\zeta \omega_n s + \omega_n^2} + \frac{r_3}{s} = \frac{r_1 s + r_2}{s^2 + 2\zeta \omega_n s + \zeta^2 \omega_n^2 + \omega_n^2 - \zeta^2 \omega_n^2} + \frac{r_3}{s} \\
-    Y(s) = \frac{r_1 s + r_2}{(s + \zeta \omega_n)^2 + \omega_n^2 (1 - \zeta^2)} + \frac{r_3}{s} = \frac{r_1 s + r_2}{(s + \zeta \omega_n)^2 + (\omega_n \sqrt{1 - \zeta^2})^2} + \frac{r_3}{s} \\
-    \omega = \omega_n \sqrt{1 - \zeta^2} \\
+    Y(s) = \frac{r_1 s + r_2}{(s + \zeta \omega_n)^2 + \omega_n^2 (1 - \zeta^2)} + \frac{r_3}{s} = \frac{r_1 s + r_2}{(s + \zeta \omega_n)^2 + (\omega_n \sqrt{1 - \zeta^2})^2} + \frac{r_3}{s}
+\end{align*}
+
+Substituindo $\omega = \omega_n \sqrt{1 - \zeta^2}$ para achar a transformada de seno e cosseno nas expressões da transformada:
+
+\begin{align*}
     Y(s) = \frac{r_1(s + \zeta \omega_n)}{(s + \zeta \omega_n)^2 + \omega^2} + \frac{\frac{r_2 - r_1 \zeta \omega_n}{\omega} \omega}{(s + \zeta \omega_n)^2 + \omega^2} + \frac{r_3}{s} \\
-    y(t) = e^{- \zeta \omega_n t}(r_1 cos(\omega t) + \frac{r_2 - r_1 \zeta \omega_n}{\omega}sen(wt)) + r_3 \\
+    y(t) = e^{- \zeta \omega_n t}(r_1 cos(\omega t) + \frac{r_2 - r_1 \zeta \omega_n}{\omega}sen(wt)) + r_3
+\end{align*}
+
+Descobrindo os denominadores das frações anteriores:
+
+\begin{align*}
     r_1 = \frac{-\beta}{\omega_n^2}, r_2 = \alpha - \frac{2 \zeta \beta}{\omega_n}, r_3 = \frac{\beta}{\omega_n^2} \\
-    \omega = \frac{4 \sqrt{2}}{3}, r_1 = \frac{-3}{4}, r_2 = -2, r_3 = \frac{3}{4} \\
-    y(t) = e^{\frac{2}{3}t} \left(-\frac{3}{4}cos\left(\frac{4 \sqrt{2}}{3}t\right) - \frac{15 \sqrt{2}}{16} sen\left(\frac{4 \sqrt{2}}{3}t\right)\right) + \frac{3}{4} \\
+    \omega = \frac{4 \sqrt{2}}{3}, r_1 = \frac{-3}{4}, r_2 = -2, r_3 = \frac{3}{4}
+\end{align*}
+
+Solução:
+
+\begin{align*}
+    y(t) = e^{-\frac{2}{3}t} \left(-\frac{3}{4}cos\left(\frac{4 \sqrt{2}}{3}t\right) - \frac{15 \sqrt{2}}{16} sen\left(\frac{4 \sqrt{2}}{3}t\right)\right) + \frac{3}{4} \\
 \end{align*}
 
 \begin{verbatim}
@@ -381,7 +403,7 @@ Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) + 4 y
     dt=0.001;
 
     % Dados basicos
-    t=0:dt:12-dt; y=e.^(2/3*t).*-3/4*cos(4*sqrt(2)/3*t)-15*sqrt(2)/16*sin(4*sqrt(2)/3*t))+3/4;
+    t=0:dt:12-dt; y=e.^(-2/3*t).*(-3/4*cos(4*sqrt(2)/3*t)-15*sqrt(2)/16*sin(4*sqrt(2)/3*t))+3/4;
     plot (t, y, "r", "linewidth", 3);
     title("y(t) por t - 4.a)", "fontsize", 20);
     xlabel("t", "fontsize", 18);
@@ -393,15 +415,22 @@ Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) + 4 y
     \centering
 \end{figure}
 
+\vspace{\baselineskip}
+
 (b) por meio de variáveis $x_1$ e $x_2$ apropriadas, expressá-la como $\dot{\bm{x}}(t) = A\bm{x}(t) + B\bm{u}(t)$ e $\bm{y}(t) = C\bm{x}(t) + D\bm{u}(t)$;
 
 \begin{align*}
-    \ddot{y}(t) + 2\zeta \omega_n \dot{y}(t) + \omega_n^2 y(t) = \alpha \dot{u}(t) + \beta u(t) \\
     x_1(t) = y(t), x_2(t) = \dot{y}(t) + pu(t) \\
     \dot{x}_1(t) = \dot{y}(t) = x_2(t) - pu(t) \\
-    \dot{x}_2(t) = \ddot{y}(t) + p\dot{u}(t) = -2\zeta \omega_n x_2(t) - \omega_n^2 x_1(t) + (\alpha + p)\dot{u}(t) + (\beta + 2\zeta\omega_n p)u(t) \\
-    p = - \alpha = 1
+    \dot{x}_2(t) = \ddot{y}(t) + p\dot{u}(t) =  - \omega_n^2 y(t) - 2\zeta \omega_n \dot{y}(t) + \alpha \dot{u}(t) + \beta u(t)+  p \dot{u}(t) = \\
+    = - \omega_n^2 x_1(t) -2\zeta \omega_n x_2(t) + (\alpha + p)\dot{u}(t) + (\beta + 2\zeta\omega_n p)u(t) 
 \end{align*}
+
+Já que $\dot{u}(t)$ tem que sumir, então $p = - \alpha = 1$.
+
+\vspace{\baselineskip}
+
+Utilizando as expressões anteriores chegamos na seguinte expressão:
 
 \begin{align*}
     \dot{x}(t) =
@@ -418,7 +447,11 @@ Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) + 4 y
     \begin{bmatrix}
         1 && 0
     \end{bmatrix}
-    x(t) \\
+    x(t)
+\end{align*}
+Substituindo com os valores das constantes:
+
+\begin{align*}
     \dot{x}(t) =
     \begin{bmatrix}
         0 && 1 \\
@@ -438,13 +471,19 @@ Utilizando os dados do grupo, temos: $\ddot{y}(t) + \frac{4}{3} \dot{y}(t) + 4 y
 
 (c) por Euler I, relacione $\bm{x}_k \leftrightarrow \bm{x}(kT), \, y_k \leftrightarrow y(kT)$ e $u_k \leftrightarrow u(kT)$ (o procedimento para vetores é o mesmo e leva a $\bm{x}_k = A_d \bm{x}_{k - 1} + B_d \bm{u}_k$ e $\bm{y}_k = C_d \bm{x}_k + D_d \bm{u}_k$) e obtenha $y_k$;
 
+Utilizando Euler I para obter $x_k$:
+
 \begin{align*}
     \dot{x}(kT) = A_dx(kT) + B_du(kT) = w(kT) \\
     \int_0^{kT}{\dot{x}(t)dt} = \int_0^{kT}{w(t)dt} \\
     x(kT) - x(kT - T) = Tw(kT - T) \\
-    x(kT + T) = x(Kt) + T(A_dx(KT) + B_du(kT)) \\
-    x_{k+1} = (I + TA_d)x_k + B_dTu_k \\
-    y_k = C_dx_{k}
+    x(kT) = x(Kt - T) + T(A_dx(KT - T) + B_du(kT - T)) \\
+    x_{k} = (I + TA_d)x_{k-1} + B_dTu_{k-1} \\
+\end{align*}
+Obtendo $y_k$:
+\begin{align*}
+    y(KT) = C_dx(KT) \\
+    y_k = C_dx_k
 \end{align*}
 
 (d) plota as sequências obtidas para $T = T_0 = 1 / (\zeta \omega_n), \, T = T_0/2, \, T = T_0/4$ e $T = T_0/8$ no gráfico de (a) e compare as aproximações numéricas.
