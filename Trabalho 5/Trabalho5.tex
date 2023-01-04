@@ -538,8 +538,28 @@ Obtendo $y_k$:
 \textbf{5.) Seja EDVT $\dot{y}(t) + \alpha(t)y(t) = u(t)$ com $u(t) = 1(t)$. Quando um sinal contínuo $p$ tende a uma constante para valores altos de $t$ ($\lim p(t) = p_r = $ cte. para $t \to \infty$) esta é chamada de valor de regime do sinal.}
 
 (a) sem resolver a equação calcular o valor de regime $y_r$, supondo que $y(t)$ tende a ele;
+\begin{align*}
+    Seja\ a(t) = \frac{t^2-1}{t^2+1} 
+\end{align*}
+
+Precisamos conhecer os limites de $ \dot{y}(t)\ e\ a(t) $.
+Se existe um valor de regime para a equação acima, então a taxa de variação da função tende a zero
+quando t tende a infinito. Portanto $ \lim_{t\to\infty} \dot{y}(t) = 0 $
+\begin{align*}
+    Basta\ fazer\ \lim_{t\to\infty} a(t) = \lim_{t\to\infty} \left( \frac{1-\frac{1}{t^2}}{1+\frac{1}{t^2}} \right)
+\end{align*}
+\begin{align*}
+    Logo:\ \lim_{t\to\infty} a(t) = 1
+\end{align*}
+\begin{align*}
+    y_r = 1
+\end{align*}
 
 (b) por Euler I, relacione as sequências $u_k \leftrightarrow u(kT)$ e $y_k \leftrightarrow y(kT)$;
+
+\begin{align*}
+    \dot{y}(t) = u(t) - a(t)y(t)\\
+\end{align*}
 
 (c) resolva, manualmente ou por meio de um script em alguma linguagem, para $T = 1, T = 1/2, T = 1/4$ e $T = 1/10$; a solução $y(t)$ deve ser aproximada para $t \in [0, \, 10]$;
 
