@@ -337,16 +337,59 @@ Tendo $a(t)$, fazemos:
 
 (c) resolvê-la por transformada $Z$ para entrada em rampa;
 
-Aqui, $u[k] = k \cdot 1[k]$. Logo, $U(z) = \frac{z}{(z - 1)^2}$
+Aqui, $u[k] = kT \cdot 1[k]$. Logo, $U(z) = T\frac{z}{(z - 1)^2}$
+Deslocando a sequência, temos: $y[k + 1] = y[k] \left(1 - \frac{T}{2}\right) + Tu[k]$. Aplicando a transformada Z, teremos:
 
-Agora, temos: $y[k] = y[k - 1] \left(1 - \frac{T}{2}\right) + Tu[k - 1]$. Aplicando a transformada Z, teremos:
 \begin{align*}
-    Y(z) = z^{-1}Y(z) \left(1 - \frac{T}{2}\right) + Tz^{-1}U(z)
+    zY(z) - z &= Y(z) + T U(z)\\
+    \frac{Y(z)}{z} &= \frac{z^2 -2z + 1 - T^2}{(z - 1 + T/2)(z-1)^2}
 \end{align*}
+
+Separando em frações parciais:
+\begin{align*}
+    \frac{Y(z)}{z} &= \frac{A}{z - 1 + T/2} + \frac{B}{z - 1} + \frac{C}{(z - 1)^2}\\
+    Y(z) &= A\frac{z}{z - 1 + T/2} + B\frac{z}{z - 1} + C\frac{z}{(z - 1)^2}\\
+    y[k] &= A \cdot \left(1 - \frac{T}{2}\right)^k + B \cdot 1[k] + C \cdot k\ 1[k]\\
+\end{align*}
+
+Agora, basta descobrir $A, B$ e $C$. Somando as frações:
+\[A (z^2 - 2z + 1) + B (z - 1 + T/2)(z - 1) + C (z - 1 + T/2) = z^2 -2z + 1 - T^2\\\]
+\begin{align*}
+    \begin{cases}
+        A + B = 1\\
+        2A + 2B - \frac{TB}{2} - C = 2\\
+        A + B - \frac{TB}{2} + \frac{TC}{2} - C = 1 + T^2
+    \end{cases}
+    & &
+    \begin{cases}
+        A = 5\\
+        B = -4\\
+        C = 2T
+    \end{cases}
+\end{align*}
+
+Então
+\[y[k] = 5 \cdot \left(1 - \frac{T}{2}\right)^k \cdot 1[k] - 4 \cdot 1[k] + 2T \cdot k\ 1[k]\]
 
 (d) listar as sequências obtidas para $T = \tau, T = \tau / 2, T = \tau / 4 \text{ e } T = \tau / 8$;
 
+Sendo $\tau = 2$, substituímos:
+\begin{align*}
+    \begin{cases}
+        T = 2 & y[k] = 5 \cdot \delta(k) - 4 \cdot 1[k] + 4 \cdot k\ 1[k]\\
+        T = 1 & y[k] = 5 \cdot \left(\frac{1}{2}\right)^k \ 1[k] - 4 \cdot 1[k] + 2 \cdot k\ 1[k]\\
+        T = \frac{1}{2} & y[k] = 5 \cdot \left(\frac{3}{4}\right)^k \ 1[k] - 4 \cdot 1[k] + k\ 1[k]\\
+        T = \frac{1}{4} & y[k] = 5 \cdot \left(\frac{7}{8}\right)^k \ 1[k] - 4 \cdot 1[k] + \frac{1}{2} \cdot k\ 1[k]
+    \end{cases}
+\end{align*}
+
 (e) plotar os valores de $y(kT)$ no mesmo gráfico do ítem (a) e comparar as aproximações numéricas;
+
+\begin{figure}[h]
+    \includegraphics[scale=0.4]{questao3e.jpg}
+    \centering
+\end{figure}
+$y(t)$ em vermelho -- $T = 2$ em azul -- $T = 1$ em laranja -- $T = 1/2$ em amarelo -- $T = 1/4$ em roxo.
 
 (f) repetir (b), (c), (d) e (e) para Newton.
 
