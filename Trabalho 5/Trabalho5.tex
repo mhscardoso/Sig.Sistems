@@ -714,6 +714,39 @@ Agora, aplicando o limite na equação inteira:
     y(10) &= 1.11961205 & y(10) &= 1.12091172  &  y(10) &= 1.12145406      &  y(10) &= 1.12170391\\
 \end{align*}
 
+Para tal, foi realizado um código na linguagem python, a seguir:
+
+\begin{verbatim}
+
+
+import numpy as np
+# Função a(t)
+def a(t):
+    return (t*2 - 1)/(t*2 + 1)
+# Valores iniciais
+y0 = -1
+t0 = 0
+# Passos de tempo
+Ts = [1, 0.5, 0.25, 0.1]
+# Número de passos
+N = 100
+# Loop sobre os passos de tempo
+for T in Ts:
+    # Vetor de tempos
+    t = np.linspace(t0, t0 + N*T, N+1)
+    
+    # Vetor de solução aproximada
+    y = np.zeros(N+1)
+    y[0] = y0
+    
+    # Loop sobre os passos
+    for k in range(N):
+        y[k+1] = y[k] + T*(1 - a(t[k])*y[k])
+    
+    # Imprime a solução aproximada para o intervalo [0, 10]
+    print(y[0:int(10/T)+1])
+\end{verbatim}
+
 (d) repetir (b) e (c) para Euler II.
 
 Aplicando Euler II, sabendo que $ y_k = y(KT) $:
@@ -743,5 +776,34 @@ Aplicando Euler II, sabendo que $ y_k = y(KT) $:
     y(9) &= 1.023006     & y(9) &= 1.043960       &  y(9) &= 0.73108         &  y(9) &= -0.480685\\
     y(10) &= 1.01986     & y(10) &= 1.05174       &  y(10) &= 0.8233         &  y(10) &= -0.37710\\
 \end{align*}
+Para tal, foi realizado um código na linguagem python, a seguir:
+
+\begin{verbatim}
+# Biblioteca para otimização do tempo de execução
+from functools import cache
+# Dados iniciais
+y0 = -1
+# Parte complicada da operação
+def mult_dem(k, T):
+    return (((k + 1) * T)**2 - 1) / (((k + 1) * T)**2 + 1)
+
+# Função recursiva, que retorna o valor de y_k
+@cache
+def y_k(k, T):
+    if k == 0:
+        return -1
+    
+    return (y_k(k - 1, T) + T) / (1 + T * mult_dem(k, T))
+
+% Os períodos
+T1 = 1
+T2 = 1/2
+T3 = 1/4
+T4 = 1/10
+
+# Aqui, para o período igual a 4
+for k in range(11):
+    print(f"y({k}) = {y_k(k, T4)}")
+\end{verbatim}
 
 \end{document}

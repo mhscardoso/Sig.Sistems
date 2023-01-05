@@ -2,7 +2,7 @@ import numpy as np
 
 # Função a(t)
 def a(t):
-    return ((t + 1)**2 - 1)/((t + 1)**2 + 1)
+    return (t*2 - 1)/(t*2 + 1)
 
 # Valores iniciais
 y0 = -1
