@@ -394,6 +394,29 @@ $y(t)$ em vermelho -- $T = 2$ em azul -- $T = 1$ em laranja -- $T = 1/2$ em amar
 
 Aqui, o período igual a um ($T = 1$) aproxima-se mais da curva real.
 
+Código para o gráfico:
+
+\begin{verbatim}
+%% Questão 3 e)
+%% Trabalho 5 - Sinais e Sistemas
+%Questão 3.a)
+% Intervalo
+dt = 0.001;
+% Dados basicos
+t = 0:dt:10 - dt; x = 2 * t - 4 + 5*exp(-1/2 * t);
+plot (t, x, "r", "linewidth", 3), hold on
+T = 2          %% Valor inicial do periodo
+for j=0:3
+    k = 0:T:10;
+    y = (5 * (1 - T/2).^k) + (2 * T * k) - 4;
+    plot(k, y, "*"), hold on
+    T = T / 2;    %% Mudanca no periodo segue um padrao
+endfor
+title("y(t) por t - 3.e)", "fontsize", 20)
+xlabel("t", "fontsize", 18),
+ylabel("y(t)", "fontsize", 18);
+\end{verbatim}
+
 (f) repetir (b), (c), (d) e (e) para Newton.
 
 Com o mesmo $a = \frac{2u(t) - y(t)}{2}$ pelo método de Newton, teremos:
@@ -465,8 +488,34 @@ Fazendo, finalmente, os gráficos, teremos:
 
 Aqui, igualmente, aquela com período igual a um ($T = 1$) é mais próxima da curva real.
 
-\vspace{\baselineskip}
+Código para o gráfico:
+\begin{verbatim}
+%% Questão 3 f)
+%% Trabalho 5 - Sinais e Sistemas
+%Questão 3.a)
+% Intervalo
+dt = 0.001;
+% Dados basicos
+t = 0:dt:10 - dt; x = 2 * t - 4 + 5*exp(-1/2 * t);
+plot (t, x, "r", "linewidth", 3), hold on
+T = 2          %% Valor inicial do periodo
+for j=0:3
+    %% Coeficientes
+    p = (T - 4) / (T + 4);
+    A = (T^2 * (1 + p)) / (1 - p)^2;
+    B = -A;
+    C = (2*T^2) / (1 - p);
+    k = 0:T:10;
+    y = (A * p.^k) + B  + C * k;
+    plot(k, y, "*"), hold on
+    T = T / 2;    %% Mudanca no periodo segue um padrao
+endfor
+title("y(t) por t - 3.f)", "fontsize", 20),
+xlabel("t", "fontsize", 18),
+ylabel("y(t)", "fontsize", 18);
+\end{verbatim}
 
+\vspace{\baselineskip}
 
 %% Questão 4 ----------------------------
 \textbf{4.) Para a EDLIT $\ddot{y}(t) + 2\zeta \omega_n \dot{y}(t) + \omega_n^2 y(t) = \alpha \dot{u}(t) + \beta u(t)$ com CIs nulas:\\
