@@ -210,6 +210,7 @@ Por fim, plotando os resultados:
 
 (f) comparar os resultados iterativo e analítico.
 
+Embora métodos diferentes tenham sido utilizados, os resultados iterativo e analítico são os mesmos.
 
 \vspace{\baselineskip}
 
@@ -535,23 +536,29 @@ Obtendo $y_k$:
 \vspace{\baselineskip}
 
 %% Questão 5 ------------------------------
-\textbf{5.) Seja EDVT $\dot{y}(t) + \alpha(t)y(t) = u(t)$ com $u(t) = 1(t)$. Quando um sinal contínuo $p$ tende a uma constante para valores altos de $t$ ($\lim p(t) = p_r = $ cte. para $t \to \infty$) esta é chamada de valor de regime do sinal.}
+\textbf{5.) Seja EDVT $\dot{y}(t) + \alpha(t)y(t) = u(t)$ com $u(t) = 1(t)$. Quando um sinal contínuo $p$ tende a uma constante para valores altos de $t$ ($\lim p(t) = p_r = $ cte. para $t \to \infty$) esta é chamada de valor de regime do sinal.}\\
+Os dados $a(t)$ e $y(0^-)$ são: \textbf{G2: }$(t^2 - 1)/(t^2 + 1)$ e $-1$.
 
 (a) sem resolver a equação calcular o valor de regime $y_r$, supondo que $y(t)$ tende a ele;
 \begin{align*}
-    Seja\ a(t) = \frac{t^2-1}{t^2+1} 
+    Foi\ dado\ que\ a(t) = \frac{t^2-1}{t^2+1} 
 \end{align*}
 
 Precisamos conhecer os limites de $ \dot{y}(t)\ e\ a(t) $.
 Se existe um valor de regime para a equação acima, então a taxa de variação da função tende a zero
 quando t tende a infinito. Portanto $ \lim_{t\to\infty} \dot{y}(t) = 0 $
 \begin{align*}
-    Basta\ fazer\ \lim_{t\to\infty} a(t) = \lim_{t\to\infty} \left( \frac{1-\frac{1}{t^2}}{1+\frac{1}{t^2}} \right)
+    Basta\ fazer\ \lim_{t\to\infty} a(t) = \lim_{t\to\infty} \left( \frac{t^2-1}{t^2+1} \right) = \left( \frac{1-\frac{1}{t^2}}{1+\frac{1}{t^2}} \right)
 \end{align*}
 \begin{align*}
     Logo:\ \lim_{t\to\infty} a(t) = 1
 \end{align*}
+Agora, aplicando o limite na equação inteira:
 \begin{align*}
+    \lim_{t\to\infty} [\dot{y}(t)] + \lim_{t\to\infty} [a(t) \cdot y_r] = \lim_{t\to\infty} [1(t)]
+\end{align*}
+\begin{align*}
+    0 + 1 \cdot y_r =&\ 1\\
     y_r = 1
 \end{align*}
 
@@ -559,12 +566,28 @@ quando t tende a infinito. Portanto $ \lim_{t\to\infty} \dot{y}(t) = 0 $
 
 \begin{align*}
     \dot{y}(t) = u(t) - a(t)y(t)\\
+    y(t) = y_{0} + \int_{0}^{t} (u(t) - a(t)y(t))dt\\
+    y_k = y_0 + \sum_{i=0}^{k-1} (u_i - a_i y_i)T\\
+    y_{k+1} = -1 + \sum_{i=0}^{k} (u_i - a_i y_i)T\\
+    y_{k+1} = y_k + (u_k - a_k y_k)T\\
+    Dados:\ a_k = \frac{(KT)^2-1}{(KT)^2+1};\ u_k = 1(k)\\ \\
+    y_{k+1} = \left[ 1 - T \left( \frac{(KT)^2-1}{(KT)^2+1} \right) \right] y_k + T \cdot 1(k)
 \end{align*}
 
 (c) resolva, manualmente ou por meio de um script em alguma linguagem, para $T = 1, T = 1/2, T = 1/4$ e $T = 1/10$; a solução $y(t)$ deve ser aproximada para $t \in [0, \, 10]$;
 
+
+
 (d) repetir (b) e (c) para Euler II.
 
-Os dados $a(t)$a e $y(0^-)$ são: \textbf{G2: }$(t^2 - 1)/(t^2 + 1)$ e $-1$.
+Aplicando Euler II, sabendo que $ y_k = y(KT) $:
+\begin{align*}
+    y_k = y_0 + \sum_{i=1}^{k} (u_i - a_i y_i)T\\
+    y_{k+1} = y_0 + \sum_{i=1}^{k+1} (u_i - a_i y_i)T\\
+    y_{k+1} = y_k + (u_{k+1} - a_{k+1} y_{k+1})T\\
+\end{align*}
+\begin{align*}
+    y_{k+1} = \frac{y_k + Tu_{k+1}}{1 + Ta_{k+1}}
+\end{align*}
 
 \end{document}
