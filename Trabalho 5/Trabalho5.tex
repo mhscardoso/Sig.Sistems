@@ -392,7 +392,78 @@ Sendo $\tau = 2$, substituímos:
 \end{figure}
 $y(t)$ em vermelho -- $T = 2$ em azul -- $T = 1$ em laranja -- $T = 1/2$ em amarelo -- $T = 1/4$ em roxo.
 
+Aqui, o período igual a um ($T = 1$) aproxima-se mais da curva real.
+
 (f) repetir (b), (c), (d) e (e) para Newton.
+
+Com o mesmo $a = \frac{2u(t) - y(t)}{2}$ pelo método de Newton, teremos:
+
+\begin{align*}
+    y[k] &= y[k - 1] + T \frac{a[k] + a[k - 1]}{2}\\
+    y[k] &= y[k - 1] + \frac{T}{4} \left(2u[k] - y[k] + 2u[k - 1] - y[k - 1]\right)\\
+    y[k] \left[1 + \frac{T}{4}\right] &= y[k - 1] \left[1 - \frac{T}{4}\right] + \frac{T}{2} u[k] + \frac{T}{2} u[k - 1]
+\end{align*}
+
+Fazendo a transformada Z:
+\begin{align*}
+    Y(z) \left[1 + \frac{T}{4}\right] &= z^{-1}Y(z) \left[1 - \frac{T}{4}\right] + \frac{T}{2} U(z) + \frac{T}{2} z^{-1}U(z)\\
+    Y(z) \left[4z - 4 + T + Tz\right] &= \frac{zT^2(z + 1)}{2(z-1)^2}\\
+    \frac{Y(z)}{z} &= \frac{T^2(z + 1)}{2(z(4 - T) + T - 4)(z - 1)^2}
+\end{align*}
+
+Fazendo algumas simplificações, chamemos de $p = \frac{T - 4}{T + 4}$.
+\begin{align*}
+    \frac{Y(z)}{z} &= \frac{1}{2(4 - T)} \cdot \frac{T^2 (z + 1)}{(z + p)(z - 1)^2}\\
+    \frac{Y(z)}{z} &= \frac{A}{z + p} + \frac{B}{z - 1} + \frac{C}{(z - 1)^2}\\
+    Y(z) &= A \frac{z}{z + p} + B \frac{z}{z - 1} + C \frac{z}{(z - 1)^2}
+\end{align*}
+
+Voltando:
+\begin{align*}
+    y[k] &= A \cdot p^k \ 1[k] + B \cdot 1[k] + C \cdot k \ 1[k]
+\end{align*}
+
+Para os valores $A, \ B$ e $C$, faremos:
+\[A(z^2 - 2z + 1) + B(z - p)(z - 1) + C(z - p)\]
+\begin{align*}
+    \begin{cases}
+        A + B = 0\\
+        -2A - B - pB + C = T^2\\
+        A + Bp - Cp = T^2
+    \end{cases}
+    & &
+    \begin{cases}
+        A = \frac{T^2(1 + p)}{(1 - p)^2}\\
+        B = -\frac{T^2(1 + p)}{(1 - p)^2}\\
+        C = \frac{2T^2}{1 - p}
+    \end{cases}
+\end{align*}
+
+Uma lista para os casos com $T$ e $p$:
+\begin{align*}
+    T &= 2           & p &= -\frac{1}{3}    &  A &= \frac{3}{2}      &  B &= -\frac{3}{2}     & C &= 6\\
+    T &= 1           & p &= -\frac{3}{5}    &  A &= \frac{5}{32}     &  B &= -\frac{5}{32}    & C &= \frac{5}{4}\\
+    T &= \frac{1}{2} & p &= -\frac{7}{9}    &  A &= \frac{9}{512}    &  B &= -\frac{9}{512}   & C &= \frac{9}{32}\\
+    T &= \frac{1}{4} & p &= -\frac{15}{17}  &  A &= \frac{17}{8192}  &  B &= -\frac{17}{8192} & C &= \frac{17}{256}
+\end{align*}
+
+Então, para cada caso, teremos:
+\[y[k] = A \cdot p^k \ 1[k] + B \cdot 1[k] + C \cdot k \ 1[k]\]
+\begin{align*}
+    T &= 2           & y[k] &= \frac{3}{2}     \cdot p^k \ 1[k] -\frac{3}{2}      \cdot 1[k] + 6               \cdot k \ 1[k]\\
+    T &= 1           & y[k] &= \frac{5}{32}    \cdot p^k \ 1[k] -\frac{5}{32}     \cdot 1[k] + \frac{5}{4}     \cdot k \ 1[k]\\
+    T &= \frac{1}{2} & y[k] &= \frac{9}{512}   \cdot p^k \ 1[k] -\frac{9}{512}    \cdot 1[k] + \frac{9}{32}    \cdot k \ 1[k]\\
+    T &= \frac{1}{4} & y[k] &= \frac{17}{8192} \cdot p^k \ 1[k] -\frac{17}{8192}  \cdot 1[k] + \frac{17}{256}  \cdot k \ 1[k]\\
+\end{align*}
+
+Fazendo, finalmente, os gráficos, teremos:
+
+\begin{figure}[h]
+    \includegraphics[scale=0.35]{questao3f.jpg}
+    \centering
+\end{figure}
+
+Aqui, igualmente, aquela com período igual a um ($T = 1$) é mais próxima da curva real.
 
 \vspace{\baselineskip}
 
