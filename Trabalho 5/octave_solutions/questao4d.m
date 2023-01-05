@@ -1,6 +1,6 @@
 clear all
 t = 0:0.001:8/(2/3);
-y5=e.^(-2/3*t).*(-3/4*cos(4*sqrt(2)/3*t)-15*sqrt(2)/16*sin(4*sqrt(2)/3*t))+3/4;
+y5 = e.^(-2/3 * t).*(-3/4*cos(4*sqrt(2)/3*t)-15*sqrt(2)/16*sin(4*sqrt(2)/3*t))+3/4;
 function res = x(k,j)
   if(k > 0)
     I = [1 0; 0 1];
@@ -13,7 +13,7 @@ function res = x(k,j)
 endfunction
 
 function res = y(k, j)
-  for l = 1:legth(k)
+  for l = 1:length(k)
     v(l) = [1 0]*x(k(l), j);
   endfor
   res = v;
@@ -24,7 +24,7 @@ plot(t, y5), hold on
 
 for j=0:3
   k1 = 0:1:(8/(2/3))/T;
-  y1 = y(k1,T);
-  plot(k1*T, y1, "*-"), hold on
+  y1 = y(k1,T)
+  plot(k1*T, y1, "*"), hold on
   T = T/2;
 endfor
