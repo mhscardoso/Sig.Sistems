@@ -67,11 +67,100 @@
 
 (a) Plote o seu gráfico;
 
+\begin{verbatim}
+%Questão 1.a)
+
+% Intervalo
+dt=0.001;
+
+% Dados basicos
+t=-2:dt:2-dt;
+v=exp(-2*t.^2);
+plot (t, v, "r", "linewidth", 3);
+title("v(t) por t - 1.a)", "fontsize", 20);
+xlabel("t", "fontsize", 18);
+ylabel("v(t)", "fontsize", 18);
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.25]{questao1a}
+    \centering
+\end{figure}
+
 (b) escolha, a seu critério, uma janela de amostragem apropriada;
+
+\vspace{\baselineskip}
+Foi escolhida uma janela de amostragem de 4 de largura com começo em -2, porque foi quando a função v começa a ficar maior que zero e depois começa a voltar para o zero.
+\vspace{\baselineskip}
 
 (c) escolha uma frequência de amostragem $f_a$ bem pequena, que coloque poucos pontos na janela, ache a FFt da série temporal obtida e analise o espectro de magnigudes;
 
+\vspace{\baselineskip}
+Foi escolhida uma frequência de amostragem $f_a$ de 1/$\Delta_T$ que nesse caso seria 2,5.
+
+\begin{verbatim}
+%Questão 1.c)
+
+% Intervalo
+dt=0.4;
+
+% Dados basicos
+t=-2:dt:2;
+v=exp(-2*t.^2);
+plot (t, v, "rx", "linewidth", 10);
+title("v(t) por t - 1.c)", "fontsize", 20);
+xlabel("t", "fontsize", 18);
+ylabel("v(t)", "fontsize", 18);
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.25]{questao1c}
+    \centering
+\end{figure}
+
+\begin{verbatim}
+V = fft(v);
+modV = abs(V);
+angV = angle(V);
+V = fftshift(V);
+modV = abs(V);
+plot(t, modV, "r*")
+title("Espectro de magnitudes", "fontsize", 20);
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.25]{questao1c2}
+    \centering
+\end{figure}
+
 (d) escolha a $f_a$ maior que a anterior, que coloque mais pontos na janela, ache a FFT correspondente e compare com a anterior;
+
+\begin{verbatim}
+%Questão 1.d)
+
+% Intervalo
+dt=0.2;
+    
+% Dados basicos
+t=-2:dt:2;
+v=exp(-2*t.^2);
+% plot (t, v, "rx", "linewidth", 10);
+% title("v(t) por t - 1.d)", "fontsize", 20);
+% xlabel("t", "fontsize", 18);
+% ylabel("v(t)", "fontsize", 18);
+V = fft(v);
+modV = abs(V);
+angV = angle(V);
+V = fftshift(V);
+modV = abs(V);
+plot(t, modV, "r*")
+title("Espectro de magnitudes", "fontsize", 20);    
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.25]{questao1d}
+    \centering
+\end{figure}
 
 (e) siga o roteiro acima até não haver diferenças entre significativas entre os espectros;
 
