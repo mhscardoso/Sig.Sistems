@@ -10,4 +10,3 @@ plot (t, v, "r", "linewidth", 3);
 title("v(t) por t - 1.a)", "fontsize", 20);
 xlabel("t", "fontsize", 18);
 ylabel("v(t)", "fontsize", 18);
-

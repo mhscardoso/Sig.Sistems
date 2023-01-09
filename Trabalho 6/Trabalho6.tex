@@ -83,7 +83,7 @@ ylabel("v(t)", "fontsize", 18);
 \end{verbatim}
 
 \begin{figure}[h]
-    \includegraphics[scale=0.25]{questao1a}
+    \includegraphics[scale=0.2]{questao1a}
     \centering
 \end{figure}
 
@@ -99,12 +99,7 @@ Foi escolhida uma janela de amostragem de 4 de largura com começo em -2, porque
 Foi escolhida uma frequência de amostragem $f_a$ de 1/$\Delta_T$ que nesse caso seria 2,5.
 
 \begin{verbatim}
-%Questão 1.c)
-
-% Intervalo
 dt=0.4;
-
-% Dados basicos
 t=-2:dt:2;
 v=exp(-2*t.^2);
 plot (t, v, "rx", "linewidth", 10);
@@ -114,57 +109,104 @@ ylabel("v(t)", "fontsize", 18);
 \end{verbatim}
 
 \begin{figure}[h]
-    \includegraphics[scale=0.25]{questao1c}
+    \includegraphics[scale=0.2]{questao1c}
     \centering
 \end{figure}
 
+Então é preciso fazer as seguintes operações para calcular a FFT:
+
+$\Delta_f = 1/T_0 = 1/4 = 0.25; \ L_0 = (N - 1)\Delta_f = 2,5 \Rightarrow f \in [-1,25 \ 1,25]$
+
 \begin{verbatim}
-V = fft(v);
-modV = abs(V);
-angV = angle(V);
+f=-1.25:(0.25):1.25;
+V = fft(v)
 V = fftshift(V);
 modV = abs(V);
-plot(t, modV, "r*")
+plot(f, modV, "r*")
 title("Espectro de magnitudes", "fontsize", 20);
 \end{verbatim}
 
+\begin{align*}
+    FFT: \\
+    3.1333 +      0i \\
+    -2.3299 - 0.6841i \\
+    0.9509 + 0.6111i \\
+    -0.2069 - 0.2388i \\
+    0.0220 + 0.04
+\end{align*}
+
 \begin{figure}[h]
-    \includegraphics[scale=0.25]{questao1c2}
+    \includegraphics[scale=0.2]{questao1c2}
     \centering
 \end{figure}
 
 (d) escolha a $f_a$ maior que a anterior, que coloque mais pontos na janela, ache a FFT correspondente e compare com a anterior;
 
 \begin{verbatim}
-%Questão 1.d)
-
 % Intervalo
 dt=0.2;
-    
 % Dados basicos
 t=-2:dt:2;
 v=exp(-2*t.^2);
-% plot (t, v, "rx", "linewidth", 10);
-% title("v(t) por t - 1.d)", "fontsize", 20);
-% xlabel("t", "fontsize", 18);
-% ylabel("v(t)", "fontsize", 18);
-V = fft(v);
-modV = abs(V);
-angV = angle(V);
-V = fftshift(V);
-modV = abs(V);
-plot(t, modV, "r*")
-title("Espectro de magnitudes", "fontsize", 20);    
+plot (t, v, "rx", "linewidth", 10);
+title("v(t) por t - 1.d)", "fontsize", 20);
+xlabel("t", "fontsize", 18);
+ylabel("v(t)", "fontsize", 18);   
 \end{verbatim}
 
 \begin{figure}[h]
-    \includegraphics[scale=0.25]{questao1d}
+    \includegraphics[scale=0.2]{questao1d}
+    \centering
+\end{figure}
+
+$\Delta_f = 1/T_0 = 1/4 = 0.25; \ L_0 = (N - 1)\Delta_f = 5 \Rightarrow f \in [-2,5 \ 2,5]$
+
+\begin{verbatim}
+f=-2.5:(0.25):2.5;
+V = fft(v)
+V = fftshift(V);
+modV = abs(V);
+plot(f, modV, "r*")
+title("Espectro de magnitudes", "fontsize", 20); 
+\end{verbatim}
+
+\begin{align*}
+    && && FFT: \\
+    6.2664 +      0i && -4.6846 - 0.7061i &&  1.9556 + 0.6032i && -0.4554 - 0.2193i &&  0.0588 + 0.0401i \\
+   -0.0043 - 0.0040i &&  0.0001 + 0.0002i && -0.0000 - 0.0000i && -0.0000 - 0.0000i && -0.0000 - 0.0000i \\
+   -0.0000 - 0.0000i && -0.0000 + 0.0000i && -0.0000 + 0.0000i && -0.0000 + 0.0000i && -0.0000 + 0.0000i \\
+    0.0001 - 0.0002i && -0.0043 + 0.0040i &&  0.0588 - 0.0401i && -0.4554 + 0.2193i && 1.9556 - 0.6032i \\
+   -4.6846 + 0.7061i
+\end{align*}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.2]{questao1d2}
     \centering
 \end{figure}
 
 (e) siga o roteiro acima até não haver diferenças entre significativas entre os espectros;
 
-(f) usando esta $f_a$ ''boa'' altere a largura inicial da janela, obetenha o espectro mais uma vez e compare.
+\vspace{\baselineskip}
+Depois de repetir o processo diversas vezes até não ter uma significativa foi obtido o seguinte código final com $\Delta_t$ de 0,0005:
+
+\begin{verbatim}
+dt=0.0005;
+t=-2:dt:2;
+v=exp(-2*t.^2);
+f=-(1/(2*dt)):(1/4):(1/(2*dt));
+V = fft(v)
+V = fftshift(V);
+modV = abs(V);
+plot(f, modV, "r*")
+title("Espectro de magnitudes", "fontsize", 20);    
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.2]{questao1e}
+    \centering
+\end{figure}
+
+(f) usando esta $f_a$ ''boa'' altere a largura inicial da janela, obtenha o espectro mais uma vez e compare.
 
 
 \vspace{\baselineskip}
@@ -175,7 +217,31 @@ title("Espectro de magnitudes", "fontsize", 20);
 
 (a) Plote o gráfico;
 
+\begin{verbatim}
+%Questão 2.a)
+% Intervalo
+dt=0.001;
+% Dados basicos
+t=-10:dt:10-dt;
+x=8*sinc(4*t)-2*sinc(2*t);
+plot (t, x, "r", "linewidth", 3);
+title("x(t) por t - 2.a)", "fontsize", 20);
+xlabel("t", "fontsize", 18);
+ylabel("x(t)", "fontsize", 18);
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.25]{questao2a}
+    \centering
+\end{figure}
+
 (b) encontre, justificando, a largura $T_0$ de uma janela de observação centrada na origem;
+
+\vspace{\baselineskip}
+
+A largura $T_0$ encontrada foi 8 que começa em -4, porque é o trecho em que maior parte da energia é concentrada e o valor dos máximos e mínimos locais fora desse intervalo deixam de ser tão diferentes.
+
+\vspace{\baselineskip}
 
 (c) idem período de amostragem $\Delta t$ seguro;
 
