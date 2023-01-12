@@ -324,6 +324,38 @@ $c_{\Delta}$
 
 (b) Traçar os espectros de x(t), via FFT, determinando $T_0$ e $f_0$ por tentativa e erros.
 
+\begin{figure}[h]
+    \includegraphics[scale=0.25]{questao3b}
+    \centering
+\end{figure}
+
+Foi escolhido $T_0$ = 10 e $f_0$ = 20. A partir de diversas tentativas e erros escolhemos esses valores. Pois, fica mais claro de identificar o comportamento da FFT. Isso tudo levando em consideração o x(t), que possui toda energia concentrada de [-4 4] e algumas oscilações diferentes entre os planos positivo e negativo. Então, não foi utilizado um grande $T_0$ para que não seja utilizado uma informação desnessária. Além disso, $f_0$ não tão pequeno para que haja uma manutenção do comportamento do x(t).
+
+\begin{verbatim}
+    dt=0.05;
+    T0=10;
+    t=-(T0/2):dt:(T0/2);
+
+    p=4;
+    r=2;
+    c=2;
+
+    x=4*(abs(t)<=p)+(pi/2-(pi/(2*r))*abs(t-2)).*(abs(t-2)<=r)+sqrt(c^2-(t+2).^2).*(abs(t+2)<=c);
+
+    f=-1/(2*dt):(1/T0):1/(2*dt);
+    X = fft(x)
+    X = fftshift(X);
+    modX = abs(X);
+    angX = angle(X);
+    subplot(2, 1, 1)
+    plot(f, modX, "linewidth", 3)
+    title("Espectro de magnitudes", "fontsize", 20);
+    subplot(2, 1, 2)
+    plot(f, angX, "linewidth", 3)
+    title("Espectro de fases", "fontsize", 20);
+\end{verbatim}
+
+
 
 \vspace{\baselineskip}
 
