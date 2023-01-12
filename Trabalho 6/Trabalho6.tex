@@ -268,6 +268,47 @@ $c_{\Delta}$ é uma semicircunferência com $c_{\Delta}(-\Delta) = c_{\Delta}(\D
 (a) Esboçar o gráfico para os três pulsos e para (\textbf{Grupo 2:})
 \[x = p_4(t) + r_2(t - 2) - c_2(t + 2)\]
 
+$p_{\Delta}$
+
+\begin{figure}[h]
+    \includegraphics[scale=0.15]{questao3a1}
+    \centering
+\end{figure}
+
+\begin{verbatim}
+    delta = 1;
+    p = delta*(abs(t)<=delta);
+\end{verbatim}
+
+$r_{\Delta}$
+
+\begin{figure}[h]
+    \includegraphics[scale=0.15]{questao3a2}
+    \centering
+\end{figure}
+
+\begin{verbatim}
+    delta = 1;
+    r = (pi/2-(pi/(2*delta))*abs(t)).*(abs(t)<=delta);
+\end{verbatim}
+
+$c_{\Delta}$
+
+\begin{figure}[h]
+    \includegraphics[scale=0.15]{questao3a3}
+    \centering
+\end{figure}
+
+\begin{verbatim}
+    delta = 1;
+    c = sqrt(delta^2-(t).^2).*(abs(t)<=delta);
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.25]{questao3a}
+    \centering
+\end{figure}
+
 \begin{verbatim}
     dt=0.001;
     t=-5:dt:5;
@@ -280,11 +321,6 @@ $c_{\Delta}$ é uma semicircunferência com $c_{\Delta}(-\Delta) = c_{\Delta}(\D
     xlabel("t", "fontsize", 18);
     ylabel("x(t)", "fontsize", 18);
 \end{verbatim}
-
-\begin{figure}[h]
-    \includegraphics[scale=0.25]{questao3a}
-    \centering
-\end{figure}
 
 (b) Traçar os espectros de x(t), via FFT, determinando $T_0$ e $f_0$ por tentativa e erros.
 
