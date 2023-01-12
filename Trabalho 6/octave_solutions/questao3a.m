@@ -8,4 +8,3 @@ plot(t, x, "r", "linewidth", 3)
 title("x(t) por t - 3.a)", "fontsize", 20);
 xlabel("t", "fontsize", 18);
 ylabel("x(t)", "fontsize", 18);
-
