@@ -431,50 +431,135 @@ A maior frequência foi para o coeficiente $x_9$ com $f = 522.2 Hz$. Assim, util
 \end{align*}
 Nisso, o $\Delta_t$ será dado por $\Delta_t = \frac{1}{f_a}$.
 
-Pelo gráfico obtido, podemos estimar o período $T_0 = 8$ segundos. Portanto, $\Delta_f = \frac{1}{T_0}$.
-\[\Delta_f = 0.125\]
+Podemos utilizar uma janela de amostragem de 200 segundos. Com isso, $\Delta_f = \frac{1}{200} = 0.005 Hz$.
 
 (c) amostre $x$, calcule sua DFT, e plote os espectros com escalas apropriadas;
 
+A amostragem de $x$ foi feita utilizando o octave, com o código abaixo:
+
+\begin{verbatim}
+%Questao 4.c)
+% Intervalo
+
+% Dados básicos
+
+fa = 1100;
+amostragem = 200;
+
+d_t = 1 / fa;
+d_f = 1 / amostragem;
+
+t = -amostragem / 2:d_t:amostragem / 2;
+f = -fa / 2: d_f : fa / 2;
+
+f1=261.1; p4 = exp(-0.5*(t-4).^2); x1=cos(2*pi*f1*t);
+f2=293.7; p12=exp(-0.5*(t-12).^2); x2=cos(2*pi*f2*t);
+f3=311.1; p20=exp(-0.5*(t-20).^2); x3=cos(2*pi*f3*t);
+f4=396.6; p28=exp(-0.5*(t-28).^2); x4=cos(2*pi*f4*t);
+f5=349.2; p36=exp(-0.5*(t-36).^2); x5=cos(2*pi*f5*t);
+f6=392.0; p44=exp(-0.5*(t-44).^2); x6=cos(2*pi*f6*t);
+f7=440.0; p52=exp(-0.5*(t-52).^2); x7=cos(2*pi*f7*t);
+f8=466.2; p60=exp(-0.5*(t-60).^2); x8=cos(2*pi*f8*t);
+f9=522.1; p68=exp(-0.5*(t-68).^2); x9=cos(2*pi*f9*t);
+p76=exp(-0.5*(t-76).^2);
+p84=exp(-0.5*(t-84).^2);
+
+x = x1.*p4 + x2.*p12 + x4.*p20 + x1.*p28 + x1.*p36 + x2.*p44 + 
+    x7.*p52 + x1.*p60 + x4.*p68 + x5.*p76 + x6.*p84;
+
+F_x = fft(x);
+X_s = fftshift(F_x);
+X_a = abs(X_s)/fa;
+
+plot(f, X_a, ".", "markersize", 10);
+xlabel("f", "fontsize", 15);
+ylabel("X(f)", "fontsize", 15);
+\end{verbatim}
+
+Finalmente, o gráfico:
+\begin{figure}[h]
+    \includegraphics[scale=0.3]{questao4c.jpg}
+    \centering
+\end{figure}
+
 (d) calcule a energia $E$ do sinal.
 
-(e) Mantendo os pulsos $p_{\tau}$ fixos, construa um sinal $x_a(t)$ fazendo uma permutação aleatória nos ''coeficientes'' $x_i$;
+Sabemos que a energia de um sinal é dada por:
+\[E = \int_{-\infty}^{\infty} |x|^2 \ dx\]
+
+Como temos uma janela de amostragem de 200 e, no momento anterior ao zero, $x(t) = 0$, podemos simplificar a integral, fazendo:
+\[E = \int_{0}^{100} |x|^2 \ dx\]
+
+Isto é facilmente calculado pelo octave com:
 \begin{verbatim}
-    
-    % Intervalo
-    dt = 0.008;
-    
-    % Dados básicos
-    t = 0:dt:8-dt;
-    f1=261.1; p4 = exp(-0.5*(t-4).^2); x1=cos(2*pi*f1*t);
-    f2=293.7; p12=exp(-0.5*(t-12).^2); x2=cos(2*pi*f2*t);
-    f3=311.1; p20=exp(-0.5*(t-20).^2); x3=cos(2*pi*f3*t);
-    f4=396.6; p28=exp(-0.5*(t-28).^2); x4=cos(2*pi*f4*t);
-    f5=349.2; p36=exp(-0.5*(t-36).^2); x5=cos(2*pi*f5*t);
-    f6=392.0; p44=exp(-0.5*(t-44).^2); x6=cos(2*pi*f6*t);
-    f7=440.0; p52=exp(-0.5*(t-52).^2); x7=cos(2*pi*f7*t);
-    f8=466.2; p60=exp(-0.5*(t-60).^2); x8=cos(2*pi*f8*t);
-    f9=522.1; p68=exp(-0.5*(t-68).^2); x9=cos(2*pi*f9*t);
-    p76=exp(-0.5*(t-76).^2); 
-    p84=exp(-0.5*(t-84).^2);
-    
-    % Combinação entre os sinais para o grupo 2
-    x = x3.*p4 + x5.*p12 + x2.*p20 + x8.*p28 + x7.*p36 + 
-        x9.*p44 + x2.*p52 + x1.*p60 + x4.*p68 + x6.*p76 + x7.*p84;
-    plot(t,x)
-    title("x(t) por t - 4.a)", "fontsize", 20);
-    xlabel("t", "fontsize", 18);
-    ylabel("x(t)", "fontsize", 18);
-    
-    \end{verbatim}
-    \begin{figure}[h]
-        \includegraphics[scale=0.6]{questao4e}
-        \centering
-    \end{figure}
+%% x é o sinal anterior x(t) já na janela de amostragem dada.
+E = sum(abs(x).^2).*dt
+\end{verbatim}
+
+Obtendo como resposta, via terminal do Octave:
+\begin{verbatim}
+E = 9.6510
+\end{verbatim}
+
+A energia calculada foi de:
+\[\boxed{E = 9.6510}\]
+
+(e) Mantendo os pulsos $p_{\tau}$ fixos, construa um sinal $x_a(t)$ fazendo uma permutação aleatória nos ''coeficientes'' $x_i$;
+\begin{verbatim}    
+% Combinação entre os sinais para o grupo 2, com permutação nos x_i
+x_a = x3.*p4 + x5.*p12 + x2.*p20 + x8.*p28 + x7.*p36 + 
+    x9.*p44 + x2.*p52 + x1.*p60 + x4.*p68 + x6.*p76 + x7.*p84;
+
+plot(t,x_a)
+title("x_a(t) por t - 4.a)", "fontsize", 20);
+xlabel("t", "fontsize", 18);
+ylabel("x_a(t)", "fontsize", 18);    
+\end{verbatim}
+\begin{figure}[h]
+    \includegraphics[scale=0.6]{questao4e}
+    \centering
+\end{figure}
 (f) ouça o sinal alterado;
+
+Ouvimos o sinal com o comando:
+\begin{verbatim}
+sound(x_a)
+\end{verbatim}
 
 (g) repita (b) e (c) para o novo sinal;
 
+Aqui, ainda temos como máxima frequência o valor de $522.2 Hz$. Assim, como segurança, adotaremos um $f_h = 550 Hz$. Dessa forma, $f_a = 2f_h$ e ainda teremos $f_a = 1100 Hz$.
+
+Agora, podemos ainda ter uma janela de amostragem de 200, tendo como $\Delta_f = \frac{1}{200} = 0.005$.
+
+Fazendo a transformada de Fourier com o código abaixo:
+\begin{verbatim}
+F_x = fft(x_a);
+X_s = fftshift(F_x);
+X_a = abs(X_s)/fa;
+
+plot(f,X_a)
+title("X_a(t) por f - 4.g)", "fontsize", 20);
+xlabel("f", "fontsize", 18);
+ylabel("X_a(f)", "fontsize", 18);
+\end{verbatim}
+
+Obtemos:
+\begin{figure}[h]
+    \includegraphics[scale=0.3]{questao4f1.jpg}
+    \centering
+\end{figure}
+
+\newpage
+
+Abaixo, o mesmo gráfico, porém, com o zoom na parte direira, para melhor visualização.
+\begin{figure}[h]
+    \includegraphics[scale=0.3]{questao4f2.jpg}
+    \centering    
+\end{figure}
+
 (h) comente os resultados.
+
+O som de ambos os sinais eram metálicos, mas formavam alguma harmonia bem interessante de se escutar. Em ambos, também, a transformada de fourier gerou espectros e ficou evidente como a frequência de amostragem ótima é acima de $2f_h$.
 
 \end{document}
