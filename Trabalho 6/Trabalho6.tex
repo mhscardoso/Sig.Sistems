@@ -423,6 +423,17 @@ ylabel("x(t)", "fontsize", 18);
 
 (b) estime a mínima frequência de amostragem $f_a$ segura e uma resolução frequencial $\Delta f$ adequada;
 
+A maior frequência foi para o coeficiente $x_9$ com $f = 522.2 Hz$. Assim, utilizaremos $f_h = 550 Hz$ para termos uma janela de amostragem segura. Dessa forma,
+\begin{align*}
+    f_a &= 2f_h\\
+    f_a &= 2 \cdot 550\\
+    f_a &= 1100 Hz
+\end{align*}
+Nisso, o $\Delta_t$ será dado por $\Delta_t = \frac{1}{f_a}$.
+
+Pelo gráfico obtido, podemos estimar o período $T_0 = 8$ segundos. Portanto, $\Delta_f = \frac{1}{T_0}$.
+\[\Delta_f = 0.125\]
+
 (c) amostre $x$, calcule sua DFT, e plote os espectros com escalas apropriadas;
 
 (d) calcule a energia $E$ do sinal.
