@@ -405,7 +405,8 @@ p76=exp(-0.5*(t-76).^2);
 p84=exp(-0.5*(t-84).^2);
 
 % Combinação entre os sinais para o grupo 2
-x = x1.*p4 + x2.*p12 + x4.*p20 + x1.*p28 + x1.*p36 + x2.*p44 + x7.*p52 + x1.*p60 + x4.*p68 + x5.*p76 + x6.*p84;
+x = x1.*p4 + x2.*p12 + x4.*p20 + x1.*p28 + x1.*p36 + 
+    x2.*p44 + x7.*p52 + x1.*p60 + x4.*p68 + x5.*p76 + x6.*p84;
 plot(t,x)
 title("x(t) por t - 4.a)", "fontsize", 20);
 xlabel("t", "fontsize", 18);
