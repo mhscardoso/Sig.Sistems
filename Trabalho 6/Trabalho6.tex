@@ -439,7 +439,38 @@ Pelo gráfico obtido, podemos estimar o período $T_0 = 8$ segundos. Portanto, $
 (d) calcule a energia $E$ do sinal.
 
 (e) Mantendo os pulsos $p_{\tau}$ fixos, construa um sinal $x_a(t)$ fazendo uma permutação aleatória nos ''coeficientes'' $x_i$;
-
+\begin{verbatim}
+    
+    % Intervalo
+    dt = 0.008;
+    
+    % Dados básicos
+    t = 0:dt:8-dt;
+    f1=261.1; p4 = exp(-0.5*(t-4).^2); x1=cos(2*pi*f1*t);
+    f2=293.7; p12=exp(-0.5*(t-12).^2); x2=cos(2*pi*f2*t);
+    f3=311.1; p20=exp(-0.5*(t-20).^2); x3=cos(2*pi*f3*t);
+    f4=396.6; p28=exp(-0.5*(t-28).^2); x4=cos(2*pi*f4*t);
+    f5=349.2; p36=exp(-0.5*(t-36).^2); x5=cos(2*pi*f5*t);
+    f6=392.0; p44=exp(-0.5*(t-44).^2); x6=cos(2*pi*f6*t);
+    f7=440.0; p52=exp(-0.5*(t-52).^2); x7=cos(2*pi*f7*t);
+    f8=466.2; p60=exp(-0.5*(t-60).^2); x8=cos(2*pi*f8*t);
+    f9=522.1; p68=exp(-0.5*(t-68).^2); x9=cos(2*pi*f9*t);
+    p76=exp(-0.5*(t-76).^2); 
+    p84=exp(-0.5*(t-84).^2);
+    
+    % Combinação entre os sinais para o grupo 2
+    x = x3.*p4 + x5.*p12 + x2.*p20 + x8.*p28 + x7.*p36 + 
+        x9.*p44 + x2.*p52 + x1.*p60 + x4.*p68 + x6.*p76 + x7.*p84;
+    plot(t,x)
+    title("x(t) por t - 4.a)", "fontsize", 20);
+    xlabel("t", "fontsize", 18);
+    ylabel("x(t)", "fontsize", 18);
+    
+    \end{verbatim}
+    \begin{figure}[h]
+        \includegraphics[scale=0.6]{questao4e}
+        \centering
+    \end{figure}
 (f) ouça o sinal alterado;
 
 (g) repita (b) e (c) para o novo sinal;
