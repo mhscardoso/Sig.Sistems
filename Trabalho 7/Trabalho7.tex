@@ -15,6 +15,7 @@
 % Sets para outras partes
 \setlength{\parindent}{0pt}
 \setstretch{1.5}
+\setcounter{MaxMatrixCols}{15}
 \DeclareMathOperator{\sen}{sen}
 \DeclareMathOperator{\sinc}{sinc}
 
@@ -30,6 +31,15 @@
 
 %% -- Negrito em matemáticas
 \newcommand{\bm}[1]{\boldsymbol{#1}}
+
+%% -- Haar
+\newcommand{\Ha}[1]{\mathcal{H}\left(#1\right)}
+
+%% -- Haar inversa
+\newcommand{\Hi}[1]{\mathcal{H}^{-1}\left(#1\right)}
+
+%% -- Haar de nivel n
+\newcommand{\Hn}[2]{\mathcal{H}^{#1}\left(#2\right)}
 
 
 % ------- Estilo do trabalho -------- %
@@ -70,17 +80,126 @@
 
 (a) compute a primeira tendência e a primeira flutuação, por Haar;
 
+Aqui, fazemos:
+\[\begin{bmatrix}
+    30 & 20 & 12 & 6 & 2 & 0 & 0 & 2 & 6 & 12 & 20 & 30
+\end{bmatrix}
+\cdot \frac{1}{\sqrt{2}} \cdot
+\begin{bmatrix}
+    1 & 0 & 0 & 0 & 0 & 0 & 1  & 0  & 0  & 0  & 0  & 0 \\
+    1 & 0 & 0 & 0 & 0 & 0 & -1 & 0  & 0  & 0  & 0  & 0 \\
+    0 & 1 & 0 & 0 & 0 & 0 & 0  & 1  & 0  & 0  & 0  & 0 \\
+    0 & 1 & 0 & 0 & 0 & 0 & 0  & -1 & 0  & 0  & 0  & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 0  & 0  & 1  & 0  & 0  & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 0  & 0  & -1 & 0  & 0  & 0 \\
+    0 & 0 & 0 & 1 & 0 & 0 & 0  & 0  & 0  & 1  & 0  & 0 \\
+    0 & 0 & 0 & 1 & 0 & 0 & 0  & 0  & 0  & -1 & 0  & 0 \\
+    0 & 0 & 0 & 0 & 1 & 0 & 0  & 0  & 0  & 0  & 1  & 0 \\
+    0 & 0 & 0 & 0 & 1 & 0 & 0  & 0  & 0  & 0  & -1 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1 & 0  & 0  & 0  & 0  & 0  & 1 \\
+    0 & 0 & 0 & 0 & 0 & 1 & 0  & 0  & 0  & 0  & 0  & -1
+\end{bmatrix}\]
+
+Obtendo:
+\[\sqrt{2} \cdot \begin{bmatrix}
+    25 & 9 & 1 & 1 & 9 & 25 & \mid & 5 & 3 & 1 & -1 & -3 & -5
+\end{bmatrix}\]
+Sendo o sub de tendência: $\sqrt{2} \cdot \begin{bmatrix}
+    25 & 9 & 1 & 1 & 9 & 25
+\end{bmatrix}$
+
+Sendo o sub de flutuação: $\sqrt{2} \cdot \begin{bmatrix}
+    5 & 3 & 1 & -1 & -3 & -5
+\end{bmatrix}$
+
+\vspace{1em}
+
 (b) determine a porcentagem de compactação, ou seja, a energia do sub de tendência dividida pela energia total;
+
+Energia do sinal $x$: 2968.
+
+Energia do sub de Tendência: 2828
+
+A porcentagem de compactação $C$ será dada por:
+\[C = \frac{2828}{2968}\]
+\[\boxed{C = 95.28\%}\]
 
 (c) compute uma aproximação $\tilde{x}$ anulando as primeiras flutuações $(d_i^1 = 0)$;
 
+Anulando as primeiras flutuações, teremos:
+\[\sqrt{2} \cdot \begin{bmatrix}
+    25 & 9 & 1 & 1 & 9 & 25 & \mid & 0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}\]
+
 (d) ache a inversa do sinal resultante;
+
+\begin{align*}
+    a_e^1 &= \begin{bmatrix}
+        25 & 25 & 9 & 9 & 1 & 1 & 1 & 1 & 9 & 9 & 25 & 25
+    \end{bmatrix}\\
+    d_e^1 &= \begin{bmatrix}
+        0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+    \end{bmatrix}\\
+    \Hi{\tilde{x}} &= \begin{bmatrix}
+        25 & 25 & 9 & 9 & 1 & 1 & 1 & 1 & 9 & 9 & 25 & 25
+    \end{bmatrix}
+\end{align*}
 
 (e) avalie a qualidade da aproximação, pela porcentagem de energia presente.
 
+Energia total de $x$: 2968.
+
+Energia da transformada inversa: 2832
+
+A porcentagem de energia presente é:
+\[\frac{2832}{2968} = \boxed{95.41\%}\]
+
 (f) é possível, desprezando elementos de pequenos módulos, conseguir uma aproximação que retém $99.99\%$ da energia?
 
+Vamos pensar em que energia devemos obter ($E_t$) para tal porcentagem:
+\begin{align*}
+    E_t &= 2968 \cdot 0.9999\\
+    E_t &= 2967.70
+\end{align*}
+
+Sendo o sinal abaixo o Haar de nível 1
+\[\sqrt{2} \cdot \begin{bmatrix}
+    25 & 9 & 1 & 1 & 9 & 25 & \mid & 5 & 3 & 1 & -1 & -3 & -5
+\end{bmatrix}\]
+
+Se truncarmos apenas uma entrada do sinal (a menor delas), $1$ no caso, reduziríamos a energia em duas unidades.
+\[E_{\tilde{x}} = 2968 - 2 = 2966\]
+
+Ou seja, é impossível conseguir uma aproximação dessas desprezando elementos menores.
+
 (g) reperir (f) para o nível 2 de Haar.
+
+Já temos o sinal Haar de nível 1
+\[\sqrt{2} \cdot \begin{bmatrix}
+    25 & 9 & 1 & 1 & 9 & 25 & \mid & 5 & 3 & 1 & -1 & -3 & -5
+\end{bmatrix}\]
+Então
+\begin{align*}
+\Hn{2}{x} &= \begin{bmatrix}
+    \Ha{a^1} & | & d^1
+\end{bmatrix}\\
+\Ha{a^1} &= \begin{bmatrix}
+    34 & 2 & 34 & \mid & 16 & 0 & -16
+\end{bmatrix}\\
+\Hn{2}{x} &= \begin{bmatrix}
+    34 & 2 & 34 & \mid & 16 & 0 & -16 & | & 5\sqrt{2} & 3\sqrt{2} & \sqrt{2} & -\sqrt{2} & -3\sqrt{2} & -5\sqrt{2}
+\end{bmatrix}
+\end{align*}
+
+Novamente, a perda do menor sinal, em módulo, traria algo do tipo:
+\begin{align*}
+    \tilde{X} &= \begin{bmatrix}
+        34 & 2 & 34 & \mid & 16 & 0 & -16 & | & 5\sqrt{2} & 3\sqrt{2} & 0 & -\sqrt{2} & -3\sqrt{2} & -5\sqrt{2}
+    \end{bmatrix}
+\end{align*}
+Que removeria duas unidades da energia, tornando impossível uma aproximação que retém $99.99\%$ da energia.
+
+%% -----------------------------------------------------------------------------------------------------------
 
 \vspace{\baselineskip}
 
