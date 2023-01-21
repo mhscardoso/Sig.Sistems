@@ -239,17 +239,44 @@ Esboçando os gráficos, teremos:
     \end{minipage}   
 \end{figure}
 
+\newpage
+
 (b) traçar o espectro de magnitude para $x(t)$, via FFT, determinando $T_0$ e $f_a$ por tentativa e erros;
+
+\begin{figure}[h]
+    \includegraphics[scale=0.3]{plot2b.jpg}
+    \centering
+    \caption{Os espectros}
+\end{figure}
 
 (c) com a mesma janela, e o número de amostras aproximado para uma potência de 2, obter Haar 1;
 
+\begin{figure}[h]
+    \includegraphics[scale=0.4]{plot2c.png}
+    \centering
+    \caption{Em verde, a transformada. Em azul, a energia.}
+\end{figure}
+O FAWAV, programa utilizado no caso, já utiliza uma amostragem de 1024 por padrão. A energia foi utilizada para traçar os outros gráficos.
+
 (d) obter a Haar inversa do sinal truncado para reter $90.00\%$ da energia e plotar no mesmo gráfico;
+
+\begin{figure}[h]
+    \includegraphics[scale=0.4]{plot2d.png}
+    \centering
+    \caption{Em azul, a transformada. Em verde, o sinal truncado}
+\end{figure}
+
+\newpage
 
 (e) idem (d) para reter $99.99\%$ da energia e plotar no mesmo gráfico.
 
+\begin{figure}[h]
+    \includegraphics[scale=0.4]{plot2e.png}
+    \centering
+    \caption{Em azul, a transformada. Em verde, o sinal truncado para $90.00\%$. Em vermelho, o sinal truncado para $99.99\%$}
+\end{figure}
 
 \vspace{\baselineskip}
-
 
 \textbf{3.)} Para o sinal a seguir:
 \[x(t) = 8\sinc(4t) - 2\sinc(2t)\]
@@ -259,20 +286,21 @@ Esboçando os gráficos, teremos:
 Abaixo, o código utilizado no octave:
 
 \begin{verbatim}
-    %Questão 2.a)
-    % Intervalo
-    dt=0.025;
-    % Dados basicos
-    t=-5:dt:5-dt;
-    x=8*sinc(4*t)-2*sinc(2*t);
-    plot (t, x);
-    xlabel("t", "fontsize", 15);
-    ylabel("x(t)", "fontsize", 15);
+%Questão 2.a)
+% Intervalo
+dt=0.025;
+% Dados basicos
+t=-5:dt:5-dt;
+x=8*sinc(4*t)-2*sinc(2*t);
+plot (t, x);
+xlabel("t", "fontsize", 15);
+ylabel("x(t)", "fontsize", 15);
 \end{verbatim}
 
 \begin{figure}[h]
     \includegraphics[scale=0.65]{questao3a}
     \centering
+    \caption{Plotagem do gráfico - 3)}
 \end{figure}
 
 (b) encontre, justificando, a largura $T_0$ de uma janela de observação centrada na origem;
@@ -290,12 +318,107 @@ $f_a \ge 4$ então $\Delta{t} \le 0.25$, satisfazendo o valor escolhido.
 
 (d) encontre o número de pontos $N = 2^p$;
 
+Sabemos que $\Delta t = \frac{T_0}{N - 1}$. Então:
+\begin{align*}
+    \Delta t &= \frac{10}{N - 1}\\
+    0.025 &= \frac{10}{N - 1}\\
+    N - 1 &= \frac{10}{0.025}\\
+    N &= 401
+\end{align*}
+
 (e) que limiar deve ser usado para reter $99.99\%$ da energia?;
+
+Obtivemos haar 1, pelo FAWAV, obtendo o gráfico em verde, abaixo. Em seguida, truncamos para ter, aproxximadamente $99.99\%$ da energia.
+\begin{figure}[h]
+    \includegraphics[scale=0.4]{plot3e.png}
+    \centering
+    \caption{}
+\end{figure}
+
+Fazendo a transformada inversa, obtivemos:
+\begin{figure}[h]
+    \includegraphics[scale=0.4]{plot3e2.png}
+    \centering
+    \caption{}
+\end{figure}
+O limiar, do gráfico ficou em $4.063$.
 
 (f) que taxa de compressão isto produz? (Fazer para os níveis 1, 2, 3 e 10 de Haar, uma Daub qualquer de sua escolha e uma Coif qualquer de sua escolha);
 
+\newpage
+
+Para Haar 1:
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{haar1.png}
+    \centering
+    \caption{}
+\end{figure}
+
+Podemos retirar as amostras a partir de 804, restando (1024 - 804 = 220) amostras.
+
+A taxa de compressão foi de $1024:220$ ou $256:55$.
+
+Para Haar 2:
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{haar2.png}
+    \centering
+    \caption{}
+\end{figure}
+
+Plotando a energia, de 1024 do todo, podemos retirar 7 intervalos do início e no fim, retirando ao todo, 14 intervalos.
+
+A taxa de compressão foi de $512:7$
+
+\newpage
+
+Para Haar 3:
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{haar3.png}
+    \centering
+    \caption{}
+\end{figure}
+
+Plotando a energia, de 1024 do todo, podemos retirar 93 amostras.
+
+A taxa de compressão foi $1024:93$.
+
+Para Haar 10:
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{haar10.png}
+    \centering
+    \caption{}
+\end{figure}
+
+Plotando a energia, de 1024 do todo, podemos retirar (1024 - 805 = 219) amostras.
+
+A taxa de compressão foi $1024:219$.
+
+\newpage
+
+Para Doub 4 Nível 1:
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{doub1.png}
+    \centering
+    \caption{}
+\end{figure}
+
+Plotando a energia, de 1024 do todo, podemos retirar (1024 - 502 = 522) amostras.
+
+A taxa de compressão foi $1024:522$ ou $512:261$.
+
+Para Coif 6 Nível 1:
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{coif 1.png}
+    \centering
+    \caption{}
+\end{figure}
+
+Plotando a energia, de 1024 do todo, podemos retirar (1024 - 502 = 522) amostras.
+
+A taxa de compressão foi $1024:522$ ou $512:261$. A mesma que a Doub.
+
 (g) comparar os resultados.
 
-
+Em todos os casos que aparecem em ordem, a taxa de compressão sempre aumentava, mostrando como maiores níveis de Haar aumentam a eficiência, e que Doub e Coif são mais eficientes. Aqui, em Doub 4 e Coif 6, tivemos a mesma taxa de compressão.
 
 \end{document}
