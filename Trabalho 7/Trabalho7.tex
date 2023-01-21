@@ -32,7 +32,7 @@
 %% -- Negrito em matemáticas
 \newcommand{\bm}[1]{\boldsymbol{#1}}
 
-%% -- Haar
+%% -- Haar 
 \newcommand{\Ha}[1]{\mathcal{H}\left(#1\right)}
 
 %% -- Haar inversa
@@ -256,9 +256,37 @@ Esboçando os gráficos, teremos:
 
 (a) plote o gráfico;
 
+Abaixo, o código utilizado no octave:
+
+\begin{verbatim}
+    %Questão 2.a)
+    % Intervalo
+    dt=0.025;
+    % Dados basicos
+    t=-5:dt:5-dt;
+    x=8*sinc(4*t)-2*sinc(2*t);
+    plot (t, x);
+    xlabel("t", "fontsize", 15);
+    ylabel("x(t)", "fontsize", 15);
+\end{verbatim}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.65]{questao3a}
+    \centering
+\end{figure}
+
 (b) encontre, justificando, a largura $T_0$ de uma janela de observação centrada na origem;
 
-(c) idem período de amostragem $\Delta t$ segura;
+A largura escolhida foi de $T_0 = 10$, uma vez que, valores além desse intervalo
+não contribuem de forma significativa para a energia total do sinal.
+\vspace{\baselineskip}
+
+(c) idem período de amostragem $\Delta t$ seguro;
+
+O período de amostragem seguro escolhido foi de $\Delta{t} = 0.025$ pois $f_a = \frac{1}{\Delta{t}}$,
+e a frequência de amostragem $\frac{f_a}{2} \ge \frac{w}{2\pi} = \frac{4\pi}{2\pi} = 2$.\\
+$f_a \ge 4$ então $\Delta{t} \le 0.25$, satisfazendo o valor escolhido.
+\vspace{\baselineskip}
 
 (d) encontre o número de pontos $N = 2^p$;
 
