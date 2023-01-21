@@ -230,7 +230,7 @@ ylabel("x(t)", "fontsize", 18);
 \end{verbatim}
 
 \begin{figure}[h]
-    \includegraphics[scale=0.25]{questao2a}
+    \includegraphics[scale=0.65]{questao2b}
     \centering
 \end{figure}
 
@@ -244,17 +244,55 @@ A largura $T_0$ encontrada foi 8 que começa em -4, porque é o trecho em que ma
 
 (c) idem período de amostragem $\Delta t$ seguro;
 
+O período de amostragem seguro se encontra num intervalo menor que 0.25 pois\\
+$\Delta{t} \le \frac{1}{f_a}$\\
+$f_a = 2 \cdot 2 = 4$\\
+$\Delta{t} \le 0.25$
+\vspace{\baselineskip}
+
 (d) encontre o número de pontos $N = 1 + T_0 / (\Delta t)$ e o vetor base de tempo $t = -T_0 / 2 : \Delta t : T_0 / 2$;
+
+$N = 1 + \frac{8}{0.25} = 33$\\
+$t = -4:\Delta{t}:4$
+
+\vspace{\baselineskip}
 
 (e) construa a escala frequencial $\Delta f = 1 / T_0, F_0 = (N - 1)\Delta f$ e $f = -F_0 / 2 : \Delta f : F_0 / 2$;
 
+$\Delta{f} = \frac{1}{8} = 0.125$\\
+$F_0 = (32) \Delta{f} = 4$\\
+$f = -2:0.125:2$
+\vspace{\baselineskip}
+
 (f) encontre os vetores \texttt{x, X = fft(x)} e \texttt{mod = abs(x)};
+
+\begin{align*}
+    FFT: \\
+    4.0793 +      0i  -3.9018 - 0.3726i   4.0103 + 0.7729i  -3.7505 - 1.1012i\\
+    3.8094 + 1.5251i  -3.4442 - 1.7756i   3.5067 + 2.2536i  -2.9212 - 2.2972i\\
+    3.6627 + 3.4924i  -5.3622 - 6.1883i   4.5807 + 6.4327i  -4.0319 - 6.9835i\\
+    3.3058 + 7.2387i  -2.6258 - 7.5867i   1.8818 + 7.7568i  -1.1400 - 7.9287i\\
+    0.3805 + 7.9876i   0.3805 - 7.9876i  -1.1400 + 7.9287i   1.8818 - 7.7568i\\
+    -2.6258 + 7.5867i   3.3058 - 7.2387i  -4.0319 + 6.9835i   4.5807 - 6.4327i\\
+    -5.3622 + 6.1883i   3.6627 - 3.4924i  -2.9212 + 2.2972i   3.5067 - 2.2536i\\
+    -3.4442 + 1.7756i   3.8094 - 1.5251i  -3.7505 + 1.1012i   4.0103 - 0.7729i\\
+    -3.9018 + 0.3726i
+\end{align*}
+
+\vspace{\baselineskip}
 
 (g) plote o espectro de amplitude: \texttt{plot(f, mod)};
 
+\begin{figure}[h]
+    \includegraphics[scale=0.55]{questao2g}
+    \centering
+\end{figure}
+\vspace{\baselineskip}
+
 (h) comente os resultados.
-
-
+ 
+Devido ao intervalo determinado para a frequência de amostragem é possível observar
+no espectro de magnitudes duas regiões bem acentuadas em torno de $f = 1\ e\ f = -1$.
 \vspace{\baselineskip}
 
 
@@ -440,7 +478,7 @@ A amostragem de $x$ foi feita utilizando o octave, com o código abaixo:
 \begin{verbatim}
 %Questao 4.c)
 % Intervalo
-
+ 
 % Dados básicos
 
 fa = 1100;
